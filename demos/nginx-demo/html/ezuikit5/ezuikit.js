@@ -14776,7 +14776,7 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "361005",
-		description: analyze information fail",
+		description: "analyze information fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
@@ -15357,7 +15357,7 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "390009",
-		description: analyze vtmreturnvtduInvalid address",
+		description: "analyze vtm return vtdu Invalid address",
 		solution: "",
 		updateTime: 1522034840000
 	},
@@ -15378,7 +15378,7 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "390010",
-		description: analyze vtmreturn concatenation vtduInvalid address",
+		description: "analyze vtmreturn concatenation vtduInvalid address",
 		solution: "",
 		updateTime: 1522034840000
 	},
@@ -15399,7 +15399,7 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "390011",
-		description: analyze vtmreturn session ID length illegal",
+		description: "analyze vtmreturn session ID length illegal",
 		solution: "",
 		updateTime: 1522034840000
 	},
@@ -31274,7 +31274,7 @@ var Theme = /*#__PURE__*/function () {
             display: "flex",
             "flex-wrap": "wrap",
             "justify-content": "space-between",
-            "z-index": 999,
+            "z-index": 1,
             top: 0,
             color: "#FFFFFF",
             width: "100%"
@@ -34506,7 +34506,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
           _this2.pluginStatus.loadingStart(id);
 
           _this2.pluginStatus.loadingSetText({
-            text: 'initializationplay device complete'
+            text: 'Initialization of the player is complete'
           });
 
           jSPlugin.EventCallback = {
@@ -34598,7 +34598,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
           _this2.pluginStatus.loadingStart(id);
 
           _this2.pluginStatus.loadingSetText({
-            text: 'initializationplay device complete'
+            text: 'Initialization of the player is complete'
           });
 
           jSPlugin.EventCallback = {

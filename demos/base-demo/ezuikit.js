@@ -31835,7 +31835,7 @@ var Theme = /*#__PURE__*/function () {
                       display: "flex",
                       "flex-wrap": "wrap",
                       "justify-content": "space-between",
-                      "z-index": 999,
+                      "z-index": 1,
                       top: 0,
                       color: "#FFFFFF",
                       width: "100%"
@@ -33783,7 +33783,7 @@ var Call = /*#__PURE__*/function () {
             display: "flex",
             "flex-wrap": "wrap",
             "justify-content": "space-between",
-            "z-index": 999,
+            "z-index": 1,
             top: 0,
             color: "#FFFFFF",
             width: "100%",
@@ -36012,7 +36012,7 @@ var MobileCall = /*#__PURE__*/function () {
             display: "flex",
             "flex-wrap": "wrap",
             "justify-content": "space-between",
-            "z-index": 999,
+            "z-index": 1,
             top: 0,
             color: "#FFFFFF",
             width: "100%",
@@ -40070,7 +40070,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
             });
           } else {
             _this2.pluginStatus.loadingSetText({
-              text: 'initializationplay device complete'
+              text: 'Initialization of the player is complete'
             });
           }
           jSPlugin.EventCallback = {
@@ -40295,7 +40295,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
             });
           } else {
             _this2.pluginStatus.loadingSetText({
-              text: 'initializationplay device complete'
+              text: 'Initialization of the player is complete'
             });
           }
           jSPlugin.EventCallback = {
