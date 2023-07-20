@@ -11,9 +11,9 @@
 
     const PLAYM4_OK = 1;
 	const PLAYM4_ORDER_ERROR = 2;
-    const PLAYM4_DECODE_ERROR = 44 	// 解码失败
+    const PLAYM4_DECODE_ERROR = 44 	// 解码 fail
     const PLAYM4_NOT_KEYFRAME = 48; 	// 非关键帧
-    const PLAYM4_NEED_MORE_DATA = 31;   // 需要更多数据才能解析
+    const PLAYM4_NEED_MORE_DATA = 31;   // 需要更多数据才能 analyze 
     const PLAYM4_NEED_NEET_LOOP = 35; //丢帧需要下个循环
     const PLAYM4_SYS_NOT_SUPPORT = 16; 	// 不支持
 
@@ -72,7 +72,7 @@
 
                 break;
             case "SetStreamOpenMode":
-                //获取端口号
+                //get 端口号
                 g_nPort = Module._GetPort();
                 //设置流打开模式
                 iStreamMode = eventData.data;
@@ -157,7 +157,7 @@
                 {
                     
                     var ret = getFrameData(funGetFrameData);
-                    // 直到获取视频帧或数据不足为止
+                    // 直到get 视频帧或数据不足为止
                     if (PLAYM4_VIDEO_FRAME === ret ||PLAYM4_NEED_MORE_DATA === ret || PLAYM4_ORDER_ERROR === ret || PLAYM4_NEED_NEET_LOOP ===ret)//PLAYM4_VIDEO_FRAME === ret ||
                     {
                         break;
@@ -222,7 +222,7 @@
                     return;
                 }
 
-               //Module._memset(pBmpSize, nBmpSize, 4); // 防止bmp截图出现输入数据过大的错误码
+               //Module._memset(pBmpSize, nBmpSize, 4); // 防止bmpScreenshot出现输入数据过大的 Error码
                 Module.setValue(pBmpSize, nBmpSize, "i32"); 
                 res = Module._GetBMP(g_nPort,pDataYUV, nYUVSize, pBmpData, pBmpSize,
                     oBMPCropRect.left, oBMPCropRect.top, oBMPCropRect.right, oBMPCropRect.bottom);
@@ -237,10 +237,10 @@
                     return;
                 }
 
-                // 获取BMP图片大小
+                // get BMP图片大小
                 var nBmpDataSize = Module.getValue(pBmpSize, "i32");
 
-                // 获取BMP图片数据
+                // get BMP图片数据
                 var aBmpData = new Uint8Array(nBmpDataSize);
                 aBmpData.set(Module.HEAPU8.subarray(pBmpData, pBmpData + nBmpDataSize));
 
@@ -295,7 +295,7 @@
                     return;
                 }
 
-                Module.setValue(pJpegSize, nJpegWidth * nJpegHeight * 2, "i32");    // JPEG抓图，输入缓冲长度不小于当前帧YUV大小
+                Module.setValue(pJpegSize, nJpegWidth * nJpegHeight * 2, "i32");    // JPEGscreenshot，输入缓冲 length不小于当forward帧YUV大小
 
                 res = Module._GetJPEG(g_nPort,pDataYUV1, nYUVSize1, pJpegData, pJpegSize,
                     oJpegCropRect.left, oJpegCropRect.top, oJpegCropRect.right, oJpegCropRect.bottom);
@@ -318,10 +318,10 @@
                     return;
                 }
 
-                // 获取JPEG图片大小
+                // get JPEG图片大小
                 var nJpegSize = Module.getValue(pJpegSize, "i32");
 
-                // 获取JPEG图片数据
+                // get JPEG图片数据
                 var aJpegData = new Uint8Array(nJpegSize);
                 aJpegData.set(Module.HEAPU8.subarray(pJpegData, pJpegData + nJpegSize));
 
@@ -476,11 +476,11 @@
 
         return iYear + "-" + iMonth + "-" + iDay + " " + iHour + ":" + iMinute + ":" + iSecond;
     }
-    // 获取帧数据
+    // get 帧数据
     function getFrameData(fun)
     {
     // function getFrameData() {
-        // 获取帧数据
+        // get 帧数据
         // var res = Module._GetFrameData();
         var res = fun();
         if (res === PLAYM4_OK)
@@ -561,7 +561,7 @@
         }
         else {
             let errorCode = Module._GetLastError(g_nPort);
-            //解码失败返回裸数据
+            //解码 failreturn裸数据
             if(PLAYM4_DECODE_ERROR===errorCode)
             {
                 var rawInfo=Module._GetRawDataInfo();
@@ -587,7 +587,7 @@
         }
     }
 
-    // 开始计算时间
+    // start 计算时间
     function startTime() {
         return new Date().getTime();
     }

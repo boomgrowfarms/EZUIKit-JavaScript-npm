@@ -71,7 +71,7 @@ $(document).ready(function() {
 			// 	return;
 			// }
 			if(!(window.EZUIWebRTC.opt.stsUrl && window.EZUIWebRTC.opt.stsUrl.length >0)){
-				EZUIWebRTC.log("sts地址不能为空","error");
+				EZUIWebRTC.log("stsaddress不能empty","error");
 				return;
 			}
 
@@ -209,7 +209,7 @@ $(document).ready(function() {
 										if(events === "room_created"){
 											var room = msg["room"];
 											Janus.log("sts room created! " + room);
-											EZUIWebRTC.log("房间创建成功!" + room,"success");
+											EZUIWebRTC.log("房间create  success!" + room,"success");
 											EZUIWebRTC.opt.room = room;
 										}
 									}	
@@ -330,7 +330,7 @@ $(document).ready(function() {
 	}});
 });
 
-// 停止
+// stop
 window.stopWebRTC = function (){
 	janus.destroy();
 }

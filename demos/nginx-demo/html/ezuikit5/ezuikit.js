@@ -89,7 +89,7 @@ Date.prototype.Format = function (fmt) {
   }
 
   return fmt;
-}; // 加载js
+}; // Load js
 
 
 var addJs = function addJs(filepath, callback, isReadyFun) {
@@ -172,10 +172,10 @@ var requestMobileFullScreen = function requestMobileFullScreen(element) {
   var height = document.documentElement.clientHeight;
   var wrapper = element;
   var style = "";
-  style += "width:" + height + "px;"; // 注意旋转后的宽高切换
+  style += "width:" + height + "px;"; // 注意旋转后的宽高 switch
 
   style += "height:" + width + "px;";
-  style += "-webkit-transform: rotate(90.001deg); transform: rotate(90.001deg);"; // 注意旋转中点的处理
+  style += "-webkit-transform: rotate(90.001deg); transform: rotate(90.001deg);"; // 注意旋转中点的 handle 
 
   style += "-webkit-transform-origin: " + width / 2 + "px " + width / 2 + "px;";
   style += "transform-origin: " + width / 2 + "px " + width / 2 + "px;";
@@ -326,13 +326,13 @@ var debouncePromise = function debouncePromise(fn, delay) {
 
     return new Promise(function (resolve, reject) {
       if (timer) {
-        console.log("防抖, delay 后执行", timer, delay, fn);
+        console.log("防抖, delay 后implement ", timer, delay, fn);
         clearTimeout(timer);
-      } // 双击执行2次
+      } // 双击implement 2次
 
 
       if (immdiate && !isInvoke) {
-        console.log("防抖 第一次执行...", isInvoke, fn);
+        console.log("防抖 第一次implement ...", isInvoke, fn);
         isInvoke = true;
         fn.apply(_this, arg).then(function () {
           resolve();
@@ -345,16 +345,16 @@ var debouncePromise = function debouncePromise(fn, delay) {
         }, delay);
       } else {
         if (isInvoke) {
-          console.log("操作过于频繁，仅支持" + delay + "ms时间内切换一次");
+          console.log("操作过于频繁，仅支持" + delay + "ms时间内 switch一次");
           reject({
             code: -1,
-            msg: "操作过于频繁，仅支持" + delay + "ms时间内切换一次"
+            msg: "操作过于频繁，仅支持" + delay + "ms时间内 switch一次"
           });
           return false;
         }
 
         timer = setTimeout(function () {
-          console.log("防抖 执行...", fn);
+          console.log("防抖 implement ...", fn);
           fn.apply(_this, arg).then(function () {
             resolve();
           })["catch"](function (err) {
@@ -375,7 +375,7 @@ var HLS = /*#__PURE__*/function () {
     _classCallCheck$1(this, HLS);
 
     addJs("https://open.ys7.com/assets/ezuikit_v3.4/js/hls.js", function () {
-      console.log("加载hls.min.js成功", window.Hls);
+      console.log("Load hls.min.js success", window.Hls);
       console.log("isSupportHls", window.Hls.isSupported());
 
       if (window.Hls.isSupported()) {
@@ -397,7 +397,7 @@ var HLS = /*#__PURE__*/function () {
       var video = document.getElementById(videoId);
       var hls = new window.Hls({
         defaultAudioCodec: 'mp4a.40.2'
-      }); // 萤石设备默认使用 AAC LC 音频编码
+      }); // 萤石Device 默认使用 AAC LC 音频编码
 
       hls.loadSource(hlsUrl);
       hls.attachMedia(video);
@@ -432,7 +432,7 @@ var HLS = /*#__PURE__*/function () {
   }, {
     key: "play",
     value: function play() {
-      console.log("执行hls播放", this.video);
+      console.log("implement hlsplay ", this.video);
       this.hls.startLoad(); // this.video.src = this.hlsUrl;
 
       this.video.play();
@@ -440,10 +440,10 @@ var HLS = /*#__PURE__*/function () {
   }, {
     key: "stop",
     value: function stop() {
-      // 通过暂停停止播放
+      // 通过暂停stopplay 
       // this.video.pause();
       // this.video.src = "";
-      this.video.pause(); // 停止取流
+      this.video.pause(); // stopTake stream
 
       this.hls.stopLoad(); // this.hls.destroy();
     }
@@ -459,7 +459,7 @@ var FLV = /*#__PURE__*/function () {
     _classCallCheck$1(this, FLV);
 
     addJs("https://open.ys7.com/sdk/js/2.0/js/flv.min.js", function () {
-      console.log("加载flv.min.js成功", window.flvjs);
+      console.log("Load flv.min.js success", window.flvjs);
       console.log("isSupportFlv", window.flvjs.isSupported());
 
       if (window.flvjs.isSupported()) {
@@ -502,16 +502,16 @@ var FLV = /*#__PURE__*/function () {
   }, {
     key: "play",
     value: function play() {
-      console.log("执行flv播放", this.video);
+      console.log("implement flvplay ", this.video);
       this.video.play();
     }
   }, {
     key: "stop",
     value: function stop() {
-      // 通过暂停停止播放
+      // 通过暂停stopplay 
       // this.video.pause();
       // this.video.src = "";
-      this.video.pause(); // 停止取流
+      this.video.pause(); // stopTake stream
 
       this.flv.unload(); // this.hls.destroy();
     }
@@ -10039,7 +10039,7 @@ var Status = /*#__PURE__*/function () {
       var windowHeight = domElement.offsetHeight;
       var offsetTop = 0; //`calc(50% - ${(domElement.offsetTop / 2)}px)`;//domElement.offsetTop; // `calc(50% - ${domElement.offsetTop / 2}px)`
 
-      var offsetLeft = domElement.offsetLeft; // 先执行清空loading
+      var offsetLeft = domElement.offsetLeft; // 先implement 清空loading
 
       if (document.getElementById("".concat(id, "-loading-id-0"))) {
         document.getElementById("".concat(id, "-loading-id-0")).parentNode.removeChild(document.getElementById("".concat(id, "-loading-id-0")));
@@ -10212,14 +10212,14 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "10035",
-		description: "获取子账户AccessToken异常,子账户不存在或子账户不属于该开发者",
+		description: "get sub-account AccessTokenabnormal,sub-account  does not exist或sub-account 不属于该开发者",
 		solution: "",
 		updateTime: 1559551958000
 	},
 	{
 		moduleCode: "",
 		detailCode: "1052674",
-		description: "获取本地录像失败",
+		description: "Failed to obtain local video",
 		solution: "",
 		updateTime: 1558579653000
 	},
@@ -10247,7 +10247,7 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "20108",
-		description: "当前用户和所添加用户不是好友关系",
+		description: "The current user and the added user are not friends",
 		solution: "",
 		updateTime: 1556541725000
 	},
@@ -10261,15 +10261,15 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "320001",
-		description: "通道不存在",
-		solution: "请检查录像机的关联状态是否正常，没有摄像头的通道无法播放",
+		description: "Channel does not exist!",
+		solution: "请检查录像机的关联 state是否正常，没有摄像头的通道无法play ",
 		updateTime: 1556419044000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120001",
-		description: "通道不存在",
-		solution: "请检查录像机的关联状态是否正常，没有摄像头的通道无法播放",
+		description: "Channel does not exist!",
+		solution: "请检查录像机的关联 state是否正常，没有摄像头的通道无法play ",
 		updateTime: 1556419030000
 	},
 	{
@@ -10289,7 +10289,7 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "10033",
-		description: "policy参数信息异常",
+		description: "policyparameter 信息abnormal",
 		solution: "",
 		updateTime: 1555922124000
 	},
@@ -10303,8 +10303,8 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "395416",
-		description: "设备达到最大连接数，无法建立连接",
-		solution: "请升级设备固件版本",
+		description: "Device 达到最大连接数，无法建立连接",
+		solution: "请upgradeDevice 固件版本",
 		updateTime: 1555394722000
 	},
 	{
@@ -10324,7 +10324,7 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "70001",
-		description: "智能家居买断用户设备受到限制,建议合理选择pagestart和pageSize",
+		description: "智能家居买断用户Device 受到限制,建议合理选择pagestart和pageSize",
 		solution: "",
 		updateTime: 1554691023000
 	},
@@ -10338,14 +10338,14 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "1012",
-		description: "重置失败",
+		description: "重置 fail",
 		solution: "",
 		updateTime: 1554645841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "1043",
-		description: "重置失败",
+		description: "重置 fail",
 		solution: "",
 		updateTime: 1554645834000
 	},
@@ -10366,14 +10366,14 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "399048",
-		description: "免费版并发数达到上限，请升级企业版使用多并发能力",
-		solution: "升级成为企业版套餐即可取消并发数限制",
+		description: "免费版并发数达到上限，请upgrade企业版使用多并发能力",
+		solution: "upgrade成为企业版套餐即可Cancel 并发数限制",
 		updateTime: 1553839878000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60007",
-		description: "预置点个数超过最大值",
+		description: "The number of preset points exceeds the maximum value",
 		solution: "",
 		updateTime: 1553671316000
 	},
@@ -10387,28 +10387,28 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "20605",
-		description: "其他用户正在认证中",
+		description: "Other users are being authenticated",
 		solution: "",
 		updateTime: 1552976317000
 	},
 	{
 		moduleCode: "",
 		detailCode: "90004",
-		description: "当前型号设备暂时不支持AI任务：CS-C3W-3B1WFR-YGL",
+		description: "当forward型号Device 暂时不支持AI任务:CS-C3W-3B1WFR-YGL",
 		solution: "",
 		updateTime: 1552898525000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60046",
-		description: "添加的设备的IP和本设备的IP冲突",
+		description: "The IP of the additional Device conflicts with the IP of this Device",
 		solution: "",
 		updateTime: 1552872372000
 	},
 	{
 		moduleCode: "",
 		detailCode: "3",
-		description: "修改视频清晰度失败!",
+		description: "Failed to change video resolution!",
 		solution: "",
 		updateTime: 1552440229000
 	},
@@ -10436,14 +10436,14 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "30005",
-		description: "弱账户不存在",
+		description: "弱账户 does not exist",
 		solution: "",
 		updateTime: 1551422358000
 	},
 	{
 		moduleCode: "",
 		detailCode: "90006",
-		description: "用户操作AI任务受限",
+		description: "用户操作AI任务 restricted",
 		solution: "",
 		updateTime: 1551073320000
 	},
@@ -10457,7 +10457,7 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "10002",
-		description: "accessToken过期或异常",
+		description: "accessToken过期或abnormal",
 		solution: "",
 		updateTime: 1550300346000
 	},
@@ -10471,7 +10471,7 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "90002",
-		description: "AI任务设备配置数达到上限：3",
+		description: "AI任务Device 配置数达到上限:3",
 		solution: "",
 		updateTime: 1549071664000
 	},
@@ -10492,49 +10492,49 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "60059",
-		description: "ezopen地址均不可用",
+		description: "ezopenaddress均不可用",
 		solution: "",
 		updateTime: 1548395350000
 	},
 	{
 		moduleCode: "",
 		detailCode: "10005",
-		description: "appKey异常",
+		description: "appKey exception",
 		solution: "",
 		updateTime: 1548317858000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60045",
-		description: "添加的设备的IP和其他通道的IP冲突",
+		description: "The IP of the additional Device conflicts with the IP of the other channel",
 		solution: "",
 		updateTime: 1548155085000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60047",
-		description: "码流类型不支持",
+		description: "Code stream type not supported",
 		solution: "",
 		updateTime: 1547962108000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60041",
-		description: "添加的设备被其他设备关联或响应超时",
+		description: "The added Device is associated with other Device or response timeout",
 		solution: "",
 		updateTime: 1547960980000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110029",
-		description: "个人用户接口调用频率超限",
-		solution: "请升级企业版：https://open.ys7.com/price.html",
+		description: "个人用户接口Transfer频率超限",
+		solution: "Please upgrade to the enterprise version: https://open.ys7.com/price.html",
 		updateTime: 1547606859000
 	},
 	{
 		moduleCode: "",
 		detailCode: "380355",
-		description: "设备直连推流异常结束",
+		description: "Device 直连推流abnormal结束",
 		solution: "",
 		updateTime: 1547106294000
 	},
@@ -10548,14 +10548,14 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "60035",
-		description: "购买云存储服务失败",
+		description: "Purchase Cloud Storage Service fail",
 		solution: "",
 		updateTime: 1547026959000
 	},
 	{
 		moduleCode: "",
 		detailCode: "90005",
-		description: "设备已存在：C75714141",
+		description: "Device  existed:C75714141",
 		solution: "",
 		updateTime: 1546940622000
 	},
@@ -10569,7 +10569,7 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "90007",
-		description: "设备未加入到AI任务",
+		description: "Device 未加入到AI任务",
 		solution: "",
 		updateTime: 1546932948000
 	},
@@ -10583,14 +10583,14 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "1021",
-		description: "重置失败",
+		description: "重置 fail",
 		solution: "",
 		updateTime: 1546781152000
 	},
 	{
 		moduleCode: "",
 		detailCode: "2001",
-		description: "删除设备失败!",
+		description: "删除Device  fail!",
 		solution: "",
 		updateTime: 1546422886000
 	},
@@ -10611,7 +10611,7 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "10059",
-		description: "requestId已存在",
+		description: "requestId existed",
 		solution: "",
 		updateTime: 1545824509000
 	},
@@ -10625,7 +10625,7 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "60043",
-		description: "添加的设备超出最大数量",
+		description: "additional Device maximum quantity exceeded",
 		solution: "",
 		updateTime: 1545493607000
 	},
@@ -10639,21 +10639,21 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "20097",
-		description: "设备添加异常,设备验证码为ABCDEF或设备被N1，R1关联",
+		description: "Device to addabnormal,Device verification 码为ABCDEF或Device 被N1，R1关联",
 		solution: "",
 		updateTime: 1545310795000
 	},
 	{
 		moduleCode: "",
 		detailCode: "10060",
-		description: "设备不支持该云存储类型",
+		description: "Device 不支持该云存储类型",
 		solution: "",
 		updateTime: 1545309064000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20102",
-		description: "无相应邀请信息，无法接受邀请",
+		description: "No corresponding invitation information，无法接受邀请",
 		solution: "",
 		updateTime: 1545204966000
 	},
@@ -10667,14 +10667,14 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "20401",
-		description: "用户云空间信息不存在",
+		description: "User cloud space information does not exist",
 		solution: "",
 		updateTime: 1545017880000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20600",
-		description: "临时密码数已达上限",
+		description: "The maximum number of temporary passwords has been reached",
 		solution: "",
 		updateTime: 1544873457000
 	},
@@ -10688,28 +10688,28 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "60210",
-		description: "图片数据错误",
+		description: "图片数据 Error",
 		solution: "",
 		updateTime: 1544604457000
 	},
 	{
 		moduleCode: "",
 		detailCode: "10013",
-		description: "您的应用没有权限调用",
+		description: "您的应用没有权限Transfer",
 		solution: "",
 		updateTime: 1544416237000
 	},
 	{
 		moduleCode: "",
 		detailCode: "70007",
-		description: "授权码不存在",
+		description: "授权码 does not exist",
 		solution: "",
 		updateTime: 1544179533000
 	},
 	{
 		moduleCode: "",
 		detailCode: "10015",
-		description: "授权地址不存在",
+		description: "授权address does not exist",
 		solution: "",
 		updateTime: 1544163240000
 	},
@@ -10730,70 +10730,70 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "10031",
-		description: "子账户或萤石用户没有权限",
+		description: "Sub-accounts or EZVIZ users do not have permission",
 		solution: "",
 		updateTime: 1543990462000
 	},
 	{
 		moduleCode: "",
 		detailCode: "10055",
-		description: "设备不支持试用云存储服务",
+		description: "Device 不支持试用云存储服务",
 		solution: "",
 		updateTime: 1543986292000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60042",
-		description: "添加的设备密码错误",
+		description: "additional Device password Error",
 		solution: "",
 		updateTime: 1543710913000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60082",
-		description: "设备正在响应本次声源定位",
+		description: "Device is responding to this sound source localization",
 		solution: "",
 		updateTime: 1543647426000
 	},
 	{
 		moduleCode: "",
 		detailCode: "10056",
-		description: "设备不支持云存储服务转出",
+		description: "Device does not support cloud storage services转出",
 		solution: "",
 		updateTime: 1543558342000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20104",
-		description: "好友不存在",
+		description: "friends does not exist",
 		solution: "",
 		updateTime: 1543492403000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20111",
-		description: "好友不是等待验证状态，无法接受邀请",
+		description: "Friends are not waiting for verification status，无法接受邀请",
 		solution: "",
 		updateTime: 1543492365000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20107",
-		description: "不能添加自己为好友",
+		description: "Can't add yourself as friend",
 		solution: "",
 		updateTime: 1543480986000
 	},
 	{
 		moduleCode: "",
 		detailCode: "1",
-		description: "设备返回其他错误",
+		description: "The device returned other errors",
 		solution: "",
 		updateTime: 1543459921000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60084",
-		description: "当前正在关闭隐私遮蔽",
+		description: "Privacy mask is currently being turned off",
 		solution: "",
 		updateTime: 1543456515000
 	},
@@ -10807,35 +10807,35 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "20015",
-		description: "设备不支持",
+		description: "Device 不支持",
 		solution: "",
 		updateTime: 1543390936000
 	},
 	{
 		moduleCode: "",
 		detailCode: "30003",
-		description: "手机验证码错误",
+		description: "Mobile phone verification 码 Error",
 		solution: "",
 		updateTime: 1543389137000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20615",
-		description: "锁用户已存在",
+		description: "锁用户 existed",
 		solution: "",
 		updateTime: 1543388325000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60061",
-		description: "账户流量已超出或未购买，限制开通",
+		description: "The account traffic has exceeded or has not been purchased, and the limit is activated",
 		solution: "",
 		updateTime: 1543372581000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60020",
-		description: "设备不支持该信令",
+		description: "Device 不支持该信令",
 		solution: "",
 		updateTime: 1543321636000
 	},
@@ -10849,14 +10849,14 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "60018",
-		description: "设备升级失败",
+		description: "Device upgrade fail",
 		solution: "",
 		updateTime: 1543304928000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60044",
-		description: "添加的设备网络不可达超时",
+		description: "additional Device network unreachable timeout",
 		solution: "",
 		updateTime: 1543304102000
 	},
@@ -10870,35 +10870,35 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "20608",
-		description: "锁用户不存在",
+		description: "锁User does not exist",
 		solution: "",
 		updateTime: 1543281950000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20609",
-		description: "设备响应超时,门锁通信故障或者电量不足,请重试.",
+		description: "Device response timeout, door lock communication failure or insufficient power, please try again.",
 		solution: "",
 		updateTime: 1543281601000
 	},
 	{
 		moduleCode: "",
 		detailCode: "1049954",
-		description: "升级设备失败",
+		description: "upgradeDevice  fail",
 		solution: "",
 		updateTime: 1543279264000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60009",
-		description: "正在调用预置点",
+		description: "Calling the preset point",
 		solution: "",
 		updateTime: 1543238114000
 	},
 	{
 		moduleCode: "",
 		detailCode: "1052677",
-		description: "获取本地录像失败",
+		description: "Failed to obtain local video",
 		solution: "",
 		updateTime: 1543207604000
 	},
@@ -10912,70 +10912,70 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "20021",
-		description: "设备在线，未被用户添加",
+		description: "Device 在线，未被用户to add",
 		solution: "",
 		updateTime: 1543193436000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20202",
-		description: "操作留言信息失败",
+		description: "Operate message fail",
 		solution: "",
 		updateTime: 1543191562000
 	},
 	{
 		moduleCode: "",
 		detailCode: "1052678",
-		description: "获取本地录像失败",
+		description: "Failed to obtain local video",
 		solution: "",
 		updateTime: 1543132218000
 	},
 	{
 		moduleCode: "",
 		detailCode: "1054723",
-		description: "格式化设备失败",
+		description: "格式化Device  fail",
 		solution: "",
 		updateTime: 1543129833000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20109",
-		description: "对应分享不存在",
+		description: "Corresponding share does not exist",
 		solution: "",
 		updateTime: 1543129111000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60026",
-		description: "设备处于隐私遮蔽状态",
+		description: "Device in a state of privacy masking",
 		solution: "",
 		updateTime: 1543110403000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60083",
-		description: "当前正在开启隐私遮蔽",
+		description: "Privacy masking is currently being turned on",
 		solution: "",
 		updateTime: 1543071148000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60001",
-		description: "用户无云台控制权限",
+		description: "The user does not have the right to control the gimbal",
 		solution: "",
 		updateTime: 1543059167000
 	},
 	{
 		moduleCode: "",
 		detailCode: "2003",
-		description: "设备不在线",
+		description: "The device is offline",
 		solution: "",
 		updateTime: 1543051046000
 	},
 	{
 		moduleCode: "",
 		detailCode: "-24",
-		description: "设置设备enable错误",
+		description: "设置Device enable Error",
 		solution: "",
 		updateTime: 1543042701000
 	},
@@ -10989,70 +10989,70 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "20103",
-		description: "好友已存在",
+		description: "friends existed",
 		solution: "",
 		updateTime: 1543038430000
 	},
 	{
 		moduleCode: "",
 		detailCode: "70010",
-		description: "授权异常请重试",
+		description: "授权abnormal please try again",
 		solution: "",
 		updateTime: 1543035590000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60056",
-		description: "删除设备失败",
+		description: "删除Device  fail",
 		solution: "",
 		updateTime: 1543031275000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60040",
-		description: "添加的设备不在同一局域网",
+		description: "The added Device is not in the same LAN",
 		solution: "",
 		updateTime: 1543031210000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60019",
-		description: "加密已开启",
+		description: "encryption is on",
 		solution: "",
 		updateTime: 1543029931000
 	},
 	{
 		moduleCode: "",
 		detailCode: "1054722",
-		description: "格式化设备失败",
+		description: "格式化Device  fail",
 		solution: "",
 		updateTime: 1543028537000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20016",
-		description: "当前设备正在格式化",
+		description: "当forwardDevice is 格式化",
 		solution: "",
 		updateTime: 1543028537000
 	},
 	{
 		moduleCode: "",
 		detailCode: "10024",
-		description: "透明通道权限校验不通过",
+		description: "透明通道权限 check不通过",
 		solution: "",
 		updateTime: 1543025540000
 	},
 	{
 		moduleCode: "",
 		detailCode: "6002",
-		description: "删除设备失败!",
+		description: "删除Device  fail!",
 		solution: "",
 		updateTime: 1543025026000
 	},
 	{
 		moduleCode: "",
 		detailCode: "1011",
-		description: "验证码错误！",
+		description: "verification 码 Error！",
 		solution: "",
 		updateTime: 1543016865000
 	},
@@ -11066,21 +11066,21 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "10034",
-		description: "子账号已存在",
+		description: "子账号 existed",
 		solution: "",
 		updateTime: 1542989194000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20301",
-		description: "根据uuid查询联动信息不存在",
+		description: "根据uuid查询联动信息 does not exist",
 		solution: "",
 		updateTime: 1542988651000
 	},
 	{
 		moduleCode: "",
 		detailCode: "1041",
-		description: "获取验证码过于频繁",
+		description: "Obtaining verification codes too often",
 		solution: "",
 		updateTime: 1542980953000
 	},
@@ -11094,105 +11094,105 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "1008",
-		description: "phone不合法！",
+		description: "phone illegal！",
 		solution: "",
 		updateTime: 1542979812000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60023",
-		description: "订阅操作失败",
+		description: "Subscription Operation failed",
 		solution: "",
 		updateTime: 1542979006000
 	},
 	{
 		moduleCode: "",
 		detailCode: "5",
-		description: "设备返回其他错误",
+		description: "The device returned other errors",
 		solution: "",
 		updateTime: 1542977828000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60006",
-		description: "云台当前操作失败",
+		description: "Current gimbal operation failed",
 		solution: "",
 		updateTime: 1542977598000
 	},
 	{
 		moduleCode: "",
 		detailCode: "131",
-		description: "修改视频清晰度失败!",
+		description: "Failed to change video resolution!",
 		solution: "",
 		updateTime: 1542977246000
 	},
 	{
 		moduleCode: "",
 		detailCode: "10019",
-		description: "密码错误",
+		description: "password Error",
 		solution: "",
 		updateTime: 1542976628000
 	},
 	{
 		moduleCode: "",
 		detailCode: "10004",
-		description: "用户不存在",
+		description: "User does not exist",
 		solution: "",
 		updateTime: 1542976268000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20201",
-		description: "操作报警信息失败",
+		description: "Operation alarm information fail",
 		solution: "",
 		updateTime: 1542975906000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20024",
-		description: "设备不在线，已经被别的用户添加",
+		description: "The device is offline, has been added by another user",
 		solution: "",
 		updateTime: 1542975858000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60004",
-		description: "设备云台旋转达到左限位",
+		description: "The device gimbal rotates to the left limit",
 		solution: "",
 		updateTime: 1542975207000
 	},
 	{
 		moduleCode: "",
 		detailCode: "1052679",
-		description: "修改视频清晰度失败!",
+		description: "Failed to change video resolution!",
 		solution: "",
 		updateTime: 1542974886000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20031",
-		description: "请在萤石客户端关闭终端绑定",
+		description: "Please close the terminal binding on the EZVIZ client",
 		solution: "",
 		updateTime: 1542974756000
 	},
 	{
 		moduleCode: "",
 		detailCode: "1053825",
-		description: "获取本地录像失败",
+		description: "Failed to obtain local video",
 		solution: "",
 		updateTime: 1542974692000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60011",
-		description: "预置点不存在",
+		description: "Preset does not exist",
 		solution: "",
 		updateTime: 1542974414000
 	},
 	{
 		moduleCode: "",
 		detailCode: "1052936",
-		description: "修改视频清晰度失败!",
+		description: "Failed to change video resolution!",
 		solution: "",
 		updateTime: 1542974390000
 	},
@@ -11206,63 +11206,63 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "10032",
-		description: "子账号不存在",
+		description: "Sub account does not exist",
 		solution: "",
 		updateTime: 1542973906000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20013",
-		description: "设备已被别人添加",
+		description: "The device has been added by someone else",
 		solution: "",
 		updateTime: 1542973817000
 	},
 	{
 		moduleCode: "",
 		detailCode: "50000",
-		description: "服务器错误!",
+		description: "Server Error",
 		solution: "",
 		updateTime: 1542973801000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60010",
-		description: "该预置点已经是当前位置",
+		description: "The preset point is already the current position",
 		solution: "",
 		updateTime: 1542973800000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60003",
-		description: "设备云台旋转达到下限位",
+		description: "The device gimbal rotation reaches the lower limit",
 		solution: "",
 		updateTime: 1542973770000
 	},
 	{
 		moduleCode: "",
 		detailCode: "4",
-		description: "设备返回其他错误",
+		description: "The device returned other errors",
 		solution: "",
 		updateTime: 1542973755000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60016",
-		description: "加密未开启，无需关闭",
+		description: "Encryption is not turned on, no need to turn it off",
 		solution: "",
 		updateTime: 1542973753000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60002",
-		description: "设备云台旋转达到上限位",
+		description: "The device gimbal rotation reaches the upper limit",
 		solution: "",
 		updateTime: 1542973742000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20023",
-		description: "设备不在线，未被用户添加",
+		description: "The device is offline, not added by the user",
 		solution: "",
 		updateTime: 1542973685000
 	},
@@ -11276,105 +11276,105 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "20010",
-		description: "设备验证码错误",
+		description: "Device verification 码 Error",
 		solution: "",
 		updateTime: 1542973658000
 	},
 	{
 		moduleCode: "",
 		detailCode: "60005",
-		description: "设备云台旋转达到右限位",
+		description: "The rotation of the equipment gimbal reaches the right limit",
 		solution: "",
 		updateTime: 1542973657000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20017",
-		description: "设备已经被自己添加",
+		description: "The device has been added by yourself",
 		solution: "",
 		updateTime: 1542973648000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20020",
-		description: "设备在线，已经被自己添加",
+		description: "The device is online and has been added by yourself",
 		solution: "",
 		updateTime: 1542973533000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20029",
-		description: "设备不在线，已经被自己添加",
+		description: "The device is offline，has been added by yourself",
 		solution: "",
 		updateTime: 1542973530000
 	},
 	{
 		moduleCode: "",
 		detailCode: "10014",
-		description: "APPKEY下对应的第三方userId和phone未绑定！",
+		description: "The corresponding third-party userId and phone not bound under APPKEY!",
 		solution: "",
 		updateTime: 1542973499000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20002",
-		description: "设备不存在",
+		description: "Device does not exist",
 		solution: "",
 		updateTime: 1542973499000
 	},
 	{
 		moduleCode: "",
 		detailCode: "10030",
-		description: "appkey和appsecret不匹配",
+		description: "appKey and appSecret does not match",
 		solution: "",
 		updateTime: 1542973490000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20022",
-		description: "设备在线，已经被别的用户添加",
+		description: "The device is online and has been added by other users",
 		solution: "",
 		updateTime: 1542973486000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20008",
-		description: "设备响应超时",
+		description: "Device response timeout",
 		solution: "",
 		updateTime: 1542973484000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20032",
-		description: "该用户下通道不存在",
+		description: "The channel under this user does not exist!",
 		solution: "",
 		updateTime: 1542973481000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20006",
-		description: "网络异常",
+		description: "Network exception",
 		solution: "",
 		updateTime: 1542973475000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20014",
-		description: "deviceSerial不合法!",
+		description: "deviceSerial is invalid!",
 		solution: "",
 		updateTime: 1542973454000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20007",
-		description: "设备不在线",
+		description: "The device is offline",
 		solution: "",
 		updateTime: 1542973454000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20018",
-		description: "该用户不拥有该设备",
+		description: "The user does not own the device",
 		solution: "",
 		updateTime: 1542973453000
 	},
@@ -11388,21 +11388,21 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "10011",
-		description: "未绑定！",
+		description: "Not bound!",
 		solution: "",
 		updateTime: 1542973453000
 	},
 	{
 		moduleCode: "",
 		detailCode: "20001",
-		description: "通道不存在!",
+		description: "Channel does not exist!!",
 		solution: "",
 		updateTime: 1542973452000
 	},
 	{
 		moduleCode: "",
 		detailCode: "10017",
-		description: "appKey不存在",
+		description: "appKey does not exist",
 		solution: "",
 		updateTime: 1542973451000
 	},
@@ -11514,7 +11514,7 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "322000",
-		description: "麦克风权限未开启",
+		description: "Microphone permission is not enabled",
 		solution: "",
 		updateTime: 1536820136000
 	},
@@ -11591,22 +11591,22 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "110028",
-		description: "个人版抓图接口日调用次数超出限制",
-		solution: "请升级企业版：https://open.ys7.com/price.html",
+		description: "The number of calls per day for the personal version of the capture interface exceeds the limit",
+		solution: "Please upgrade to the enterprise version: https://open.ys7.com/price.html",
 		updateTime: 1535348756000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110027",
-		description: "个人版帐号数量超出安全限制，无法调用",
-		solution: "请升级企业版：https://open.ys7.com/price.html",
+		description: "The number of personal accounts exceeds the security limit and cannot be called",
+		solution: "Please upgrade to the enterprise version: https://open.ys7.com/price.html",
 		updateTime: 1535348734000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110026",
-		description: "设备数量超出个人版限制，当前设备无法操作",
-		solution: "请升级企业版：https://open.ys7.com/price.html",
+		description: "The number of devices exceeds the limit of the personal version, and the current device cannot be operated",
+		solution: "Please upgrade to the enterprise version: https://open.ys7.com/price.html",
 		updateTime: 1535348588000
 	},
 	{
@@ -11731,15 +11731,15 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "1153445",
-		description: "设备在该时间段内没有录像",
+		description: "The device has not recorded during this time period",
 		solution: "",
 		updateTime: 1530944007000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110007",
-		description: "调用接口总次数达到上限",
-		solution: "请升级企业版，获取更高能力",
+		description: "The total number of calls to the interface has reached the upper limit",
+		solution: "Please upgrade to the enterprise version to obtain higher capabilities",
 		updateTime: 1530935584000
 	},
 	{
@@ -12242,70 +12242,70 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "360102",
-		description: "TTS初始化失败",
+		description: "TTS initialization failed",
 		solution: "",
 		updateTime: 1523503528000
 	},
 	{
 		moduleCode: "",
 		detailCode: "360013",
-		description: "设备开启了隐私保护",
+		description: "The device has privacy protection turned on",
 		solution: "",
 		updateTime: 1523503507000
 	},
 	{
 		moduleCode: "",
 		detailCode: "360010",
-		description: "设备正在对讲中",
+		description: "Device is talking",
 		solution: "",
 		updateTime: 1523503491000
 	},
 	{
 		moduleCode: "",
 		detailCode: "360007",
-		description: "TTS关闭了与客户端的连接",
+		description: "TTS closed the connection with the client",
 		solution: "",
 		updateTime: 1523503475000
 	},
 	{
 		moduleCode: "",
 		detailCode: "360006",
-		description: "客户端接收发生错误",
+		description: "Client receiving error",
 		solution: "",
 		updateTime: 1523503457000
 	},
 	{
 		moduleCode: "",
 		detailCode: "360005",
-		description: "客户端发送的消息错误",
+		description: "The client sent the wrong message",
 		solution: "",
 		updateTime: 1523503437000
 	},
 	{
 		moduleCode: "",
 		detailCode: "360004",
-		description: "TTS内部发生错误",
+		description: "An error occurred within TTS",
 		solution: "",
 		updateTime: 1523503421000
 	},
 	{
 		moduleCode: "",
 		detailCode: "360003",
-		description: "TTS的设备端发生错误",
+		description: "Error occurred on device side of TTS",
 		solution: "",
 		updateTime: 1523503397000
 	},
 	{
 		moduleCode: "",
 		detailCode: "360002",
-		description: "对讲发起超时",
+		description: "Intercom initiation timed out",
 		solution: "",
 		updateTime: 1523503376000
 	},
 	{
 		moduleCode: "",
 		detailCode: "360001",
-		description: "客户端请求超时",
+		description: "Client request timed out",
 		solution: "",
 		updateTime: 1523503357000
 	},
@@ -12564,154 +12564,154 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "391205",
-		description: "vtdu解析服务器ip失败",
+		description: "vtdu analyze server ip fail",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391206",
-		description: "vtdu描述符select失败",
+		description: "vtdu descriptor select fail",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391207",
-		description: "vtdu文件描述符不在可读中",
+		description: "vtdu file descriptor is not readable",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391208",
-		description: "vtdu网络发生错误getsockopt",
+		description: "vtdu网络发生 Errorgetsockopt",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391209",
-		description: "vtdu描述符select超时",
+		description: "vtdu descriptor select timeout",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395000",
-		description: "cas回复信令，发现内存已经释放（和设备之间异常断开）",
-		solution: "检查设备网络；刷新重试",
+		description: "cas回复信令，发现内存已经释放（和Device 之间abnormal断开）",
+		solution: "检查Device 网络；刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395400",
-		description: "私有化协议vtm检测私有化协议中码流类型小于0或者设备序列号为空等非法参数场景返回(app不重试取流)",
+		description: "私有化协议vtm检测私有化协议中码流类型小于0或者Device IDempty等illegalparameter 场景return(app不重试Take stream)",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395402",
-		description: "回放找不到录像文件",
+		description: "回放找不到录像 file",
 		solution: "检查是否有存储卡并且接触良好",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395403",
-		description: "操作码或信令密钥与设备不匹配",
+		description: "操作码或信令密钥与Device 不匹配",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395404",
-		description: "设备不在线",
-		solution: "检查设备网络；重启设备接入萤石云",
+		description: "The device is offline",
+		solution: "检查Device 网络；重启Device 接入萤石云",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395405",
-		description: "流媒体向设备发送或接受信令超时/cas响应超时",
-		solution: "检查设备网络；重启设备",
+		description: "流媒体to Device 发送或接受信令 timeout/cas response timeout",
+		solution: "检查Device 网络；重启Device ",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395406",
-		description: "token失效",
-		solution: "刷新重试或者重启设备",
+		description: "token invalid",
+		solution: "刷新重试或者重启Device ",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395407",
-		description: "客户端的URL格式错误",
+		description: "客户端的URL格式 Error",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395409",
-		description: "预览开启隐私保护",
+		description: "预览Turn on 隐私保护",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395410",
-		description: "设备达到最大连接数",
-		solution: "请升级设备固件版本",
+		description: "Device 达到最大连接数",
+		solution: "请upgradeDevice 固件版本",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395411",
-		description: "token无权限",
+		description: "token no permission",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395412",
-		description: "session不存在 ",
+		description: "session does not exist ",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395413",
-		description: "验证token的他异常（不具体） ",
+		description: "verification token的他abnormal（不具体） ",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395415",
-		description: "设备通道错",
+		description: "Device 通道错",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395451",
-		description: "设备不支持的码流类型",
-		solution: "刷新重试或者切换到高清模式",
+		description: "Device unsupported码流类型",
+		solution: "刷新重试或者 switch到高清模式",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395452",
-		description: "设备链接流媒体服务器失败 ",
-		solution: "检查设备网络，重启设备，刷新重试",
+		description: "Device 链接流媒体server  fail ",
+		solution: "检查Device 网络，重启Device ，刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395500",
-		description: "服务器处理失败 ",
+		description: "server  handle  fail ",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
@@ -12719,21 +12719,21 @@ var data$8 = [
 		moduleCode: "",
 		detailCode: "395501",
 		description: "流媒体vtdu达到最大负载，请扩容",
-		solution: "服务器负载达到上限，请稍后重试",
+		solution: "server 负载达到上限, please wait重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395503",
-		description: "vtm返回分配vtdu失败",
-		solution: "服务器负载达到上限，请稍后重试",
+		description: "vtmreturn分配vtdu fail",
+		solution: "server 负载达到上限, please wait重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395544",
-		description: "设备返回无视频源 ",
-		solution: "设备是否接触良好；",
+		description: "Device return无视频源 ",
+		solution: "Device 是否接触良好；",
 		updateTime: 1522034841000
 	},
 	{
@@ -12746,28 +12746,28 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "395546",
-		description: "vtdu返回达到取流并发路数限制",
-		solution: "请升级为企业版，放开并发限制",
+		description: "vtdureturn达到Take stream并发路数限制",
+		solution: "请upgrade为企业版，放开并发限制",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395560",
-		description: "蚁兵代理不支持的用户取流类型，会重定向到vtdu取流",
+		description: "蚁兵代理unsupported用户Take stream类型，会重定to 到vtduTake stream",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395557",
-		description: "回放服务器等待流头超时",
-		solution: "刷新重试，检测设备网络，重启设备",
+		description: "回放server 等待流头 timeout",
+		solution: "刷新重试，检测Device 网络，重启Device ",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "395600",
-		description: "分享设备不在分享时间内",
+		description: "分享Device 不在分享时间内",
 		solution: "",
 		updateTime: 1522034841000
 	},
@@ -12788,7 +12788,7 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "395556",
-		description: "ticket取流验证失败",
+		description: "ticketTake streamverification  fail",
 		solution: "",
 		updateTime: 1522034841000
 	},
@@ -12802,70 +12802,70 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "395701",
-		description: "cas信令返回格式错误",
+		description: "cas信令return格式 Error",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396001",
-		description: "客户端参数出错",
+		description: "客户端parameter 出错",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396099",
-		description: "客户端默认错误",
+		description: "客户端默认 Error",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396101",
-		description: "不支持的命令",
+		description: "unsupported命令",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396102",
-		description: "设备流头发送失败",
+		description: "Device 流头发送 fail",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396103",
-		description: "cas/设备返回错误1",
+		description: "cas/Device return Error1",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396104",
-		description: "cas/设备返回错误-1",
+		description: "cas/Device return Error-1",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396105",
-		description: "设备返回错误码3",
+		description: "Device return Error码3",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396106",
-		description: "设备返回错误码4",
+		description: "Device return Error码4",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396107",
-		description: "设备返回错误码5",
+		description: "Device return Error码5",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
@@ -12879,2617 +12879,2617 @@ var data$8 = [
 	{
 		moduleCode: "",
 		detailCode: "396109",
-		description: "视频广场取消分享",
+		description: "视频广场Cancel 分享",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396110",
-		description: "设备信令默认错误",
+		description: "Device 信令默认 Error",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396501",
-		description: "设备数据链路和实际链路不匹配",
+		description: "Device 数据 link 和实际 link 不匹配",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396502",
-		description: "设备数据链路重复建立连接",
+		description: "Device 数据 link 重复建立连接",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396503",
-		description: "设备数据链路端口不匹配",
+		description: "Device data link port mismatch",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396504",
-		description: "缓存设备数据链路失败(内存块不足)",
+		description: "Cache device data link failed (insufficient memory blocks)",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396505",
-		description: "设备发送确认头消息重复",
+		description: "Device sends confirmation header message repeatedly",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396506",
-		description: "设备数据先于确定头部到达",
+		description: "Device data arrives before ok header",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396508",
-		description: "设备数据头部长度非法",
-		solution: "刷新重试，或者重启设备",
+		description: "The length of the device data header is illegal",
+		solution: "刷新重试, or restart the device",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396509",
-		description: "索引找不到设备数据管理块",
+		description: "Index could not find the device data management block",
 		solution: "刷新重试",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396510",
-		description: "设备数据链路vtdu内存块协议状态不匹配",
+		description: "Device 数据 link vtdu内存块协议 state不匹配",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396511",
-		description: "设备数据头部没有streamkey错误",
+		description: "Device data header has no streamkey Error",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396512",
-		description: "设备数据头部非法(较笼统)",
+		description: "The device data header is illegal (more general)",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396513",
-		description: "设备数据长度过小",
+		description: "The device data length is too small",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396514",
-		description: "设备老协议推流头部没有streamkey错误",
+		description: "There is no streaming header on the old protocol of the device streamkey Error",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396515",
-		description: "设备老协议推流数据非法",
+		description: "Illegal streaming data of the old device protocol",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396516",
-		description: "设备老协议索引找不到内存管理块",
+		description: "The device old protocol index cannot find the memory management block",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396517",
-		description: "设备老协议推流数据非法",
+		description: "Illegal streaming data of the old device protocol",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396518",
-		description: "设备数据包过大",
-		solution: "刷新重试，或者重启设备",
+		description: "Device data packet is too large",
+		solution: "刷新重试, or restart the device",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396519",
-		description: "设备推流链路网络不稳定",
+		description: "The device streaming link network is unstable",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "396520",
-		description: "设备推流链路网络不稳定(默认)",
+		description: "The device streaming link network is unstable (default)",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "170003",
-		description: "refreshToken不存在",
-		solution: "建议用户重新调用logout接口，然后调用openLoginPage接口重新启动登录页面登录",
+		description: "refreshToken does not exist",
+		solution: "It is recommended for user to logout first, and then try relogin again",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "170004",
-		description: "refreshToken已过期",
-		solution: "建议用户重新调用logout接口，然后调用openLoginPage接口重新启动登录页面登录",
+		description: "refreshToken has expired",
+		solution: "It is recommended for user to logout first, and then try relogin again",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "380011",
-		description: "设备隐私保护中",
+		description: "Device privacy protection",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "380045",
-		description: "设备直连取流连接数量过大",
+		description: "The number of device direct connections to get streams is too large",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "380047",
-		description: "设备不支持该命令",
+		description: "The device does not support this command",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "380077",
-		description: "设备正在对讲中",
+		description: "Device is talking",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "380102",
-		description: "数据接收异常",
+		description: "Data receiving exception",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "380205",
-		description: "设备检测入参异常",
+		description: "The device detects that the input parameter is abnormal",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "380209",
-		description: "网络连接超时",
+		description: "Network connection timed out",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "380212",
-		description: "设备端网络连接超时",
+		description: "Device side Network connection timed out",
 		solution: "",
 		updateTime: 1522034841000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101007",
-		description: "手机号未注册",
+		description: "Mobile phone number is not registered",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120503",
-		description: "正在响铃",
+		description: "Is ringing",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390016",
-		description: "vtdu成功响应未携带流头",
+		description: "vtdu Successful response does not carry stream headers",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101008",
-		description: "手机号码不合法",
+		description: "Invalid mobile phone number",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120504",
-		description: "室内机正在通话",
+		description: "The indoor unit is talking",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390017",
-		description: "无数据流，尚未使用",
+		description: "No data stream, not yet used",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101009",
-		description: "用户名与手机不匹配",
+		description: "Username does not match phone",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120505",
-		description: "设备操作失败",
+		description: "Device Operation failed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390018",
-		description: "信令消息体PB解析失败",
+		description: "Signaling message body PB parsing failed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101010",
-		description: "获取验证码失败",
+		description: "Failed to get verification code",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120506",
-		description: "非法命令",
+		description: "Illegal command",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390019",
-		description: "信令消息体PB封装失败",
+		description: "The PB encapsulation of the signaling message body failed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101011",
-		description: "验证码错误",
+		description: "verification 码 Error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120507",
-		description: "智能锁密码错误",
+		description: "smart lock password Error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390020",
-		description: "申请系统内存资源失败",
+		description: "Application for system memory resources failed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101012",
-		description: "验证码失效",
+		description: "Verification code invalid",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120508",
-		description: "开关锁失败",
+		description: "Switch lock failed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390021",
-		description: "vtdu地址尚未获取到",
+		description: "vtdu address not yet obtained",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101013",
-		description: "用户不存在",
+		description: "User does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120509",
-		description: "开关锁超时",
+		description: "Switch lock timeout",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390022",
-		description: "客户端尚未支持",
+		description: "Client not yet supported",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101014",
-		description: "密码不正确或者appKey不正确",
+		description: "The password is incorrect or the AppKey is incorrect",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120510",
-		description: "智能锁设备繁忙",
+		description: "Smart lock device is busy",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390023",
-		description: "获取系统socket资源失败",
+		description: "Obtaining system socket resource failure",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101015",
-		description: "用户被锁住",
+		description: "User is locked",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120511",
-		description: "远程开锁功能未打开",
+		description: "Remote Unlock the function is not opened",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390024",
-		description: "上层填充的StreamSsnId不匹配",
+		description: "The StreamSsnId of the upper layer does not match",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101021",
-		description: "验证参数异常",
+		description: "Verification parameter abnormality",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120600",
-		description: "临时密码数已达上限",
+		description: "The maximum number of temporary passwords has been reached",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390025",
-		description: "链接服务器失败",
+		description: "Linked server failure",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101026",
-		description: "邮箱已经被注册",
+		description: "Email has been registered",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120601",
-		description: "添加临时密码失败",
+		description: "Failed to add temporary password",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390026",
-		description: "客户端请求未收到服务端应答",
+		description: "The client request did not receive a response from the server",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101031",
-		description: "邮箱未注册",
+		description: "Email not registered",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120602",
-		description: "删除临时密码失败",
+		description: "删除临时password fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390027",
-		description: "链路断开",
+		description: "Link disconnected",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101032",
-		description: "邮箱不合法",
+		description: "Email is invalid",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120603",
-		description: "该临时密码不存在",
+		description: "The temporary password does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390028",
-		description: "没有取流链接",
+		description: "No stream link",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101041",
-		description: "获取验证码过于频繁",
+		description: "Obtaining verification codes too often",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120604",
-		description: "指纹锁射频通信失败,请稍后再试",
+		description: "Fingerprint lock RF communication failed, please try again later",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390029",
-		description: "流成功停止",
+		description: "Stream stopped successfully",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101043",
-		description: "手机验证码输入错误超过规定次数",
+		description: "Mobile phone verification code input Error exceeds the specified number of times",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120605",
-		description: "其他用户正在认证中",
+		description: "Other users are being authenticated",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390030",
-		description: "客户端防串流校验失败",
+		description: "Client anti-streaming check failed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "102000",
-		description: "设备不存在",
+		description: "Device does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120606",
-		description: "验证已启动,请在120s内进行本地验证和调用添加设备接口",
+		description: "Verification has started, please perform local verification and go to Add Device page within 120s",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390031",
-		description: "应用层tcp粘包处理缓冲区满",
+		description: "Application layer tcp sticky packet handle buffer is full",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "102001",
-		description: "摄像机不存在",
-		solution: "摄像机未注册到萤石云平台，请仔细检查摄像机的网络配置，确保连接到网络",
+		description: "Camera does not exist",
+		solution: "The camera is not registered to the EZVIZ cloud platform, please check the network configuration of the camera carefully to ensure that it is connected to the network",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120607",
-		description: "删除用户失败",
+		description: "Failed to delete user",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390032",
-		description: "无效状态迁移",
+		description: "Invalid state transition",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "102003",
-		description: "设备不在线",
-		solution: "参考服务中心排查方法",
+		description: "The device is offline",
+		solution: "Refer to the customer service for troubleshooting method ",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120608",
-		description: "用户不存在",
+		description: "User does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390033",
-		description: "无效客户端状态",
+		description: "Invalid Client State",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "102004",
-		description: "设备异常",
+		description: "Device abnormal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120609",
-		description: "设备响应超时,门锁通信故障或者电量不足,请重试.",
+		description: "Device response timeout, door lock communication failure or insufficient power, please try again.",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390034",
-		description: "向vtm取流流媒体信息请求超时",
+		description: "The request to get streaming media information from vtm timed out",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "102007",
-		description: "设备序列号不正确",
+		description: "Device ID is incorrect",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120610",
-		description: "获取临时密码列表失败",
+		description: "Failed to get temporary password list",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390035",
-		description: "向代理取流请求超时",
+		description: "The request to get the stream from the proxy timed out",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "102009",
-		description: "设备请求响应超时异常",
+		description: "Device request response timed out abnormal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "130001",
-		description: "用户不存在",
+		description: "User does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390036",
-		description: "向代理保活取流请求超时",
+		description: "The request to keep alive to the proxy timed out",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "105000",
-		description: "设备已被自己添加",
+		description: "Device has been added by yourself",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "130002",
-		description: "手机号码已经注册",
+		description: "Mobile phone number already registered",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390037",
-		description: "向vtdu取流请求超时",
+		description: "to vtdu Fetch request timed out",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "105001",
-		description: "设备已被别人添加",
+		description: "The device has been added by someone else",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "130003",
-		description: "手机验证码错误",
+		description: "Mobile phone verification 码 Error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390038",
-		description: "向vtdu保活取流请求超时",
+		description: "to vtdukeep alive Fetch request timed out",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "105002",
-		description: "设备验证码错误",
+		description: "Device verification 码 Error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "130004",
-		description: "终端绑定操作失败",
+		description: "Terminal binding operation failed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391001",
-		description: "vtm地址或端口非法",
+		description: "vtm illegal address or port",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "107001",
-		description: "邀请不存在",
+		description: "Invitation does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "149999",
-		description: "数据异常",
+		description: "Data exception",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391002",
-		description: "vtm生成文件描述符失败",
+		description: "vtm failed to generate file descriptor",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "107002",
-		description: "邀请验证失败",
+		description: "Invitation verification failed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "150000",
-		description: "服务器异常",
+		description: "server abnormal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391003",
-		description: "vtm设置文件描述符非阻塞失败",
+		description: "vtm failed to set file descriptor non-blocking",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "107003",
-		description: "邀请用户不匹配",
+		description: "Invited users do not match",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160000",
-		description: "设备不支持云台控制",
+		description: "The device does not support gimbal control",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391004",
-		description: "vtm设置文件描述符阻塞失败",
+		description: "vtm failed to set file descriptor blocking",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "107004",
-		description: "云存储连接失败",
+		description: "Cloud storage connection failed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160001",
-		description: "用户无云台控制权限",
+		description: "The user does not have the right to control the gimbal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391005",
-		description: "vtm解析服务器ip失败",
+		description: "vtm analyze server ip fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "7005",
-		description: "VTDU主动断开连接",
+		description: "VTDUactively disconnect",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "107005",
-		description: "VTDU主动断开连接",
+		description: "VTDUactively disconnect",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160002",
-		description: "设备云台旋转达到上限位",
+		description: "The device gimbal rotation reaches the upper limit",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391006",
-		description: "vtm描述符select失败",
+		description: "vtm descriptor select fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "107006",
-		description: "不能邀请自己",
+		description: "Can't invite yourself",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160003",
-		description: "设备云台旋转达到下限位",
+		description: "The device gimbal rotation reaches the lower limit",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391007",
-		description: "vtm文件描述符不在可读中",
+		description: "vtm file descriptor is not readable",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "107007",
-		description: "重复邀请",
-		solution: "分享和删除分享必须全部由接口形式操作，如果与萤石客户端混用会造成这个问题，解决办法：在萤石客户端清空所有相关分享数据并重新添加设备，再通过接口操作即可",
+		description: "Repeat invite",
+		solution: "Sharing and deleting sharing must all be operated by the interface. If it is mixed with the EZVIZ client, it will cause this problem. The solution: clear all relevant shared data on the EZVIZ client and re-add the device, and then operate through the interface",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160004",
-		description: "设备云台旋转达到左限位",
+		description: "The device gimbal rotates to the left limit",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391008",
-		description: "vtm网络发生错误getsockopt",
+		description: "vtm network Errorgetsockopt",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110001",
-		description: "参数错误",
-		solution: "参数为空或者格式不对",
+		description: "Parameter error",
+		solution: "The parameter is empty or the format is wrong",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160005",
-		description: "设备云台旋转达到右限位",
+		description: "The rotation of the equipment gimbal reaches the right limit",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391009",
-		description: "vtm描述符select超时",
+		description: "vtm descriptor select timeout",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110002",
-		description: "accessToken异常或过期",
-		solution: "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
+		description: "accessToken is abnormal or expired",
+		solution: "The accessToken is valid for seven days. It is recommended to obtain the accessToken again when the accessToken is about to expire or when the 10002 Error code appears",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160006",
-		description: "云台当前操作失败",
+		description: "Current gimbal operation failed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391101",
-		description: "proxy地址或端口非法",
+		description: "proxy illegal address or port",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110004",
-		description: "用户不存在",
+		description: "User does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160007",
-		description: "预置点个数超过最大值",
+		description: "The number of preset points exceeds the maximum value",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391102",
-		description: "proxy生成文件描述符失败",
+		description: "proxy failed to generate file descriptor",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110005",
-		description: "appKey异常",
-		solution: "确认appKey状态，不通过或者冻结状态会返回该错误码",
+		description: "appKey exception",
+		solution: "Confirm the status of the appKey, if it fails or freezes, the Error code will be returned",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160009",
-		description: "正在调用预置点",
+		description: "Calling the preset point",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391103",
-		description: "proxy设置文件描述符非阻塞失败",
+		description: "proxy failed to set file descriptor non-blocking",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110006",
-		description: "ip受限",
+		description: "ip restricted",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160010",
-		description: "该预置点已经是当前位置",
+		description: "The preset point is already the current position",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391104",
-		description: "proxy设置文件描述符阻塞失败",
+		description: "proxy failed to set file descriptor blocking",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160011",
-		description: "预置点不存在",
+		description: "Preset does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391105",
-		description: "proxy解析服务器ip失败",
+		description: "proxy analyze server ip fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110008",
-		description: "签名错误",
-		solution: "①获取签名方式详见apidemo及[旧]API文档 ②注意编码格式为UTF-8",
+		description: "sign Error",
+		solution: "① For details on how to obtain sign, see apidemo and [old] API documents ② Note that the encoding format is UTF-8",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160013",
-		description: "设备版本已是最新",
+		description: "Device version is up to date",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391106",
-		description: "proxy描述符select失败",
+		description: "proxy descriptor select fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110009",
-		description: "签名参数错误",
+		description: "signParameter error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160014",
-		description: "设备正在升级",
+		description: "Device upgrading",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391107",
-		description: "proxy文件描述符不在可读中",
+		description: "proxy file descriptor is not readable",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110010",
-		description: "签名超时",
-		solution: "请调用同步服务器时间接口进行校时",
+		description: "sign timeout",
+		solution: "Please call the synchronization server time page to correct the time",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160015",
-		description: "设备正在重启",
+		description: "Device restarting",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391108",
-		description: "proxy网络发生错误getsockopt",
+		description: "Proxy network occurs Erroretsockopt",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110011",
-		description: "未开通萤石云服务",
-		solution: "参照绑定流程",
+		description: "EZVIZ cloud service not activated",
+		solution: "Refer to binding process",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160016",
-		description: "加密未开启，无须关闭",
+		description: "Encryption is not enabled, no need to close",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391109",
-		description: "proxy描述符select超时",
+		description: "proxy descriptor select timeout",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110012",
-		description: "第三方账户与萤石账号已经绑定",
+		description: "The third-party account and EZVIZ account have been bound",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160017",
-		description: "设备抓图失败",
+		description: "Device screenshot fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391201",
-		description: "vtdu地址或端口非法",
+		description: "vtdu illegal address or port",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110013",
-		description: "应用没有权限调用此接口",
+		description: "The application does not have permission to call this interface",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160018",
-		description: "设备升级失败",
+		description: "Device upgrade fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391202",
-		description: "vtdu生成文件描述符失败",
+		description: "vtdu failed to generate file descriptor",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110014",
-		description: "APPKEY下对应的第三方userId和phone未绑定",
-		solution: "获取AccessToken时所用appKey与SDK所用appKey不一致",
+		description: "The corresponding third-party userId and phone under APPKEY are not bound",
+		solution: "The appKey used when obtaining the AccessToken is inconsistent with the appKey used by the SDK",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160019",
-		description: "加密已开启",
+		description: "encryption is on",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391203",
-		description: "vtdu设置文件描述符非阻塞失败",
+		description: "vtdu failed to set file descriptor non-blocking",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110017",
-		description: "appKey不存在",
-		solution: "请填写在官网申请的应用秘钥",
+		description: "appKey does not exist",
+		solution: "Please fill in the application key applied on the official website",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160020",
-		description: "不支持该命令",
-		solution: "请确认设备是否支持该命令",
+		description: "This command is not supported",
+		solution: "Please confirm whether the Device supports this command",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "391204",
-		description: "vtdu设置文件描述符阻塞失败",
+		description: "vtdu failed to set file descriptor blocking",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110018",
-		description: "AccessToken与Appkey不匹配",
-		solution: "请检查获取accessToken对应的appKey和SDK中设置的appKey是否一致",
+		description: "AccessToken does not match Appkey",
+		solution: "Please check whether the appKey corresponding to the obtained accessToken is consistent with the appKey set in the SDK",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160023",
-		description: "订阅操作失败",
+		description: "Subscription Operation failed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110019",
-		description: "密码错误",
+		description: "password Error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160024",
-		description: "取消订阅操作失败",
+		description: "Cancel Subscription Operation failed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110020",
-		description: "请求方法为空",
+		description: "request method empty",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160025",
-		description: "客流统计配置失败",
+		description: "Traffic statistics configuration fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110021",
-		description: "ticket校验失败",
+		description: "ticket check fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160026",
-		description: "设备处于隐私遮蔽状态",
+		description: "Device in a state of privacy masking",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110022",
-		description: "透传目的地非法",
+		description: "Passthrough destination is illegal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160027",
-		description: "设备正在镜像操作",
+		description: "Device mirroring operation in progress",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110024",
-		description: "无透传权限",
+		description: "No passthrough permission",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160028",
-		description: "设备正在键控动作",
+		description: "Device is keying action",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110025",
-		description: "appKey被禁止使用通明通道",
+		description: "appKey prohibited from using transparent channels",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160029",
-		description: "设备处于语音对讲状态",
+		description: "Device in the state of voice intercom",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160030",
-		description: "卡密输入错误次数过多，24小时后再输入",
+		description: "Card password input Error too many times, enter again after 24 hours",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160031",
-		description: "卡密信息不存在",
+		description: "Card information does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160032",
-		description: "卡密状态不对或已过期",
+		description: "The password status is incorrect or has expired",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160033",
-		description: "卡密非卖品，只能开通对应的绑定设备",
+		description: "The card is not for sale, only the corresponding binding device can be opened",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110030",
-		description: "appKey和appSecret不匹配",
-		solution: "请检查appKey和appSecret是否对应",
+		description: "appKey and appSecret does not match",
+		solution: "Please check if appKey and appSecret correspond",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160035",
-		description: "购买云存储服务失败",
+		description: "Purchase Cloud Storage Service fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110031",
-		description: "子账户或萤石用户没有权限",
+		description: "Sub-accounts or EZVIZ users do not have permission",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160040",
-		description: "添加的设备不在同一局域网",
+		description: "The added Device is not in the same LAN",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110032",
-		description: "子账户不存在",
+		description: "sub-account  does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160041",
-		description: "添加的设备被其他设备关联或响应超时",
+		description: "The added Device is associated with other Device or response timeout",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110033",
-		description: "子账户未设置授权策略",
+		description: "sub-account authorization policy not set",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160042",
-		description: "添加的设备密码错误",
+		description: "additional Device password Error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110034",
-		description: "子账户已存在",
+		description: "sub-account  existed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160043",
-		description: "添加的设备超出最大数量",
+		description: "additional Device maximum quantity exceeded",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110035",
-		description: "获取子账户AccessToken异常",
+		description: "get sub-account AccessTokenabnormal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160044",
-		description: "添加的设备网络不可达超时",
+		description: "additional Device network unreachable timeout",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110036",
-		description: "子账户被禁用",
+		description: "sub-account disabled",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160045",
-		description: "添加的设备的IP和其他通道的IP冲突",
+		description: "The IP of the additional Device conflicts with the IP of the other channel",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "110051",
-		description: "无权限进行抓图",
+		description: "no permission to take screenshot",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160046",
-		description: "添加的设备的IP和本设备的IP冲突",
+		description: "The IP of the additional Device conflicts with the IP of this Device",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160047",
-		description: "码流类型不支持",
+		description: "Code stream type not supported",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120002",
-		description: "设备不存在",
-		solution: "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+		description: "Device does not exist",
+		solution: "①Device is not registered to the EZVIZ cloud platform, please check the device network parameters to ensure that it can connect to the network normally ②Device ID does not exist",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160048",
-		description: "带宽超出系统接入带宽",
+		description: "Bandwidth exceeds system access bandwidth",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120003",
-		description: "参数异常，SDK版本过低",
+		description: "Parameter abnormal, SDK version is too low",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160049",
-		description: "IP或者端口不合法",
+		description: "IP or port illegal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120004",
-		description: "参数异常，SDK版本过低",
+		description: "Parameter abnormal, SDK version is too low",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160050",
-		description: "添加的设备版本不支持需要升级才能接入",
+		description: "The additional Device version is not supported, upgrade to access",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120005",
-		description: "安全认证失败，需进行SDK安全认证",
-		solution: "已去掉安全验证",
+		description: "Security certification fail, need to take SDK security certification",
+		solution: "Security verification has been removed",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160051",
-		description: "添加的设备不支持接入",
+		description: "additional Device access is not supported",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120006",
-		description: "网络异常",
+		description: "Network exception",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160052",
-		description: "添加的设备通道号出错",
+		description: "additional Device channel number error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120007",
-		description: "设备不在线",
-		solution: "参考服务中心排查方法",
+		description: "The device is offline",
+		solution: "Refer to the customer service for troubleshooting method ",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160053",
-		description: "添加的设备分辨率不支持",
+		description: "additional Device resolution not supported",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120008",
-		description: "设备响应超时",
-		solution: "设备响应超时，请检测设备网络或重试",
+		description: "Device response timeout",
+		solution: "Device response timeout, please check Device network or try again",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160054",
-		description: "添加的设备账号被锁定",
+		description: "additional Device account is locked",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120009",
-		description: "子账号不能添加设备",
+		description: "Sub-account cannot add device",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160055",
-		description: "添加的设备取码流出错",
+		description: "additional Device code fetch error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120010",
-		description: "设备验证码错误",
-		solution: "验证码在设备标签上，六位大写字母，注意大小写",
+		description: "Device verification 码 Error",
+		solution: "The verification code is on the Device label, six capital letters, pay attention to capitalization",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160056",
-		description: "删除设备失败",
+		description: "删除Device  fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120012",
-		description: "设备添加失败",
+		description: "Device to add fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160057",
-		description: "删除的设备未关联",
-		solution: "检查IPC与NVR是否有关联关系",
+		description: "The deleted Device is not associated",
+		solution: "Check whether the IPC is associated with the NVR",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120013",
-		description: "设备已被别人添加",
+		description: "The device has been added by someone else",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160060",
-		description: "地址未绑定",
-		solution: "请前往官网设置直播",
+		description: "address not bound",
+		solution: "Please go to the official website to set up the live broadcast",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120014",
-		description: "设备序列号不正确",
+		description: "Device ID is incorrect",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160061",
-		description: "账户流量已超出或未购买，限制开通",
+		description: "The account traffic has exceeded or has not been purchased, and the limit is activated",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120015",
-		description: "设备不支持该功能",
+		description: "Device does not support this feature",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160062",
-		description: "该通道直播已开通",
+		description: "This channel is live",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120016",
-		description: "当前设备正在格式化",
+		description: "当forwardDevice is 格式化",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160063",
-		description: "直播未使用或直播已关闭",
+		description: "The stream is not in use or the stream is closed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120017",
-		description: "设备已被自己添加",
+		description: "Device has been added by yourself",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160070",
-		description: "设备不能转移给自己",
+		description: "Device cannot transfer to self",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120018",
-		description: "该用户不拥有该设备",
-		solution: "确认设备是否属于用户",
+		description: "The user does not own the device",
+		solution: "Check if the Device belongs to the user",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160071",
-		description: "设备不能转移，设备与其他设备存在关联关系",
+		description: "Device cannot be transferred, Device is associated with other Device",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400001",
-		description: "参数为空",
+		description: "parameter empty",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120019",
-		description: "设备不支持云存储服务",
+		description: "Device does not support cloud storage services",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160072",
-		description: "设备不能转移，通道被分享给其他用户或者分享到视频广场",
+		description: "Device cannot be transferred, the channel is shared with other users or shared with the video square",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400002",
-		description: "参数错误",
+		description: "Parameter error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120020",
-		description: "设备在线，被自己添加",
+		description: "Device online, to add by yourself",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160073",
-		description: "云存储转移失败",
+		description: "cloud storage transfer fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400025",
-		description: "设备不支持对讲",
+		description: "Device does not support intercom",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120021",
-		description: "设备在线，但是未被用户添加",
+		description: "Device 在线，但是未被用户to add",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160080",
-		description: "当前正在声源定位",
+		description: "Sound source localization is currently in progress",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400029",
-		description: "没有初始化或资源被释放",
+		description: "Not initialized or resource released",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120022",
-		description: "设备在线，但是已经被别的用户添加",
+		description: "Device is online, but has been added by another user",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160081",
-		description: "当前正在轨迹巡航",
+		description: "Currently cruising",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400030",
-		description: "json解析异常",
+		description: "json analyze abnormal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120023",
-		description: "设备不在线，未被用户添加",
+		description: "The device is offline, not added by the user",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160082",
-		description: "设备正在响应本次声源定位",
+		description: "Device is responding to this sound source localization",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400031",
-		description: "网络异常",
+		description: "Network exception",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120024",
-		description: "设备不在线，但是已经被别的用户添加",
+		description: "The device is offline, but has been added by other users",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160083",
-		description: "当前正在开启隐私遮蔽",
-		solution: "设备正在操作隐私遮蔽，无法进行当前操作",
+		description: "Privacy masking is currently being turned on",
+		solution: "The device is operating a privacy mask and cannot perform current operations",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400032",
-		description: "设备信息异常为空",
+		description: "Device information abnormally empty",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120025",
-		description: "重复申请分享",
-		solution: "确认设备是否由添加过该设备且申请过分享的账户下是否还存在分享记录",
+		description: "Repeat Application Sharing",
+		solution: "Confirm whether the device is added by the account that has added the device and applied for sharing and whether there is still a sharing record",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "160084",
-		description: "当前正在关闭隐私遮蔽",
-		solution: "设备正在操作隐私遮蔽，无法进行当前操作",
+		description: "Privacy mask is currently being turned off",
+		solution: "The device is operating a privacy mask and cannot perform current operations",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400034",
-		description: "取流超时",
-		solution: "一般是由于网络状况不好导致，可以尝试下让用户重新播放",
+		description: "Take stream timeout",
+		solution: "Generally, it is caused by poor network conditions, you can try to let the user play again",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120026",
-		description: "视频广场不存在该视频",
+		description: "Video Square does not exist this video",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "380290",
-		description: "　连接CAS服务器失败",
+		description: "Connect to CAS server fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400035",
-		description: "设备已加密，需要输入验证码",
-		solution: "收到此错误码，需要让用户输入验证码后，调用EZPlayer.setPlayKey传入验证码，并重新调用播放函数",
+		description: "Device is encrypted, you need to enter the verification code",
+		solution: "After receiving this Error code, you need to let the user enter the verification code, call EZPlayer.setPlayKey to pass in the verification code, and call the play function again",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120027",
-		description: "视频转码失败",
+		description: "video transcoding fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361001",
-		description: "对讲服务端排队超时",
+		description: "intercom server queue timeout",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400036",
-		description: "播放验证码错误",
-		solution: "收到此错误码，需要让用户输入验证码后，调用EZPlayer.setPlayKey传入验证码，并重新调用播放函数",
+		description: "play verification 码 Error",
+		solution: "After receiving this Error code, you need to let the user enter the verification code, call EZPlayer.setPlayKey to pass in the verification code, and call the play function again",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120028",
-		description: "设备固件升级包不存在",
+		description: "Device firmware upgrade package does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361002",
-		description: "对讲服务端处理超时",
+		description: "The intercom server process timed out",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400037",
-		description: "surfacehold错误",
-		solution: "请检查是否是播放之前销毁了surface，收到此错误也可以重新建立surface后播放",
+		description: "surfacehold Error",
+		solution: "Please check if the surface was destroyed before playing, you can also recreate the surface after receiving this error",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120029",
-		description: "设备不在线，但是已经被自己添加",
+		description: "The device is offline, but has been added by yourself",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361003",
-		description: "设备链接对讲服务器超时",
+		description: "Device link intercom server  timeout",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400100",
-		description: "未知错误",
+		description: "unknown Error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120030",
-		description: "该用户不拥有该视频广场视频",
+		description: "This user does not own this video square video",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361004",
-		description: "服务器内部错误",
+		description: "server internal Error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400200",
-		description: "player sdk出错，这种错误一般开发者也是无法解决，不具体分类传出，传一个统一的inner错误码出去",
+		description: "The player sdk made an error, and this kind of error cannot be solved by general developers. It is not classified and sent out, but a unified inner error code is sent out.",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120031",
-		description: "开启终端绑定，硬件特征码验证失败",
-		solution: "请在萤石客户端关闭终端绑定，参考此步骤",
+		description: "Enable terminal binding, hardware signature verification  fail",
+		solution: "Please close the terminal binding on the EZVIZ client, refer to this step",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361005",
-		description: "解析消息失败",
+		description: analyze information fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400300",
-		description: "内存溢出",
+		description: "out of memory",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120032",
-		description: "该用户下通道不存在",
+		description: "The channel under this user does not exist!",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361006",
-		description: "请求重定向--需要向其他服务申请对讲",
+		description: "request reset to --need to other service application intercom",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400901",
-		description: "设备不在线，可以提示用户",
+		description: "The device is offline, you can prompt the user",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120033",
-		description: "无法收藏自己分享的视频",
+		description: "Unable to bookmark videos shared by myself",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361007",
-		description: "请求url非法",
+		description: "requesturlillegal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400902",
-		description: "accesstoken异常或失效，需要重新获取accesstoken，并传入到sdk",
+		description: "accesstokenabnormal or invalid, the accesstoken needs to be obtained again and passed to the sdk",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120034",
-		description: "该用户下无设备",
+		description: "This user has no device ",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361008",
-		description: "token失效",
+		description: "token invalid",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400903",
-		description: "当前账号开启了终端绑定，只允许指定设备登录操作，提示用户登录i.ys7.com解除终端绑定",
+		description: "Terminal binding is enabled for the current account, and only the specified Device is allowed to log in, prompting the user to log in to i.ys7.com to unbind the terminal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120090",
-		description: "用户反馈失败",
+		description: "customer feedback fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361009",
-		description: "设备验证码或者通信秘钥不匹配",
+		description: "Device verification code or communication key does not match",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400904",
-		description: "设备正在对讲中",
+		description: "Device is talking",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120095",
-		description: "APP包下载失败",
+		description: "APP package download fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361010",
-		description: "设备已经在对讲",
+		description: "Device already talking",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "400905",
-		description: "设备开启了隐私保护，不允许预览、对讲等",
+		description: "The device has privacy protection turned on, preview, intercom, etc. are not allowed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120096",
-		description: "APP包信息删除失败",
+		description: "APPPackage information deletion fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361011",
-		description: "设备10s响应超时",
+		description: "Device 10s response timeout",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120101",
-		description: "视频不支持分享给本人",
+		description: "The video does not support sharing with yourself",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361012",
-		description: "设备不在线",
+		description: "The device is offline",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320002",
-		description: "参数无效",
+		description: "Invalid argument",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120102",
-		description: "无相应邀请信息",
+		description: "No corresponding invitation information",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361013",
-		description: "设备开启隐私保护拒绝对讲",
+		description: "Device Turn on privacy protection Reject intercom",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320003",
-		description: "暂不支持此操作",
+		description: "This operation is not currently supported",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120103",
-		description: "好友已存在",
+		description: "friends existed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361014",
-		description: "token无权限",
+		description: "token no permission",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320004",
-		description: "内存溢出",
+		description: "out of memory",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120104",
-		description: "好友不存在",
+		description: "friends does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361015",
-		description: "设备返回session不存在",
+		description: "Device returnsession does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320005",
-		description: "创建CAS session失败",
+		description: "create CAS session fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120105",
-		description: "好友状态错误",
+		description: "friend status Error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361016",
-		description: "验证token其他异常错误",
+		description: "verification token other abnormal Error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320006",
-		description: "创建cloud session失败",
+		description: "create cloud session fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120106",
-		description: "对应群组不存在",
+		description: "Corresponding group does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361017",
-		description: "服务端监听设备建立端口超时",
+		description: "The server listens to the Device and establishes the port timeout",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320007",
-		description: "token失效",
+		description: "token invalid",
 		solution: "重新设置token后再重试",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120107",
-		description: "不能添加自己为好友",
+		description: "Can't add yourself as friend",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361018",
-		description: "设备链路异常",
+		description: "Device  link abnormal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320008",
-		description: "token池里面没有token,请传入token",
+		description: "There is no token in the token pool, please pass in the token",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120108",
-		description: "当前用户和所添加用户不是好友关系",
+		description: "The current user and the added user are not friends",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361019",
-		description: "对讲服务端不支持的信令消息",
+		description: "intercom serverunsupportedsignaling message",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320009",
-		description: "传入新的INIT_PARAM并reset(保留，目前未用)",
+		description: "Pass in new INIT_PARAM and reset (reserved, currently unused)",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120109",
-		description: "对应分享不存在",
+		description: "Corresponding share does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361020",
-		description: "对讲服务端解析对讲请求未携带会话描述能力集",
+		description: "The intercom server analyze intercom request does not carry the session description capability set",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320010",
-		description: "请重试",
+		description: " please try again",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120110",
-		description: "好友群组不属于当前用户",
+		description: "Friends group does not belong to current user",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361021",
-		description: "对讲服务端优先能力集结果为空",
+		description: "intercom serverPriority Capability Set Resultsempty",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320011",
-		description: "500毫秒后请重试",
+		description: "500 Please try again in milliseconds",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120111",
-		description: "好友不是等待验证状态",
+		description: "Friends are not waiting for verification status",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361022",
-		description: "cas链路异常",
+		description: "cas link abnormal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320012",
-		description: "token池已满",
+		description: "token pool is full",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120112",
-		description: "添加应用下的用户为好友失败",
+		description: "Add users under the app as friends fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361023",
-		description: "对讲服务端分配对讲会话资源失败",
+		description: "Intercom server allocates intercom session resources fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320013",
-		description: "P2P client超过限制",
+		description: "P2P client exceed the limit",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120201",
-		description: "操作报警信息失败",
+		description: "Operation alarm information fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "361024",
-		description: "对讲服务端解析信令消息失败",
+		description: "intercom server analyze signaling message fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320014",
-		description: "sdk未初始化",
+		description: "sdk is not initialized",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120202",
-		description: "操作留言信息失败",
+		description: "Operate message fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390001",
-		description: "通用错误返回",
+		description: "universal Errorreturn",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320015",
-		description: "超时",
+		description: " timeout",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120301",
-		description: "根据UUID查询报警消息不存在",
+		description: "Query alarm message does not exist according to UUID",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390002",
-		description: "入参为空指针",
+		description: "Incoming parameter empty pointer",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320016",
-		description: "正在打洞中",
+		description: "drilling",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120302",
-		description: "根据UUID查询图片不存在",
+		description: "According to the UUID query image does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390003",
-		description: "入参值无效",
+		description: "Invalid input value",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320017",
-		description: "没有视频文件头(播放器层面产生和处理此错误)",
+		description: "No video file header (generated and handle this Error at the player level)",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120303",
-		description: "根据FID查询图片不存在",
+		description: "According to the FID query image does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390004",
-		description: "信令消息解析非法",
+		description: "signaling message analyze illegal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320018",
-		description: "解码错误/超时(播放器层面产生和处理此错误)",
+		description: "Decoding Error/ timeout (generated at the player level and handle this Error)",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120305",
-		description: "设备ip解析错误",
+		description: "Device ip analyze  Error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390005",
-		description: "内存资源不足",
+		description: "Insufficient memory resources",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320019",
-		description: "取消(保留，用户不用处理)",
+		description: "Cancel (reserved, users do not handle)",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120401",
-		description: "用户云空间信息不存在",
+		description: "User cloud space information does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390006",
-		description: "协议格式不对或者消息体长度超过STREAM_MAX_MSGBODY_LEN",
+		description: "The protocol format is incorrect or the message body length exceeds STREAM_MAX_MSGBODY_LEN",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320020",
-		description: "播放过程中预连接被用户清除预操作信息",
+		description: "The pre-connection is cleared by the user during playback.",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120402",
-		description: "云空间操作失败",
+		description: "cloud space Operation failed",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390007",
-		description: "设备序列号长度不合法",
+		description: "Device ID length illegal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320021",
-		description: "流加密码不对",
+		description: "stream add password is incorrect",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120403",
-		description: "用户目录不存在",
+		description: "user directory does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390008",
-		description: "取流url长度不合法",
+		description: "Get the length of the stream url illegal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "320022",
-		description: "未传入播放窗口",
+		description: "The playback window has not been passed in",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120404",
-		description: "要操作的目标目录不存在",
+		description: "The target directory to operate does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390009",
-		description: "解析vtm返回vtdu地址不合法",
+		description: analyze vtmreturnvtduInvalid address",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "100200",
-		description: "操作成功",
+		description: "Successful operation",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120405",
-		description: "要删除的文件信息不存在",
+		description: "The file information to be deleted does not exist",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390010",
-		description: "解析vtm返回级联vtdu地址不合法",
+		description: analyze vtmreturn concatenation vtduInvalid address",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101001",
-		description: "用户名不合法",
+		description: "username illegal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120406",
-		description: "已开通云存储",
+		description: "Cloud storage has been activated",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390011",
-		description: "解析vtm返回会话标识长度不合法",
+		description: analyze vtmreturn session ID length illegal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101002",
-		description: "用户名已被占用",
+		description: "Username already taken",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120407",
-		description: "开通记录失败",
+		description: "Open record fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390012",
-		description: "vtdu返回流头长度不合法",
+		description: "vtdureturn head Length illegal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101003",
-		description: "密码不合法",
+		description: "password illegal",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120500",
-		description: "获取数据错误",
+		description: "retrieve data Error",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390013",
-		description: "vtdu会话长度非法",
+		description: "vtduIllegal session length",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101004",
-		description: "密码为同一字符",
+		description: "password is the same character",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120501",
-		description: "开锁失败",
+		description: "unlock fail",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390014",
-		description: "回调函数未注册",
+		description: "Callback function not registered",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "101006",
-		description: "手机号码已经被注册",
+		description: "Mobile phone number already registered",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "120502",
-		description: "室内机未收到呼叫",
+		description: "The indoor station does not receive calls",
 		solution: "",
 		updateTime: 1522034840000
 	},
 	{
 		moduleCode: "",
 		detailCode: "390015",
-		description: "vtdu成功响应未携带会话标识",
+		description: "vtduA successful response does not carry a session ID",
 		solution: "",
 		updateTime: 1522034840000
 	}
 ];
 var code = "200";
-var msg$1 = "操作成功!";
+var msg$1 = "Successful operation!";
 var errorCode = {
 	data: data$8,
 	code: code,
@@ -15565,7 +15565,7 @@ var defaultTheme = {
 	footer: footer
 };
 
-// 通用请求方法
+// universalrequest method 
 
 var TimeLine$1 = function TimeLine(jsPlugin) {
   this.jsPlugin = jsPlugin;
@@ -15638,13 +15638,13 @@ var TimeLine$1 = function TimeLine(jsPlugin) {
     var that = this;
     var opts = this.options;
     that.randomNum = (Math.random() + '').split('.').join('');
-    that.timeWidthTblIndex = opts.timeWidth; // 当前使用时间宽度索引
+    that.timeWidthTblIndex = opts.timeWidth; // 当forward使用时间宽度索引
     // 12-10
     //that.drawPanal = this.$refs.drawPanal;
 
     var canvas = document.querySelector("#".concat(this.jsPlugin.id, "-canvas"));
     that.drawPen = canvas.getContext('2d');
-    that.nowTime = opts.time || Date.now(); // 当前时间点
+    that.nowTime = opts.time || Date.now(); // 当forward时间点
 
     that.timeSection = opts.timeSection || []; // 时间段记录区间
 
@@ -15834,7 +15834,7 @@ var TimeLine$1 = function TimeLine(jsPlugin) {
 
   TimeLine.prototype.getTime = function (data) {
     console.log("this", this);
-    console.log("当前时间", new Date(this.nowTime));
+    console.log("当forward时间", new Date(this.nowTime));
   };
 
   TimeLine.prototype.updata = function (data) {
@@ -15858,7 +15858,7 @@ var TimeLine$1 = function TimeLine(jsPlugin) {
 
     that.drawRecord(); // 画录像区间
 
-    that.drawOtherMsg(); // 画录像的其他信息
+    that.drawOtherMsg(); // 画录像的 other 信息
     // 12-10
     //that.$emit('update-time', that.nowTime);
 
@@ -15891,7 +15891,7 @@ var TimeLine$1 = function TimeLine(jsPlugin) {
     var that = this;
     var lineColor = 'rgba(255,255,255)'; //that.nowTime = new Date("2019-12-31 01:50:00")
 
-    var startDate = new Date(that.nowTime); // 开始时间
+    var startDate = new Date(that.nowTime); // start 时间
 
     var startYears = startDate.getFullYear(); // 起始的秒数
 
@@ -15912,7 +15912,7 @@ var TimeLine$1 = function TimeLine(jsPlugin) {
           // debugger
           var dotNum = parseInt(that.canvasWidth / 10); // 每10像素一个点
 
-          startDate.setSeconds(startDate.getSeconds() - parseInt(dotNum / 2, 10)); // 从现在时间的一半开始画起
+          startDate.setSeconds(startDate.getSeconds() - parseInt(dotNum / 2, 10)); // 从现在时间的一半start 画起
 
           startDay = startDate.getDate();
           startHours = startDate.getHours();
@@ -15937,7 +15937,7 @@ var TimeLine$1 = function TimeLine(jsPlugin) {
               that.drawSolidLine(i * that.canvasWidth / dotNum, 8, i * that.canvasWidth / dotNum, that.canvasHeight / 5 * 0.5 + 8, 1, lineColor);
             }
             /**
-             * 偏移距离超过60，setSeconds会每次累加1到分钟，因此绘图完成后需要复原到当前分钟，再次计算偏移
+             * 偏移距离超过60，setSeconds会每次累加1到分钟，因此绘图完成后需要复原到当forward分钟，再次计算偏移
              */
 
 
@@ -16082,7 +16082,7 @@ var TimeLine$1 = function TimeLine(jsPlugin) {
     var that = this;
     var drawPen = that.drawPen; // var startDate = new Date(that.nowTime);
     // var timeScale = that.canvasWidth / that.timeWidth;
-    // 根据时间查找当前位置
+    // 根据时间查找当forward位置
 
     for (var i = 0; i < timeArr.length; i++) {
       //console.log("timeArr[i]",timeArr[i],findPosition(timeArr[i].startTime),findPosition(timeArr[i].endTime))
@@ -16188,7 +16188,7 @@ var Rec = /*#__PURE__*/function () {
       canvasItem.height = "48";
       canvasItem.width = canvasItemWidth;
       canvasItem.style = "display:inline-block;";
-      canvasItem.innerHTML = "该浏览器不支持canvas";
+      canvasItem.innerHTML = "The browser does not support canvas";
       canvasContainer.appendChild(canvasItem);
       insertAfter$1(canvasContainer, document.getElementById("".concat(this.jSPlugin.id, "-audioControls")));
       var timeLineControlsContainer = document.createElement('div');
@@ -16239,16 +16239,16 @@ var Rec = /*#__PURE__*/function () {
               _this.disabled = true;
 
               _this.jSPlugin.pause().then(function () {
-                console.log("暂停成功");
+                console.log("Paused successfully");
 
                 _this.jSPlugin.resume(newBegin).then(function (data) {
-                  console.log("恢复成功");
+                  console.log("Resume succeeded");
 
                   if (_this.jSPlugin.Theme) {
                     _this.jSPlugin.Theme.setDecoderState({
                       play: true
                     });
-                  } // 打开声音
+                  } // 打开Sound
 
 
                   if (_this.jSPlugin.Theme && _this.jSPlugin.Theme.decoderState.state.sound) {
@@ -16259,13 +16259,13 @@ var Rec = /*#__PURE__*/function () {
                     callback();
                   }
                 })["catch"](function (err) {
-                  console.log("恢复失败", err);
+                  console.log("Resumed failed ", err);
                 });
               })["catch"](function () {
-                console.log("暂停失败");
+                console.log("Pause failed");
 
                 _this.jSPlugin.resume(newBegin).then(function (data) {
-                  console.log("恢复成功");
+                  console.log("Resume succeeded");
 
                   if (_this.jSPlugin.Theme) {
                     _this.jSPlugin.Theme.setDecoderState({
@@ -16277,13 +16277,13 @@ var Rec = /*#__PURE__*/function () {
                     callback();
                   }
                 })["catch"](function (err) {
-                  console.log("恢复失败", err);
+                  console.log("Resumed failed ", err);
                 });
               });
             };
 
             if (_this.disabled) {
-              console.log("操作频繁，等待2秒后执行"); // 限制每2秒只触发一次拖动
+              console.log("Frequent operations, wait for 2 seconds before executing"); // 限制每2秒只触发一次拖动
 
               if (_this.seekTimer) {
                 clearTimeout(_this.seekTimer);
@@ -16298,13 +16298,13 @@ var Rec = /*#__PURE__*/function () {
           }
         }
       });
-      this.syncTimeLine(); // 加载日期选择器
+      this.syncTimeLine(); // Load 日期选择器
 
       addCss("".concat(this.jSPlugin.staticPath, "/rec/datepicker.min.css"));
       addJs("".concat(this.jSPlugin.staticPath, "/rec/jquery.min.js"), function () {
         addJs("".concat(_this.jSPlugin.staticPath, "/rec/datepicker.js"), function () {
           addJs("".concat(_this.jSPlugin.staticPath, "/rec/datepicker.zh-CN.js"), function () {
-            // 日期选择：
+            // 日期选择:
             if (!document.getElementsByClassName("datepicker-container")[0]) {
               $("#".concat(_this.jSPlugin.id, "-datepicker")).datepicker({
                 autoShow: false,
@@ -16325,7 +16325,7 @@ var Rec = /*#__PURE__*/function () {
 
             _this.datepickerVisible = false;
             $("#".concat(_this.jSPlugin.id, "-datepicker")).on('pick.datepicker', function (e) {
-              console.log("重新选择日期", e.date, new Date(e.date).Format('yyyyMMdd'), new Date(document.getElementById("".concat(_this.jSPlugin.id, "-datepicker")).value).Format('yyyyMMdd'));
+              console.log("Reselect date", e.date, new Date(e.date).Format('yyyyMMdd'), new Date(document.getElementById("".concat(_this.jSPlugin.id, "-datepicker")).value).Format('yyyyMMdd'));
 
               if (e.date > new Date() || new Date(e.date).Format('yyyyMMdd') === new Date(document.getElementById("".concat(_this.jSPlugin.id, "-datepicker")).value).Format('yyyyMMdd')) {
                 e.preventDefault(); // Prevent to pick the date
@@ -16344,7 +16344,7 @@ var Rec = /*#__PURE__*/function () {
               _this.datepickerVisible = false;
             });
             $("#".concat(_this.jSPlugin.id, "-datepicker")).off('click').on("click", function (e) {
-              console.log("点击日期");
+              console.log("Click date");
 
               if (!_this.datepickerVisible) {
                 if (document.getElementsByClassName("datepicker-container")[0]) {
@@ -16435,10 +16435,10 @@ var Rec = /*#__PURE__*/function () {
           var v = data.data;
 
           if (v === -1) {
-            console.log("获取播放时间错误");
+            console.log("get playtime Error");
           } else {
             if (v > 0) {
-              //console.log("获取播放时间", v, this.timeLine.run);
+              //console.log("get playtime", v, this.timeLine.run);
               _this3.timeLine.run({
                 time: new Date(v > 1000000000000 ? v : v * 1000)
               }); //$(".current-time").text(new Date(new Date(v > 1000000000000 ? v : v * 1000)).Format('yyyy-MM-dd hh:mm:ss'))
@@ -16484,7 +16484,7 @@ var Rec = /*#__PURE__*/function () {
           if (isAll) {
             _this4.timeLine.getRecord(dataArr, dateStart, dateEnd);
           } else {
-            // 云存储回调事务
+            // 云存储 Callback事务
             var recTransaction = function recTransaction() {
               function recAPIV2Success(data) {
                 if (data.data && data.data.files && data.data.files.length > 0) {
@@ -16496,7 +16496,7 @@ var Rec = /*#__PURE__*/function () {
                     nextFileTime = data.data.nextFileTime > 0 ? data.data.nextFileTime : new Date().getTime();
                     recTransaction();
                   } else {
-                    console.log("云存储执行渲染片段");
+                    console.log("Cloud Storage Execution Render Fragment");
                     that.timeLine.getRecord(dataArr, dateStart, dateEnd);
                   }
                 } else {
@@ -16515,7 +16515,7 @@ var Rec = /*#__PURE__*/function () {
             time: new Date(dateStart)
           });
         } else if (data.data && data.data.length > 0) {
-          console.log("获取本地录像片段成功", data);
+          console.log("Successfully obtained local video clips", data);
           that.timeLine.getRecord(data.data, dateStart, dateEnd);
           that.timeLine.run({
             time: new Date(dateStart)
@@ -16532,18 +16532,18 @@ var Rec = /*#__PURE__*/function () {
 }();
 
 var TimeLine = function TimeLine(params) {
-  console.log("执行TimeLine - params", params);
+  console.log("implement TimeLine - params", params);
   this.state = {
     id: params.id,
     start: '00:00:00',
     // 传入最近片段起始时刻
     end: '24:00:00',
-    // 传入最近片段结束时刻 默认结束时间为24：00：00, 1440  24
+    // 传入最近片段结束时刻 默认结束时间为24:00:00, 1440  24
     current: 0,
-    // 当前播放时刻
-    // rate: 1, // 1：2小时， 2：1小时， 3：半小时， 4：10分钟， 5：1分钟
+    // 当forwardplay 时刻
+    // rate: 1, // 1:2小时， 2:1小时， 3:半小时， 4:10分钟， 5:1分钟
     timelag: 30,
-    // 120: 2小时， 60：1小时， 30：半小时，10：10分钟，1：1分钟
+    // 120: 2小时， 60:1小时， 30:半小时，10:10分钟，1:1分钟
     timeArr: [],
     // 时间轴列表
     availTimeLine: [],
@@ -16554,7 +16554,7 @@ var TimeLine = function TimeLine(params) {
     // timelineTimer: '', //时间轴定时器,
     index: 0,
     // 初始时刻在availtimeLine中的index
-    // playCode: 0, // 当前播放状态值
+    // playCode: 0, // 当forwardplay  state值
     date: '',
     noTimeLineTxt: '',
     disabled: false // 禁用拖动轴
@@ -16606,7 +16606,7 @@ var TimeLine = function TimeLine(params) {
     return h * 60 + m;
   };
 
-  this.getPalyParam = params.getPalyParam; // 监听手动滚动时间轴时，停止时间轴滚动，时刻仍然变化
+  this.getPalyParam = params.getPalyParam; // 监听手动滚动时间轴时，stop时间轴滚动，时刻仍然变化
 
   document.getElementById('time-line-item').parentNode.ontouchstart = function () {
     if (_this.state.disabled) {
@@ -16614,7 +16614,7 @@ var TimeLine = function TimeLine(params) {
     }
 
     params.ontouchstart();
-  }; // 监听手动滚动时间轴时，停止时间轴滚动，时刻仍然变化
+  }; // 监听手动滚动时间轴时，stop时间轴滚动，时刻仍然变化
 
 
   document.getElementById('time-line-item').parentNode.ontouchmove = function () {
@@ -16623,7 +16623,7 @@ var TimeLine = function TimeLine(params) {
     }
 
     params.ontouchmove();
-  }; // 手动滚动停止，选定时刻自动播放
+  }; // 手动滚动stop，选定时刻Automatic play 
 
 
   document.getElementById('time-line-item').parentNode.ontouchend = function () {
@@ -16670,7 +16670,7 @@ var TimeLine = function TimeLine(params) {
 
 TimeLine.prototype.changeScale = function (value) {
   this.setState({
-    timelag: value // 120: 2小时， 60：1小时， 30：半小时，10：10分钟，1：1分钟
+    timelag: value // 120: 2小时， 60:1小时， 30:半小时，10:10分钟，1:1分钟
 
   });
   this.matchTimeDot();
@@ -16690,7 +16690,7 @@ TimeLine.prototype.setDateLine = function (news, defaultIndex) {
   //   console.log("this.state", this.state);
   //   this.matchTimeDot();
   //   this.primaryOffsetH();
-  //   // 将当前播放时间片段传给父组件
+  //   // 将当forwardplay 时间片段传给父组件
   //   this.getPalyParam(news[defaultIndex]);
   // }
   if (news.length > 0) {
@@ -16706,7 +16706,7 @@ TimeLine.prototype.setDateLine = function (news, defaultIndex) {
     });
     console.log("this.state", this.state);
     this.matchRecTimeDot();
-    this.primaryOffsetH(); // 将当前播放时间片段传给父组件
+    this.primaryOffsetH(); // 将当forwardplay 时间片段传给父组件
     //this.getPalyParam({ current: news[defaultIndex].st });
   } else {
     this.setState({
@@ -16724,7 +16724,7 @@ TimeLine.prototype.matchTimeDot = function () {
       timelag = _this$state.timelag;
       _this$state.availTimeLine;
   console.log("start", start, 'end', end);
-  var timeArr = []; // // 播放时间片段时刻转分钟
+  var timeArr = []; // // play 时间片段时刻转分钟
   // let availArr = [];
   // let len = availTimeLine.length;
   // for (let i = 0; i < len; i++) {
@@ -16830,7 +16830,7 @@ TimeLine.prototype.matchRecTimeDot = function () {
       timelag = _this$state2.timelag,
       availTimeLine = _this$state2.availTimeLine,
       timeArr = _this$state2.timeArr;
-  console.log("start", start, 'end', end); // 播放时间片段时刻转分钟
+  console.log("start", start, 'end', end); // play 时间片段时刻转分钟
 
   var availArr = [];
   var len = availTimeLine.length;
@@ -16938,7 +16938,7 @@ TimeLine.prototype.primaryOffsetH = function () {
     scrollTop: offsetH
   });
   console.log('起始偏移量', offsetH);
-}; // 计算当前偏移量
+}; // 计算当forward偏移量
 
 
 TimeLine.prototype.currentOffsetH = function () {
@@ -16955,20 +16955,20 @@ TimeLine.prototype.currentOffsetH = function () {
   this.setState({
     scrollTop: offsetH
   });
-}; // 通过时间轴位置获取当前时间
+}; // 通过时间轴位置get 当forward时间
 
 
 TimeLine.prototype.rectTopTotime = function (reactTop) {
-  var timelag = this.state.timelag; // let rectTop = rect.top; // 获取当前元素距离父元素顶部的高度
+  var timelag = this.state.timelag; // let rectTop = rect.top; // get 当forward元素距离父元素顶部的高度
   // let reactTop = 0 - rectTop; // 实际偏移高度
 
-  var index = Math.floor(reactTop / 60); // 以分钟为刻度时，每个元素初始高度为60px, 向下取整并除以时刻倍数得出偏移item;
+  var index = Math.floor(reactTop / 60); // 以分钟为刻度时，每个元素初始高度为60px, to 下取整并除以时刻倍数得出偏移item;
 
   var offsetH = reactTop - index * 60; // 偏移高度
 
   var current;
   var offsetSecond;
-  console.log('index：', index, 'offsetH:', offsetH);
+  console.log('index:', index, 'offsetH:', offsetH);
 
   if (offsetH == 0) {
     current = this.state.timeArr[index - 1].current;
@@ -17053,11 +17053,11 @@ Date.prototype.Format = function (fmt) {
 
 function format(now) {
   var time = new Date(now);
-  var h = time.getHours(); //返回日期中的小时数（0到23）
+  var h = time.getHours(); //return日期中的小时数（0到23）
 
-  var m = time.getMinutes(); //返回日期中的分钟数（0到59）
+  var m = time.getMinutes(); //return日期中的分钟数（0到59）
 
-  var s = time.getSeconds(); //返回日期中的秒数（0到59）
+  var s = time.getSeconds(); //return日期中的秒数（0到59）
 
   return (h > 9 ? h : '0' + h) + ':' + (m > 9 ? m : '0' + m) + ':' + (s > 9 ? s : '0' + s);
 }
@@ -17131,12 +17131,12 @@ var MobileRec = /*#__PURE__*/function () {
       var date = new Date(_this.date).Format('yyyyMMdd').substr(0, 8) + (data.current ? st.replace(/:/g, "") : data.current.replace(/:/g, ""));
 
       if (_this.initBegin && new Date("".concat(_this.date, " ").concat(data.current)).getTime() < new Date(_this.initBegin).getTime()) {
-        console.log("超过限制最低值");
+        console.log("exceed the limit最低值");
         date = new Date(_this.initBegin).Format("yyyyMMddhhmmss");
       }
 
       if (_this.initEnd && new Date("".concat(_this.date, " ").concat(data.current)).getTime() > new Date(_this.initEnd).getTime()) {
-        console.log("超过限制最高值");
+        console.log("exceed the limit最高值");
         date = new Date(_this.initBegin).Format("yyyyMMddhhmmss");
       }
 
@@ -17173,16 +17173,16 @@ var MobileRec = /*#__PURE__*/function () {
           _this.disabled = true;
 
           _this.jSPlugin.pause().then(function () {
-            console.log("暂停成功");
+            console.log("Paused successfully");
 
             _this.jSPlugin.resume(date).then(function (data) {
-              console.log("恢复成功");
+              console.log("Resume succeeded");
 
               if (_this.jSPlugin.Theme) {
                 _this.jSPlugin.Theme.setDecoderState({
                   play: true
                 });
-              } // 打开声音
+              } // 打开Sound
 
 
               if (_this.jSPlugin.Theme && _this.jSPlugin.Theme.decoderState.state.sound) {
@@ -17196,10 +17196,10 @@ var MobileRec = /*#__PURE__*/function () {
               }
             });
           })["catch"](function () {
-            console.log("暂停失败");
+            console.log("Pause failed");
 
             _this.jSPlugin.resume(date).then(function (data) {
-              console.log("恢复成功");
+              console.log("Resume succeeded");
 
               if (_this.jSPlugin.Theme) {
                 _this.jSPlugin.Theme.setDecoderState({
@@ -17217,7 +17217,7 @@ var MobileRec = /*#__PURE__*/function () {
         };
 
         if (_this.disabled) {
-          console.log("操作频繁，等待2秒后执行");
+          console.log("Frequent operations, wait for 2 seconds before executing");
 
           if (_this.seekTimer) {
             clearTimeout(_this.seekTimer);
@@ -17242,7 +17242,7 @@ var MobileRec = /*#__PURE__*/function () {
       // if (decoder) {
       //   var stopPromise = decoder.stop();
       //   stopPromise.then(() => {
-      //     console.log("停止成功")
+      //     console.log("stop success")
       //   });
       // }
 
@@ -17271,16 +17271,16 @@ var MobileRec = /*#__PURE__*/function () {
 
     document.getElementById("date").addEventListener('change', function (e) {
       console.log("日期变化", e.target.value); // if(this.initBegin && new Date(`${e.target.value}`.replace(/-/g, "/")).getTime() < new Date(this.initBegin.slice(0, 10)).getTime()) {
-      //   console.log("超过限制最低值")
+      //   console.log("exceed the limit最低值")
       //   return false;
       // }
       // if(this.initEnd && new Date(`${e.target.value}`.replace(/-/g, "/")).getTime() > new Date(this.initEnd.slice(0, 10)).getTime()) {
-      //   console.log("超过限制最高值")
+      //   console.log("exceed the limit最高值")
       //   return false;
       // }
 
       if (_this.initBegin || _this.initEnd) {
-        console.log("您开启了时间限制，无法切换日期");
+        console.log("您Turn on 了时间限制，无法 switch日期");
         return false;
       }
 
@@ -17307,7 +17307,7 @@ var MobileRec = /*#__PURE__*/function () {
         type: _this.type,
         begin: "".concat(new Date(_this.date).Format('yyyyMMdd'), "000000")
       }).then(function () {
-        console.log("切换类型成功");
+        console.log(" switch类型 success");
 
         _this.syncTimeLine();
       }, function (err) {
@@ -17362,7 +17362,7 @@ var MobileRec = /*#__PURE__*/function () {
       }).then(function (response) {
         return response.json();
       }).then(function (res) {
-        // 本地回放
+        // Local playback
         if (res.code == 200 && res.data) {
           var result = [];
           result = res.data;
@@ -17379,11 +17379,11 @@ var MobileRec = /*#__PURE__*/function () {
 
       var dateFormat = function dateFormat(now) {
         var time = new Date(now);
-        var h = time.getHours(); //返回日期中的小时数（0到23）
+        var h = time.getHours(); //return日期中的小时数（0到23）
 
-        var m = time.getMinutes(); //返回日期中的分钟数（0到59）
+        var m = time.getMinutes(); //return日期中的分钟数（0到59）
 
-        var s = time.getSeconds(); //返回日期中的秒数（0到59）
+        var s = time.getSeconds(); //return日期中的秒数（0到59）
 
         return (h > 9 ? h : '0' + h) + ':' + (m > 9 ? m : '0' + m) + ':' + (s > 9 ? s : '0' + s);
       };
@@ -17403,10 +17403,10 @@ var MobileRec = /*#__PURE__*/function () {
           if (res.data > 0) {
             _this3.TimeLineOBJ.stepScrollTimeLine(dateFormat(res.data * 1000));
           } else {
-            console.log("未找到当前获取播放时间，等待中...");
+            console.log("未找到当forwardget playtime，等待中...");
           }
         })["catch"](function (err) {
-          console.log("未找到当前获取播放时间，等待中...");
+          console.log("未找到当forwardget playtime，等待中...");
         });
       }, 1000);
     }
@@ -17429,7 +17429,7 @@ var Ptz = /*#__PURE__*/function () {
     _classCallCheck$1(this, Ptz);
 
     this.jSPlugin = jSPlugin;
-    console.log("云台初始化");
+    console.log("云台initialization");
 
     if (document.getElementById(this.jSPlugin.id + "-ez-ptz-item")) {
       return false;
@@ -17448,7 +17448,7 @@ var Ptz = /*#__PURE__*/function () {
 
     document.getElementById("".concat(this.jSPlugin.id, "-ez-ptz-container")).onmousedown = function (e) {
       e.preventDefault();
-      console.log("触摸开始");
+      console.log("触摸start ");
 
       _this._handlePtzTouch(e, 'start');
     };
@@ -17462,7 +17462,7 @@ var Ptz = /*#__PURE__*/function () {
 
     document.getElementById("".concat(this.jSPlugin.id, "-ez-ptz-container")).ontouchstart = function (e) {
       e.preventDefault();
-      console.log("触摸开始");
+      console.log("触摸start ");
 
       _this._handlePtzTouch(e, 'start');
     };
@@ -17497,7 +17497,7 @@ var Ptz = /*#__PURE__*/function () {
       var eventY = e.y || e.changedTouches[0].clientY;
       var left = eventX - containerCenterX;
       var top = eventY - containerCenterY;
-      var direction = 0; //操作命令：0-上，1-下，2-左，3-右，4-左上，5-左下，6-右上，7-右下，8-放大，9-缩小，10-近焦距，11-远焦距
+      var direction = 0; //操作命令:0-上，1-下，2-左，3-右，4-左上，5-左下，6-右上，7-右下，8-放大，9-缩小，10-近焦距，11-远焦距
 
       var url = this.jSPlugin.env.domain + "/api/lapp/device/ptz/start"; // var nextPtzImg = ptzNormalImg;
       // var nextPtzImgFailed = ptzNormalImg;
@@ -17573,7 +17573,7 @@ var Ptz = /*#__PURE__*/function () {
           }
         }
       })["catch"](function (err) {
-        console.log("云台调用异常", err);
+        console.log("云台Transferabnormal", err);
       });
     }
   }]);
@@ -27776,7 +27776,7 @@ Janus.init({
               // 	audio = audio.get(0);
               // 	audio.setAttribute("id", 'peeraudio');
               // 	audio.setAttribute("preload","preload");
-              // 	// 自动播放解决苹果不兼容autoplay属性
+              // 	// Automatic play 解决苹果不兼容autoplay属性
               // 	audio.setAttribute("loop",true);
               // 	$('#audioright').append(audio);
               // 	$("#peeraudio").bind("playing", function () {
@@ -27855,7 +27855,7 @@ var Talk = /*#__PURE__*/function () {
     audioRight.appendChild(audioRightDOM); // addJs(`${this.jSPlugin.staticPath}/talk/adapeter.js`, () => {
     //   addJs(`${this.jSPlugin.staticPath}/talk/janus.js`, () => {
     //     addJs(`${this.jSPlugin.staticPath}/talk/tts-v4.js`, () => {
-    // 临时处理
+    // 临时 handle 
 
     window.EZUIKit["handleTalkError"] = function (err) {
       console.log("talk err", err);
@@ -27900,13 +27900,13 @@ var Talk = /*#__PURE__*/function () {
       if (this.jSPlugin.capacity && this.jSPlugin.capacity.support_talk && !(this.jSPlugin.capacity && (this.jSPlugin.capacity.support_talk === '3' || this.jSPlugin.capacity.support_talk === '1'))) {
         if (typeof this.jSPlugin.params.handleError === 'function') {
           this.jSPlugin.params.handleError({
-            msg: "设备不支持对讲",
+            msg: "Device does not support intercom",
             retcode: -1000,
             id: this.jSPlugin.params.id,
             type: "handleError"
           });
         }
-        console.log("设备不支持对讲");
+        console.log("Device does not support intercom");
         return false;
       }
 
@@ -27941,12 +27941,12 @@ var Talk = /*#__PURE__*/function () {
             var urlList = window.EZUIKit.opt.ttsUrl.split("?");
 
             if (urlList.length === 2) {
-              // 国标设备
+              // 国标Device 
               var talk = "talk?dev=" + window.EZUIKit.opt.deviceSerial + "&chann=" + window.EZUIKit.opt.channelNo + "&encodetype=2";
               window.EZUIKit.opt.talkLink = window.EZUIKit.opt.ttsUrl.split("?")[0] + "/" + talk;
               window.EZUIKit.opt.talkType = "gb28181";
             } else {
-              // 普通设备
+              // 普通Device 
               var talk = "talk://" + window.EZUIKit.opt.deviceSerial + ":0:" + window.EZUIKit.opt.channelNo + ":cas.ys7.com:6500";
               window.EZUIKit.opt.talkLink = window.EZUIKit.opt.ttsUrl.split("?")[0] + "/" + talk;
             }
@@ -28029,7 +28029,7 @@ var MobilePtz = /*#__PURE__*/function () {
 
     document.getElementById("mobile-ez-ptz-item").ontouchstart = function (e) {
       e.preventDefault();
-      console.log("触摸开始");
+      console.log("触摸start ");
 
       _this._handlePtzTouch(e, 'start');
     };
@@ -28044,7 +28044,7 @@ var MobilePtz = /*#__PURE__*/function () {
 
     document.getElementById("mobile-ez-ptz-item").onmousedown = function (e) {
       e.preventDefault();
-      console.log("触摸开始");
+      console.log("触摸start ");
 
       _this._handlePtzTouch(e, 'start');
     };
@@ -28077,7 +28077,7 @@ var MobilePtz = /*#__PURE__*/function () {
       var eventY = e.y || e.changedTouches[0].clientY;
       var left = eventX - containerCenterX;
       var top = eventY - containerCenterY;
-      var direction = 0; //操作命令：0-上，1-下，2-左，3右，4-左上，5-左下，6-右上，7-右下，8-放大，9-缩小，10-近焦距，11-远焦距
+      var direction = 0; //操作命令:0-上，1-下，2-左，3右，4-左上，5-左下，6-右上，7-右下，8-放大，9-缩小，10-近焦距，11-远焦距
 
       var url = this.jSPlugin.env.domain + "/api/lapp/device/ptz/start"; // var nextPtzImg = ptzNormalImg;
       // var nextPtzImgFailed = ptzNormalImg;
@@ -28132,7 +28132,7 @@ var MobilePtz = /*#__PURE__*/function () {
           }
         }
       })["catch"](function (err) {
-        console.log("云台调用异常", err);
+        console.log("云台Transferabnormal", err);
       });
     }
   }]);
@@ -28141,7 +28141,7 @@ var MobilePtz = /*#__PURE__*/function () {
 }();
 
 var retcode = 0;
-var msg = "成功";
+var msg = " success";
 var data$7 = {
 	header: {
 		color: "#FFFFFF",
@@ -29046,8 +29046,8 @@ var officeTemplateList = [{
   autoFocus: 5,
   createTime: '2021-06-14T08:04:37.000Z',
   themeId: 'voice',
-  themeIntro: 'PC直播语音版',
-  themeName: 'PC直播语音版',
+  themeIntro: 'PC直播voice版',
+  themeName: 'PC直播voice版',
   themeType: 'webLive',
   updateTime: '2021-06-14T08:04:37.000Z',
   label: '官方',
@@ -29130,7 +29130,7 @@ var Zoom = /*#__PURE__*/function () {
       yPercent: 0.10,
       // 百分比
       xCurrentVideo: 0,
-      // 当前放大后可视视频左上角起点
+      // 当forward放大后可视视频左上角起点
       yCurrentVideo: 0,
       left: 0,
       top: 0,
@@ -29278,17 +29278,17 @@ var Zoom = /*#__PURE__*/function () {
     } // scrollFunc(e) {
     //   e = e || window.event;
     //   if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件               
-    //     if (e.wheelDelta > 0) { //当滑轮向上滚动时  
+    //     if (e.wheelDelta > 0) { //当滑轮to 上滚动时  
     //       this.isScrollOverVideo(e, 'up');
     //     }
-    //     if (e.wheelDelta < 0) { //当滑轮向下滚动时  
+    //     if (e.wheelDelta < 0) { //当滑轮to 下滚动时  
     //       this.isScrollOverVideo(e, 'down');
     //     }
     //   } else if (e.detail) {  //Firefox滑轮事件  
-    //     if (e.detail > 0) { //当滑轮向下滚动时  
+    //     if (e.detail > 0) { //当滑轮to 下滚动时  
     //       this.isScrollOverVideo(e, 'down');
     //     }
-    //     if (e.detail < 0) { //当滑轮向上滚动时  
+    //     if (e.detail < 0) { //当滑轮to 上滚动时  
     //       this.isScrollOverVideo(e, 'up');
     //     }
     //   }
@@ -29299,12 +29299,12 @@ var Zoom = /*#__PURE__*/function () {
     //     if (e.clientY > clientRect.y && e.clientY < (clientRect.y + clientRect.height)) {
     //       if (type == 'up' && currentScale < 8) {
     //         this.currentScale++;
-    //         console.log("当前放大尺度", currentScale)
+    //         console.log("当forward放大尺度", currentScale)
     //         this.calCurrentPosition(e);
     //       }
     //       if (type == 'down' && currentScale > 1) {
     //         this.currentScale--;
-    //         console.log("当前放大尺度", currentScale)
+    //         console.log("当forward放大尺度", currentScale)
     //         this.calCurrentPosition(e);
     //       }
     //       return;
@@ -29316,7 +29316,7 @@ var Zoom = /*#__PURE__*/function () {
   }, {
     key: "doScale",
     value: function doScale() {
-      console.log("执行放大");
+      console.log("implement 放大");
       var currentPosition = this.currentPosition,
           currentScale = this.currentScale;
       currentPosition.left = currentPosition.left + currentPosition.xPercent * (currentPosition.right - currentPosition.left) - 1 / 2 * (this.videoWidth / currentScale);
@@ -29427,7 +29427,7 @@ var MobileZoom = /*#__PURE__*/function () {
       yPercent: 0.10,
       // 百分比
       xCurrentVideo: 0,
-      // 当前放大后可视视频左上角起点
+      // 当forward放大后可视视频左上角起点
       yCurrentVideo: 0,
       left: 0,
       top: 0,
@@ -29692,16 +29692,16 @@ var Theme = /*#__PURE__*/function () {
 
     if (typeof jSPlugin.isMobile !== 'undefined') {
       this.isMobile = jSPlugin.isMobile;
-    } // 默认主题 - 按钮全部展示
+    } // 默认主题 - button全部展示
 
 
     this.themeData = emptyData.data; // 自适应主题数据
 
     /*
      移动端 & 直播 =》 mobileLive
-     移动端 & 回放地址 => mobileRec
+     移动端 & 回放address => mobileRec
      PC端 & 直播 =》 pcLive
-     PC端 & 回放地址 => pcRec
+     PC端 & 回放address => pcRec
     */
 
     if (this.jSPlugin.themeId) {
@@ -29872,13 +29872,13 @@ var Theme = /*#__PURE__*/function () {
               }
             }, 50);
           }
-        }); // 判断标清高清
+        }); // Determine SD HD
 
         if (this.jSPlugin.url.indexOf("hd.live") !== -1) {
           this.setDecoderState({
             hd: true
           });
-        } // 判断是否自动隐藏控件
+        } // Determine whether to automatically hide the control
 
 
         if (this.themeData.autoFocus > 0) {
@@ -29887,10 +29887,10 @@ var Theme = /*#__PURE__*/function () {
           document.getElementById("".concat(this.jSPlugin.id, "-wrap")).addEventListener("click", function () {
             _this4.stopAutoFocus();
           }); // document.getElementById(`${this.jSPlugin.id}-wrap`).addEventListener("mouseout", ()=>{
-          //   console.log("开启自动隐藏")
+          //   console.log("Turn on auto hide")
           //   this.startAutoFocus();
           // })
-        } // 设置当前播放类型
+        } // Set the current playback type
 
 
         this.setDecoderState({
@@ -29926,7 +29926,7 @@ var Theme = /*#__PURE__*/function () {
 
       var checkTimer = setInterval(function () {
         if (window.EZUIKit[_this4.jSPlugin.id].state.EZUIKitPlayer.init) {
-          clearInterval(checkTimer); // 执行一次reSize
+          clearInterval(checkTimer); // implement 一次reSize
 
           _this4.jSPlugin.reSize(_this4.jSPlugin.params.width, _this4.jSPlugin.params.height);
         }
@@ -29952,7 +29952,7 @@ var Theme = /*#__PURE__*/function () {
           color = footer.color.replace("-diy", "");
           activeColor = footer.activeColor.replace("-diy", "");
         } else {
-          color = header.color.replace("-diy", ""); // 按钮相关的激活颜色统一使用底部的
+          color = header.color.replace("-diy", ""); // button相关的激活颜色统一使用底部的
 
           activeColor = footer.activeColor.replace("-diy", "");
         }
@@ -29997,7 +29997,7 @@ var Theme = /*#__PURE__*/function () {
           case 'recordvideo':
             if (document.getElementById("".concat(_this5.jSPlugin.id, "-recordvideo"))) {
               document.getElementById("".concat(_this5.jSPlugin.id, "-recordvideo")).className = options[item] ? 'active' : '';
-              document.getElementById("".concat(_this5.jSPlugin.id, "-recordvideo-content")).childNodes[0].style.fill = options[item] ? activeColor : color; // 定时器处理
+              document.getElementById("".concat(_this5.jSPlugin.id, "-recordvideo-content")).childNodes[0].style.fill = options[item] ? activeColor : color; // 定时器 handle 
 
               if (options[item]) {
                 _this5.countTime('add', 0); // this.recordTimer = setInterval(() => {
@@ -30040,7 +30040,7 @@ var Theme = /*#__PURE__*/function () {
               if (document.getElementById("".concat(_this5.jSPlugin.id, "-webExpend"))) {
                 document.getElementById("".concat(_this5.jSPlugin.id, "-webExpend-content")).children[0].children[1].style = "display:inline-block";
                 document.getElementById("".concat(_this5.jSPlugin.id, "-webExpend-content")).children[0].children[0].style = "display:none";
-              } // 全屏置灰
+              } // fullscreen置灰
 
 
               if (document.getElementById("".concat(_this5.jSPlugin.id, "-expend"))) {
@@ -30050,7 +30050,7 @@ var Theme = /*#__PURE__*/function () {
               if (document.getElementById("".concat(_this5.jSPlugin.id, "-webExpend"))) {
                 document.getElementById("".concat(_this5.jSPlugin.id, "-webExpend-content")).children[0].children[0].style = "display:inline-block";
                 document.getElementById("".concat(_this5.jSPlugin.id, "-webExpend-content")).children[0].children[1].style = "display:none";
-              } // 全屏置灰
+              } // fullscreen置灰
 
 
               if (document.getElementById("".concat(_this5.jSPlugin.id, "-expend"))) {
@@ -30079,7 +30079,7 @@ var Theme = /*#__PURE__*/function () {
               if (document.getElementById("".concat(_this5.jSPlugin.id, "-expend"))) {
                 document.getElementById("".concat(_this5.jSPlugin.id, "-expend-content")).children[0].children[1].style = "display:inline-block";
                 document.getElementById("".concat(_this5.jSPlugin.id, "-expend-content")).children[0].children[0].style = "display:none";
-              } // 网站全屏置灰
+              } // website fullscreen置灰
 
 
               if (document.getElementById("".concat(_this5.jSPlugin.id, "-webExpend"))) {
@@ -30089,7 +30089,7 @@ var Theme = /*#__PURE__*/function () {
               if (document.getElementById("".concat(_this5.jSPlugin.id, "-expend"))) {
                 document.getElementById("".concat(_this5.jSPlugin.id, "-expend-content")).children[0].children[0].style = "display:inline-block";
                 document.getElementById("".concat(_this5.jSPlugin.id, "-expend-content")).children[0].children[1].style = "display:none";
-              } // 网站全屏置灰
+              } // website fullscreen置灰
 
 
               if (document.getElementById("".concat(_this5.jSPlugin.id, "-webExpend"))) {
@@ -30170,7 +30170,7 @@ var Theme = /*#__PURE__*/function () {
     value: function startAutoFocus() {
       var _this6 = this;
 
-      //console.log("开始自动隐藏",this.autoFocus);
+      //console.log("start Automatic 隐藏",this.autoFocus);
       var autoFocus = this.autoFocus; // if(document.getElementById(`${this.jSPlugin.id}-audioControls`)) {
 
       if (this.autoFocusTimer) {
@@ -30186,7 +30186,7 @@ var Theme = /*#__PURE__*/function () {
   }, {
     key: "stopAutoFocus",
     value: function stopAutoFocus() {
-      //console.log("结束自动隐藏")
+      //console.log("结束Automatic 隐藏")
       if (document.getElementById("".concat(this.jSPlugin.id, "-audioControls"))) {
         document.getElementById("".concat(this.jSPlugin.id, "-audioControls")).style.opacity = 1;
       }
@@ -30207,7 +30207,7 @@ var Theme = /*#__PURE__*/function () {
     value: function renderFooter(id, part) {
       var _this7 = this;
 
-      // 播放停止
+      // play stop
       var objItem = this.matchBtn(id); // 移动端不展示电子放大
 
       if (this.isMobile && objItem.id === "zoom") {
@@ -30216,8 +30216,8 @@ var Theme = /*#__PURE__*/function () {
 
       var objDOM = document.createElement('div');
       objDOM.className = "theme-icon-item";
-      objDOM.innerHTML = "".concat("<span id=\"".concat(this.jSPlugin.id, "-").concat(objItem.id, "\" style=\"position:relative;\">") // +`<span id="${this.jSPlugin.id}-${objItem.id}-left" class="ezuikit-theme-icon" title="左移" style="position: absolute;top: calc(50% - 26px);left: -6px;display: none;"><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 10 15" style="background:#00000080;"><path d="M7.4,10V5.3c0-0.3-0.3-0.6-0.6-0.6c-0.1,0-0.3,0.1-0.4,0.2L3.7,7.4c-0.2,0.2-0.3,0.6,0,0.8 c0,0,0,0,0.1,0.1l2.7,2.2c0.2,0.2,0.6,0.2,0.8-0.1C7.3,10.3,7.4,10.2,7.4,10z"></path></svg></span>`  
-      + "<div id=\"".concat(this.jSPlugin.id, "-").concat(objItem.id, "-content\" title=\"").concat(objItem.title, "\" style=\"height:").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "px;display: flex;align-items: center;position:relative;\">")).concat(objItem.domString, "</div>") // +`<span id="${this.jSPlugin.id}-${objItem.id}-right" class="ezuikit-theme-icon" title="右移" style="position: absolute;top: calc(50% - 26px);left: calc(100% - 0px);display: none;"><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 10 15" style="background:#00000080"><path d="M3.4,5.2v4.7c0,0.3,0.3,0.6,0.6,0.6c0.1,0,0.3-0.1,0.4-0.2l2.7-2.5c0.2-0.2,0.3-0.6,0-0.8 c0,0,0,0-0.1-0.1L4.4,4.8C4.1,4.6,3.8,4.6,3.6,4.9C3.5,5,3.4,5.1,3.4,5.2z"></path></svg></span>`
+      objDOM.innerHTML = "".concat("<span id=\"".concat(this.jSPlugin.id, "-").concat(objItem.id, "\" style=\"position:relative;\">") // +`<span id="${this.jSPlugin.id}-${objItem.id}-left" class="ezuikit-theme-icon" title="Move left" style="position: absolute;top: calc(50% - 26px);left: -6px;display: none;"><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 10 15" style="background:#00000080;"><path d="M7.4,10V5.3c0-0.3-0.3-0.6-0.6-0.6c-0.1,0-0.3,0.1-0.4,0.2L3.7,7.4c-0.2,0.2-0.3,0.6,0,0.8 c0,0,0,0,0.1,0.1l2.7,2.2c0.2,0.2,0.6,0.2,0.8-0.1C7.3,10.3,7.4,10.2,7.4,10z"></path></svg></span>`  
+      + "<div id=\"".concat(this.jSPlugin.id, "-").concat(objItem.id, "-content\" title=\"").concat(objItem.title, "\" style=\"height:").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "px;display: flex;align-items: center;position:relative;\">")).concat(objItem.domString, "</div>") // +`<span id="${this.jSPlugin.id}-${objItem.id}-right" class="ezuikit-theme-icon" title="Move right" style="position: absolute;top: calc(50% - 26px);left: calc(100% - 0px);display: none;"><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 10 15" style="background:#00000080"><path d="M3.4,5.2v4.7c0,0.3,0.3,0.6,0.6,0.6c0.1,0,0.3-0.1,0.4-0.2l2.7-2.5c0.2-0.2,0.3-0.6,0-0.8 c0,0,0,0-0.1-0.1L4.4,4.8C4.1,4.6,3.8,4.6,3.6,4.9C3.5,5,3.4,5.1,3.4,5.2z"></path></svg></span>`
       + '</span>';
 
       objDOM.onclick = function (e) {
@@ -30280,13 +30280,13 @@ var Theme = /*#__PURE__*/function () {
         document.getElementById("".concat(this.jSPlugin.id, "-audioControls")).childNodes[0].appendChild(objDOM);
       } else {
         document.getElementById("".concat(this.jSPlugin.id, "-audioControls")).childNodes[1].appendChild(objDOM);
-      } // 截图
+      } // Screenshot
 
     }
   }, {
     key: "editIcon",
     value: function editIcon(id, type, area) {
-      console.log("编辑组件", id, type, area);
+      console.log("edit component", id, type, area);
       var newThemeData = this.themeData;
       console.log("themeData", this.themeData);
       var btnList = this.themeData[area].btnList;
@@ -30306,7 +30306,7 @@ var Theme = /*#__PURE__*/function () {
               return item.iconId === "cloudRec" && item.isrender == 1;
             }) === -1) {
               if (this.jSPlugin.Message) {
-                this.jSPlugin.Message["default"]("必须选中一种存储介质");
+                this.jSPlugin.Message["default"]("A storage medium must be chosen");
               }
 
               return false;
@@ -30316,7 +30316,7 @@ var Theme = /*#__PURE__*/function () {
               return item.iconId === "rec" && item.isrender == 1;
             }) === -1) {
               if (this.jSPlugin.Message) {
-                this.jSPlugin.Message["default"]("必须选中一种存储介质");
+                this.jSPlugin.Message["default"]("A storage medium must be chosen");
               }
 
               return false;
@@ -30371,16 +30371,16 @@ var Theme = /*#__PURE__*/function () {
     value: function renderHeader(id, part) {
       var _this8 = this;
 
-      // 播放停止
+      // play stop
       var objItem = this.matchBtn(id);
       var objDOM = document.createElement('div');
       objDOM.className = "theme-icon-item";
       objDOM.style = "max-width:50%;";
-      objDOM.innerHTML = "".concat("<span id=\"".concat(this.jSPlugin.id, "-").concat(objItem.id, "\" style=\"position:relative;\";>") // +`<span id="${this.jSPlugin.id}-${objItem.id}-left" title="左移" style="position: absolute;top: calc(50% - 10px);left: -6px;display: none;"><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 10 15" style="background:#00000080;"><path d="M7.4,10V5.3c0-0.3-0.3-0.6-0.6-0.6c-0.1,0-0.3,0.1-0.4,0.2L3.7,7.4c-0.2,0.2-0.3,0.6,0,0.8 c0,0,0,0,0.1,0.1l2.7,2.2c0.2,0.2,0.6,0.2,0.8-0.1C7.3,10.3,7.4,10.2,7.4,10z"></path></svg></span>`  
-      + "<span id=\"".concat(this.jSPlugin.id, "-").concat(objItem.id, "-content\" title=\"").concat(objItem.title, "\" style=\"display:inline-block;height:").concat(this.width > MEDIAWIDTH ? 48 : 32, "px;\">")).concat(objItem.domString, "</span>") //+`<span id="${this.jSPlugin.id}-${objItem.id}-right" title="右移" style="position: absolute;top: calc(50% - 10px);left: calc(100% - 6px);display: none;"><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 10 15" style="background:#00000080"><path d="M3.4,5.2v4.7c0,0.3,0.3,0.6,0.6,0.6c0.1,0,0.3-0.1,0.4-0.2l2.7-2.5c0.2-0.2,0.3-0.6,0-0.8 c0,0,0,0-0.1-0.1L4.4,4.8C4.1,4.6,3.8,4.6,3.6,4.9C3.5,5,3.4,5.1,3.4,5.2z"></path></svg></span>`
+      objDOM.innerHTML = "".concat("<span id=\"".concat(this.jSPlugin.id, "-").concat(objItem.id, "\" style=\"position:relative;\";>") // +`<span id="${this.jSPlugin.id}-${objItem.id}-left" title="Move left" style="position: absolute;top: calc(50% - 10px);left: -6px;display: none;"><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 10 15" style="background:#00000080;"><path d="M7.4,10V5.3c0-0.3-0.3-0.6-0.6-0.6c-0.1,0-0.3,0.1-0.4,0.2L3.7,7.4c-0.2,0.2-0.3,0.6,0,0.8 c0,0,0,0,0.1,0.1l2.7,2.2c0.2,0.2,0.6,0.2,0.8-0.1C7.3,10.3,7.4,10.2,7.4,10z"></path></svg></span>`  
+      + "<span id=\"".concat(this.jSPlugin.id, "-").concat(objItem.id, "-content\" title=\"").concat(objItem.title, "\" style=\"display:inline-block;height:").concat(this.width > MEDIAWIDTH ? 48 : 32, "px;\">")).concat(objItem.domString, "</span>") //+`<span id="${this.jSPlugin.id}-${objItem.id}-right" title="Move right" style="position: absolute;top: calc(50% - 10px);left: calc(100% - 6px);display: none;"><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 10 15" style="background:#00000080"><path d="M3.4,5.2v4.7c0,0.3,0.3,0.6,0.6,0.6c0.1,0,0.3-0.1,0.4-0.2l2.7-2.5c0.2-0.2,0.3-0.6,0-0.8 c0,0,0,0-0.1-0.1L4.4,4.8C4.1,4.6,3.8,4.6,3.6,4.9C3.5,5,3.4,5.1,3.4,5.2z"></path></svg></span>`
       + "<span id=\"".concat(this.jSPlugin.id, "-").concat(objItem.id, "-remove\" title=\"\u79FB\u9664\" style=\"position: absolute;top: -6px;left: 38px;display: none;\">") + '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 15 15">' + '<circle style="fill-rule:evenodd;clip-rule:evenodd;fill-opacity:0.8011;" cx="7.5" cy="7.6" r="7" />' + '<rect x="3.9" y="3.5" class="st1" style="fill:none;" width="8.1" height="8.1" />' + '<line style="fill:none;stroke:#ffffff;stroke-width:0.5833;stroke-linecap:round;" x1="4.9" y1="5" x2="10" y2="10.1" />' + '<line style="fill:none;stroke:#ffffff;stroke-width:0.5833;stroke-linecap:round;" x1="4.9" y1="10.1" x2="10" y2="5" />' + '</svg>' + '</span>' + '</span>'; // var toLeft = document.createElement('span');
-      // toLeft.innerHTML =  +`<span id="${this.jSPlugin.id}-${objItem.id}-left" title="左移" style="position: absolute;top: calc(50% - 10px);left: -6px;display: none;"><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 10 15" style="background:#00000080;"><path d="M7.4,10V5.3c0-0.3-0.3-0.6-0.6-0.6c-0.1,0-0.3,0.1-0.4,0.2L3.7,7.4c-0.2,0.2-0.3,0.6,0,0.8 c0,0,0,0,0.1,0.1l2.7,2.2c0.2,0.2,0.6,0.2,0.8-0.1C7.3,10.3,7.4,10.2,7.4,10z"></path></svg></span>`;
-      // toLeft.onclick = () => {console.log("左移动")};
+      // toLeft.innerHTML =  +`<span id="${this.jSPlugin.id}-${objItem.id}-left" title="Move left" style="position: absolute;top: calc(50% - 10px);left: -6px;display: none;"><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 10 15" style="background:#00000080;"><path d="M7.4,10V5.3c0-0.3-0.3-0.6-0.6-0.6c-0.1,0-0.3,0.1-0.4,0.2L3.7,7.4c-0.2,0.2-0.3,0.6,0,0.8 c0,0,0,0,0.1,0.1l2.7,2.2c0.2,0.2,0.6,0.2,0.8-0.1C7.3,10.3,7.4,10.2,7.4,10z"></path></svg></span>`;
+      // toLeft.onclick = () => {console.log("Move left动")};
 
       objDOM.onclick = function (e) {
         if (_this8.decoderState.state.isEditing) {
@@ -30390,12 +30390,12 @@ var Theme = /*#__PURE__*/function () {
         objItem.onclick(e);
       }; // var toLeft = document.createElement('span');
       // toLeft.className = "icon-move left";
-      // toLeft.innerHTML =  `<span id="${this.jSPlugin.id}-${objItem.id}-left" title="左移" style="position: absolute;top: calc(50% - 10px);left: -4px;"><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 10 15" style="background:#00000080;"><path d="M7.4,10V5.3c0-0.3-0.3-0.6-0.6-0.6c-0.1,0-0.3,0.1-0.4,0.2L3.7,7.4c-0.2,0.2-0.3,0.6,0,0.8 c0,0,0,0,0.1,0.1l2.7,2.2c0.2,0.2,0.6,0.2,0.8-0.1C7.3,10.3,7.4,10.2,7.4,10z"></path></svg></span>`;
+      // toLeft.innerHTML =  `<span id="${this.jSPlugin.id}-${objItem.id}-left" title="Move left" style="position: absolute;top: calc(50% - 10px);left: -4px;"><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 10 15" style="background:#00000080;"><path d="M7.4,10V5.3c0-0.3-0.3-0.6-0.6-0.6c-0.1,0-0.3,0.1-0.4,0.2L3.7,7.4c-0.2,0.2-0.3,0.6,0,0.8 c0,0,0,0,0.1,0.1l2.7,2.2c0.2,0.2,0.6,0.2,0.8-0.1C7.3,10.3,7.4,10.2,7.4,10z"></path></svg></span>`;
       // toLeft.onclick = () => {this.editIcon(objItem.id,'left','header')};
       // objDOM.appendChild(toLeft);
       // var toRight = document.createElement('span');
       // toRight.className = "icon-move right";
-      // toRight.innerHTML = `<span id="${this.jSPlugin.id}-${objItem.id}-right" class="ezuikit-theme-icon" title="右移" style="position: absolute;top: calc(50% - 10px);left: calc(100% - 8px);"><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 10 15" style="background:#00000080"><path d="M3.4,5.2v4.7c0,0.3,0.3,0.6,0.6,0.6c0.1,0,0.3-0.1,0.4-0.2l2.7-2.5c0.2-0.2,0.3-0.6,0-0.8 c0,0,0,0-0.1-0.1L4.4,4.8C4.1,4.6,3.8,4.6,3.6,4.9C3.5,5,3.4,5.1,3.4,5.2z"></path></svg></span>`;
+      // toRight.innerHTML = `<span id="${this.jSPlugin.id}-${objItem.id}-right" class="ezuikit-theme-icon" title="Move right" style="position: absolute;top: calc(50% - 10px);left: calc(100% - 8px);"><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 10 15" style="background:#00000080"><path d="M3.4,5.2v4.7c0,0.3,0.3,0.6,0.6,0.6c0.1,0,0.3-0.1,0.4-0.2l2.7-2.5c0.2-0.2,0.3-0.6,0-0.8 c0,0,0,0-0.1-0.1L4.4,4.8C4.1,4.6,3.8,4.6,3.6,4.9C3.5,5,3.4,5.1,3.4,5.2z"></path></svg></span>`;
       // toRight.onclick = () => {this.editIcon(objItem.id,'right','header')};
       // objDOM.appendChild(toRight);
 
@@ -30527,7 +30527,7 @@ var Theme = /*#__PURE__*/function () {
 
       switch (btnId) {
         case 'play':
-          btnItem.title = "播放/结束播放";
+          btnItem.title = "play /结束play ";
           btnItem.id = btnId;
           btnItem.domString = '<div style="height: 100%">' + "<svg class=\"theme-icon-item-icon\" style=\"display:none\" width=\"".concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" height=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\"  fill=\"").concat(btnItem.color, "\" viewBox=\"-6 -6 32 32\">\n            <path id=\"Stroke-1\" class=\"st1\" d=\"M10.5,1.7c-4.9,0-8.8,4-8.8,8.8s4,8.8,8.8,8.8s8.8-4,8.8-8.8S15.4,1.7,10.5,1.7z M10.5,2.7\n              c4.3,0,7.8,3.5,7.8,7.8s-3.5,7.8-7.8,7.8s-7.8-3.5-7.8-7.8S6.2,2.7,10.5,2.7z\"/>\n            <path class=\"st2\" d=\"M8.7,8C9,8,9.3,8.3,9.3,8.6v3.8C9.3,12.7,9,13,8.7,13C8.3,13,8,12.7,8,12.4V8.6C8,8.3,8.3,8,8.7,8z\"/>\n            <path id=\"Rectangle-Copy-10\" class=\"st2\" d=\"M12.8,8c0.3,0,0.6,0.3,0.6,0.6v3.8c0,0.3-0.3,0.6-0.6,0.6c-0.3,0-0.6-0.3-0.6-0.6V8.6\n              C12.2,8.3,12.5,8,12.8,8z\"/>\n          </svg>") + "<svg class=\"theme-icon-item-icon\" fill=\"".concat(btnItem.color, "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" height=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" viewBox=\"-6 -6 32 32\">") + '<path d="M13,9.8L10.1,8C9.9,7.9,9.7,7.9,9.5,7.9c-0.6,0-1,0.4-1,1v3.7c0,0.2,0.1,0.4,0.2,0.5c0.3,0.5,0.9,0.6,1.4,0.3 l2.9-1.8c0.1-0.1,0.2-0.2,0.3-0.3C13.6,10.7,13.4,10.1,13,9.8z" />' + '<path d="M10.5,1.9c-4.9,0-8.8,4-8.8,8.8c0,4.9,4,8.8,8.8,8.8s8.8-4,8.8-8.8C19.4,5.8,15.4,1.9,10.5,1.9z M10.5,18.5 c-4.3,0-7.8-3.5-7.8-7.8s3.5-7.8,7.8-7.8c4.3,0,7.8,3.5,7.8,7.8S14.9,18.5,10.5,18.5z" />' + '</svg>' + '</div>';
 
@@ -30554,7 +30554,7 @@ var Theme = /*#__PURE__*/function () {
           return btnItem;
 
         case 'sound':
-          btnItem.title = "声音";
+          btnItem.title = "Sound";
           btnItem.id = btnId;
           btnItem.domString = '<span style="height: 100%">' + "<svg class=\"theme-icon-item-icon\" style=\"display:none\" fill=\"".concat(btnItem.color, "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" height=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" viewBox=\"-6 -6 32 32\">\n            <path d=\"M8.5,4.2c0.8-0.7,2.1-0.2,2.2,0.9l0,0.1v10c0,1.1-1.2,1.7-2.1,1.1l-0.1-0.1l-3.3-2.8C5,13.2,5,12.9,5.1,12.7 c0.2-0.2,0.4-0.2,0.6-0.1l0.1,0.1l3.3,2.8c0.2,0.2,0.5,0.1,0.5-0.2l0-0.1v-10c0-0.3-0.3-0.4-0.5-0.3L9.2,5L5.9,7.8 C5.6,7.9,5.3,7.9,5.1,7.7C5,7.5,5,7.3,5.1,7.1L5.2,7L8.5,4.2z\"/>\n            <path d=\"M5.5,6.9C5.8,6.9,6,7.1,6,7.4c0,0.2-0.2,0.4-0.4,0.5l-0.1,0h-2C3.4,7.9,3.3,8,3.2,8.2l0,0.1v4 c0,0.2,0.1,0.3,0.3,0.3l0.1,0h2C5.8,12.5,6,12.7,6,13c0,0.2-0.2,0.4-0.4,0.5l-0.1,0h-2c-0.7,0-1.3-0.5-1.3-1.2l0-0.1v-4 c0-0.7,0.5-1.3,1.2-1.3l0.1,0H5.5z\"/>\n            <path d=\"M17.4,7.9c0.2-0.2,0.5-0.2,0.7,0c0.2,0.2,0.2,0.4,0.1,0.6l-0.1,0.1l-3.8,3.8c-0.2,0.2-0.5,0.2-0.7,0 c-0.2-0.2-0.2-0.4-0.1-0.6l0.1-0.1L17.4,7.9z\"/>\n            <path d=\"M13.7,7.9c0.2-0.2,0.4-0.2,0.6-0.1l0.1,0.1l3.8,3.8c0.2,0.2,0.2,0.5,0,0.7c-0.2,0.2-0.4,0.2-0.6,0.1l-0.1-0.1 l-3.7-3.8C13.5,8.4,13.5,8.1,13.7,7.9z\"/>\n            </svg>") + "<svg class=\"theme-icon-item-icon\" style=\"display:inline-block\" width=\"".concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" height=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" fill=\"").concat(btnItem.color, "\" viewBox=\"-6 -6 32 32\">\n              <path d=\"M13.2,7.1c0.1-0.2,0.5-0.3,0.7-0.2c1.1,0.7,1.9,2.2,1.9,3.7c0,1.6-0.7,3-1.9,3.7\n                c-0.2,0.1-0.5,0.1-0.7-0.2c-0.1-0.2-0.1-0.5,0.2-0.7c0.8-0.5,1.4-1.6,1.4-2.9c0-1.3-0.6-2.4-1.4-2.9C13.1,7.6,13,7.3,13.2,7.1z\"/>\n              <path d=\"M15.7,4.5c0.2-0.2,0.5-0.2,0.7-0.1C18,5.8,19,8.2,19,10.7c0,2.5-1,4.8-2.7,6.3\n                c-0.2,0.2-0.5,0.2-0.7-0.1c-0.2-0.2-0.2-0.5,0.1-0.7c1.4-1.2,2.3-3.3,2.3-5.5c0-2.2-0.9-4.3-2.3-5.5C15.5,5,15.5,4.7,15.7,4.5z\"/>\n              <path id=\"Stroke-5\" class=\"st1\" d=\"M8.5,4.7c0.8-0.7,2.1-0.2,2.2,0.9l0,0.1v10c0,1.1-1.2,1.7-2.1,1.1l-0.1-0.1l-3.3-2.8\n                C5,13.7,5,13.4,5.1,13.2c0.2-0.2,0.4-0.2,0.6-0.1l0.1,0.1l3.3,2.8c0.2,0.2,0.5,0.1,0.5-0.2l0-0.1v-10c0-0.3-0.3-0.4-0.5-0.3l-0.1,0\n                L5.9,8.3C5.6,8.4,5.3,8.4,5.1,8.2C5,8,5,7.7,5.1,7.6l0.1-0.1L8.5,4.7z\"/>\n              <path  d=\"M5.5,7.4C5.8,7.4,6,7.6,6,7.9c0,0.2-0.2,0.4-0.4,0.5l-0.1,0h-2c-0.2,0-0.3,0.1-0.3,0.3l0,0.1v4\n                c0,0.2,0.1,0.3,0.3,0.3l0.1,0h2C5.8,13,6,13.2,6,13.5c0,0.2-0.2,0.4-0.4,0.5l-0.1,0h-2c-0.7,0-1.3-0.5-1.3-1.2l0-0.1v-4\n                c0-0.7,0.5-1.3,1.2-1.3l0.1,0H5.5z\"/>\n            </svg>") + '</span>';
 
@@ -30583,7 +30583,7 @@ var Theme = /*#__PURE__*/function () {
           return btnItem;
 
         case 'recordvideo':
-          btnItem.title = "录屏";
+          btnItem.title = "Record Video";
           btnItem.id = btnId;
           btnItem.domString = "<svg class=\"theme-icon-item-icon\" fill=\"".concat(btnItem.color, "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" height=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" viewBox=\"-6 -6 32 32\">") + '<path d="M11.6,5.3H4.7c-1.4,0-2.5,1.1-2.5,2.5v5.9c0,1.4,1.1,2.5,2.5,2.5h6.9c1.4,0,2.5-1.1,2.5-2.5V7.7 C14.1,6.4,13,5.3,11.6,5.3z M4.7,6.3h6.9c0.8,0,1.5,0.7,1.5,1.5v5.9c0,0.8-0.7,1.5-1.5,1.5H4.7c-0.8,0-1.5-0.7-1.5-1.5V7.7 C3.3,6.9,3.9,6.3,4.7,6.3z" />' + '<path d="M16.6,6.7c0.9-0.8,2.3-0.1,2.4,1l0,0.1v5.7c0,1.2-1.3,1.9-2.3,1.2l-0.1-0.1L13.3,12 c-0.2-0.2-0.2-0.5-0.1-0.7c0.2-0.2,0.4-0.2,0.6-0.1l0.1,0.1l3.3,2.7c0.3,0.2,0.7,0.1,0.8-0.3l0-0.1V7.8c0-0.4-0.4-0.6-0.7-0.4 l-0.1,0l-3.3,2.7c-0.2,0.2-0.5,0.1-0.7-0.1c-0.2-0.2-0.1-0.5,0-0.6l0.1-0.1L16.6,6.7z" />' + '</svg>';
 
@@ -30612,7 +30612,7 @@ var Theme = /*#__PURE__*/function () {
           return btnItem;
 
         case 'capturePicture':
-          btnItem.title = "截图";
+          btnItem.title = "Screenshot";
           btnItem.id = btnId;
           btnItem.domString = "<svg class=\"theme-icon-item-icon\" fill=\"".concat(btnItem.color, "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" height=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" viewBox=\"-6 -6 32 32\">") + '<path d="M10.8,7.7c-2,0-3.7,1.6-3.7,3.7S8.7,15,10.8,15c2,0,3.7-1.6,3.7-3.7S12.8,7.7,10.8,7.7z M10.8,8.7c1.5,0,2.7,1.2,2.7,2.7S12.2,14,10.8,14c-1.5,0-2.7-1.2-2.7-2.7S9.3,8.7,10.8,8.7z" />' + '<path d="M8.6,3.7l-0.1,0C8,3.7,7.7,4,7.5,4.3l-1,1.7l-1.3,0C4,6.1,3.1,7,3.1,8.2v7.1 c0,1.2,0.9,2.1,2.1,2.1h11.1c1.2,0,2.1-0.9,2.1-2.1V8.2l0-0.1c-0.1-1.1-1-1.9-2.1-1.9l-1.3,0l-1.1-1.8c-0.2-0.4-0.7-0.6-1.1-0.6H8.6 z M8.6,4.7h4.2c0.1,0,0.2,0.1,0.3,0.1l1.2,2c0.1,0.2,0.3,0.2,0.4,0.2h1.6c0.6,0,1.1,0.5,1.1,1.1v7.1c0,0.6-0.5,1.1-1.1,1.1H5.1 c-0.6,0-1.1-0.5-1.1-1.1V8.2c0-0.6,0.5-1.1,1.1-1.1h1.6c0.2,0,0.3-0.1,0.4-0.2l1.2-2C8.4,4.7,8.5,4.7,8.6,4.7z" />' + '</svg>';
 
@@ -30622,14 +30622,14 @@ var Theme = /*#__PURE__*/function () {
             if (play) {
               _this9.jSPlugin.capturePicture("".concat(new Date().getTime()));
             } else {
-              console.log("视频未播放，无法截图");
+              console.log("视频未play ，无法Screenshot");
             }
           };
 
           return btnItem;
 
         case 'talk':
-          btnItem.title = "对讲";
+          btnItem.title = "Intercom";
           btnItem.id = btnId;
           btnItem.domString = '<div></div>' + "<svg class=\"theme-icon-item-icon\" fill=\"".concat(btnItem.color, "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" height=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" viewBox=\"-6 -6 32 32\">") + '<path d="M10.1,2.7C8.5,2.7,7.2,4,7.2,5.6v5.2c0,1.6,1.3,2.9,2.9,2.9l0.2,0c1.5-0.1,2.7-1.4,2.7-2.9V5.6	C13,4,11.7,2.7,10.1,2.7z M10.1,3.7c1.1,0,1.9,0.9,1.9,1.9v5.2c0,1-0.8,1.8-1.8,1.9l-0.1,0c-1,0-1.9-0.9-1.9-1.9V5.6 C8.2,4.5,9,3.7,10.1,3.7z" />' + '<path d="M15.1,8.5c0.2,0,0.4,0.2,0.5,0.4l0,0.1v1.7c0,3-2.5,5.5-5.5,5.5c-3,0-5.4-2.3-5.5-5.3l0-0.2V9 c0-0.3,0.2-0.5,0.5-0.5c0.2,0,0.4,0.2,0.5,0.4l0,0.1v1.7c0,2.5,2,4.5,4.5,4.5c2.4,0,4.4-1.9,4.5-4.3l0-0.2V9 C14.6,8.7,14.8,8.5,15.1,8.5z" />' + '<path d="M13.5,17.7c0.3,0,0.5,0.2,0.5,0.5c0,0.2-0.2,0.4-0.4,0.5l-0.1,0h-7c-0.3,0-0.5-0.2-0.5-0.5 c0-0.2,0.2-0.4,0.4-0.5l0.1,0H13.5z" />' + '<path d="M10.1,15.2c0.2,0,0.4,0.2,0.5,0.4l0,0.1v2.5c0,0.3-0.2,0.5-0.5,0.5c-0.2,0-0.4-0.2-0.5-0.4l0-0.1 v-2.5C9.6,15.4,9.8,15.2,10.1,15.2z" />' + '</svg>';
 
@@ -30639,7 +30639,7 @@ var Theme = /*#__PURE__*/function () {
                 sound = _this9$decoderState$s4.sound;
 
             if (talk) {
-              console.log('结束对讲');
+              console.log('End the intercom');
 
               _this9.setDecoderState({
                 talk: false
@@ -30659,7 +30659,7 @@ var Theme = /*#__PURE__*/function () {
                 });
               }
             } else {
-              console.log('开始对讲');
+              console.log('Start intercom');
 
               _this9.setDecoderState({
                 talk: true
@@ -30680,7 +30680,7 @@ var Theme = /*#__PURE__*/function () {
           return btnItem;
 
         case 'zoom':
-          btnItem.title = "电子放大";
+          btnItem.title = "Zoom";
           btnItem.id = btnId;
           btnItem.domString = '<div></div>' + "<svg class=\"theme-icon-item-icon\"  fill=\"".concat(btnItem.color, "\" version=\"1.1\" id=\"\u56FE\u5C42_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n          width=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" height=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" viewBox=\"5 -6 5 32\" style=\"enable-background:new 0 0 20 20.1;\" xml:space=\"preserve\">\n              <path class=\"st1\" d=\"M8.8,2.6c3.5,0,6.2,2.8,6.2,6.2s-2.8,6.2-6.2,6.2s-6.2-2.8-6.2-6.2S5.3,2.6,8.8,2.6z M8.8,3.9\n                c-2.8,0-5,2.2-5,5s2.2,5,5,5s5-2.2,5-5S11.5,3.9,8.8,3.9z M12.7,12.7l3.9,3.9\"/>\n              <path class=\"st2\" d=\"M11.2,9.5h-5c-0.3,0-0.6-0.3-0.6-0.6s0.3-0.6,0.6-0.6h5c0.3,0,0.6,0.3,0.6,0.6S11.6,9.5,11.2,9.5z\"/>\n              <path class=\"st2\" d=\"M8.7,12c-0.3,0-0.6-0.3-0.6-0.6v-5c0-0.3,0.3-0.6,0.6-0.6s0.6,0.3,0.6,0.6v5C9.3,11.8,9.1,12,8.7,12z\"/>\n              <path class=\"st2\" d=\"M16.9,17.6c-0.1,0-0.3-0.1-0.4-0.2l-3.9-3.9c-0.2-0.2-0.2-0.6,0-0.8s0.6-0.2,0.8,0l3.9,3.9\n                c0.2,0.2,0.2,0.6,0,0.8C17.2,17.5,17,17.6,16.9,17.6z\"/>\n          </svg>");
 
@@ -30694,7 +30694,7 @@ var Theme = /*#__PURE__*/function () {
             }
 
             if (zoom) {
-              console.log('结束电子放大');
+              console.log('end electronic zoom');
 
               _this9.setDecoderState({
                 zoom: false
@@ -30702,7 +30702,7 @@ var Theme = /*#__PURE__*/function () {
 
               _this9.jSPlugin.Zoom.stopZoom();
             } else {
-              console.log('开始电子放大');
+              console.log('start 电子放大');
 
               _this9.jSPlugin.Zoom.startZoom();
 
@@ -30725,10 +30725,10 @@ var Theme = /*#__PURE__*/function () {
                 expend = _this9$decoderState$s6.expend;
 
             if (!pantile) {
-              console.log('显示云台');
+              console.log('Show gimbal');
 
               if (_this9.isMobile && !expend) {
-                console.log("移动端，非全屏状态不展示云台"); // 移动端，非全屏状态不展示云台
+                console.log("On the mobile side, the non-fullscreen state does not display the gimbal"); // On the mobile side, the non-fullscreen state does not display the gimbal
 
                 return false;
               }
@@ -30739,7 +30739,7 @@ var Theme = /*#__PURE__*/function () {
                 pantile: true
               });
             } else {
-              console.log('隐藏云台');
+              console.log('Hide gimbal');
 
               _this9.Ptz.hide();
 
@@ -30752,7 +30752,7 @@ var Theme = /*#__PURE__*/function () {
           return btnItem;
 
         case 'expend':
-          btnItem.title = "全局全屏";
+          btnItem.title = "Fullscreen";
           btnItem.id = btnId;
           btnItem.domString = "<span><svg class=\"theme-icon-item-icon\" fill=\"".concat(btnItem.color, "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" height=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" viewBox=\"-6 -6 32 32\">") + '<path d="M3.4,7.6c-0.3,0-0.5-0.2-0.5-0.5V5.3c0-1.2,1-2.3,2.2-2.3h1.8c0.3,0,0.5,0.2,0.5,0.5S7.2,4.1,6.9,4.1H5.2 c-0.7,0-1.2,0.6-1.2,1.3v1.8C3.9,7.4,3.7,7.6,3.4,7.6z" />' + '<path d="M6.9,18.1H5.2c-1.2,0-2.2-1-2.2-2.2v-1.8c0-0.3,0.2-0.5,0.5-0.5s0.5,0.2,0.5,0.5v1.8c0,0.7,0.6,1.2,1.2,1.2 h1.8c0.3,0,0.5,0.2,0.5,0.5S7.2,18.1,6.9,18.1z" />' + '<path d="M15.7,18.1h-1.8c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h1.8c0.7,0,1.2-0.6,1.2-1.2v-1.8 c0-0.3,0.2-0.5,0.5-0.5s0.5,0.2,0.5,0.5v1.8C17.9,17.1,16.9,18.1,15.7,18.1z" />' + '<path d="M17.4,7.6c-0.3,0-0.5-0.2-0.5-0.5V5.3c0-0.7-0.6-1.3-1.2-1.3h-1.8c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h1.8 c1.2,0,2.2,1,2.2,2.3v1.8C17.9,7.4,17.7,7.6,17.4,7.6z" />' + '</svg>' + "<svg class=\"theme-icon-item-icon\" style=\"display:none\" width=\"".concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" height=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" fill=\"").concat(btnItem.color, "\" viewBox=\"-6 -6 32 32\">\n            <path class=\"st1\" d=\"M5.7,8.1H3.9c-0.3,0-0.6-0.2-0.6-0.6S3.6,7,3.9,7h1.9c0.7,0,1.3-0.6,1.3-1.3V3.8c0-0.3,0.2-0.6,0.6-0.6\n              s0.6,0.2,0.6,0.6v1.9C8.2,7,7.1,8.1,5.7,8.1z\"/>\n            <path class=\"st1\" d=\"M7.6,17.7c-0.3,0-0.6-0.2-0.6-0.6v-1.9c0-0.7-0.6-1.3-1.3-1.3H3.9c-0.3,0-0.6-0.2-0.6-0.6s0.2-0.6,0.6-0.6h1.9\n              c1.3,0,2.4,1.1,2.4,2.4v1.9C8.2,17.5,7.9,17.7,7.6,17.7z\"/>\n            <path class=\"st1\" d=\"M13.4,17.7c-0.3,0-0.6-0.2-0.6-0.6v-1.9c0-1.3,1.1-2.4,2.4-2.4h1.9c0.3,0,0.6,0.2,0.6,0.6S17.5,14,17.2,14\n              h-1.9c-0.7,0-1.3,0.6-1.3,1.3v1.9C14,17.5,13.8,17.7,13.4,17.7z\"/>\n            <path class=\"st1\" d=\"M17.2,8.1h-1.9c-1.3,0-2.4-1.1-2.4-2.4V3.8c0-0.3,0.2-0.6,0.6-0.6S14,3.5,14,3.8v1.9C14,6.4,14.6,7,15.3,7h1.9\n              c0.3,0,0.6,0.2,0.6,0.6S17.5,8.1,17.2,8.1z\"/>\n          </svg>\n          </span>");
 
@@ -30768,12 +30768,12 @@ var Theme = /*#__PURE__*/function () {
             }
 
             if (webExpend) {
-              console.log("正在网站全屏");
+              console.log("is website fullscreen");
               return false;
             }
 
             if (!expend) {
-              console.log("执行全局全屏");
+              console.log("implement global fullscreen");
 
               if (_this9.isMobile) {
                 var heightIntercept = parseInt(getComputedStyle(document.getElementById("".concat(_this9.jSPlugin.id, "-wrap"))).height, 10) - parseInt(getComputedStyle(document.getElementById(_this9.jSPlugin.id)).height, 10);
@@ -30812,7 +30812,7 @@ var Theme = /*#__PURE__*/function () {
 
                 cancelMobileFullScreen(document.getElementById("".concat(_this9.jSPlugin.id, "-wrap")), _this9.jSPlugin.width, _this9.jSPlugin.height + heightIntercept);
 
-                _this9.jSPlugin.jSPlugin.JS_Resize(_this9.jSPlugin.width, _this9.jSPlugin.height); // 移动端取消全屏，如果开启了云台，取消云台
+                _this9.jSPlugin.jSPlugin.JS_Resize(_this9.jSPlugin.width, _this9.jSPlugin.height); // 移动端Cancel fullscreen，如果Turn on 了云台，Cancel 云台
 
 
                 if (pantile) {
@@ -30823,10 +30823,10 @@ var Theme = /*#__PURE__*/function () {
                   });
                 }
               } else {
-                console.log("取消全局全屏");
+                console.log("Cancel global fullscreen");
                 var cancelPromise = cancelFullScreenPromise();
                 cancelPromise.then(function (data) {
-                  console.log("取消全屏", data, _this9.jSPlugin);
+                  console.log("Cancel fullscreen", data, _this9.jSPlugin);
 
                   _this9.jSPlugin.jSPlugin.JS_Resize(_this9.jSPlugin.width, _this9.jSPlugin.height);
                 });
@@ -30841,7 +30841,7 @@ var Theme = /*#__PURE__*/function () {
           return btnItem;
 
         case 'webExpend':
-          btnItem.title = "网页全屏";
+          btnItem.title = "Expand";
           btnItem.id = btnId;
           btnItem.domString = "<span><svg class=\"theme-icon-item-icon\" fill=\"".concat(btnItem.color, "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" height=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" viewBox=\"-6 -6 32 32\">") + '<path d="M3.1,7.6c-0.3,0-0.5-0.2-0.5-0.5V5.3c0-1.2,1-2.3,2.2-2.3h1.8c0.3,0,0.5,0.2,0.5,0.5S6.8,4.1,6.6,4.1H4.8 c-0.7,0-1.2,0.6-1.2,1.3v1.8C3.6,7.4,3.3,7.6,3.1,7.6z" />' + '<path d="M15.3,18.1h-1.8c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h1.8c0.7,0,1.2-0.6,1.2-1.2v-1.8 c0-0.3,0.2-0.5,0.5-0.5s0.5,0.2,0.5,0.5v1.8C17.6,17.1,16.6,18.1,15.3,18.1z" />' + '<circle class="st2" cx="10.2" cy="10.4" r="1.1"/>' + '</svg>' + "<svg class=\"theme-icon-item-icon\" fill=\"".concat(btnItem.color, "\" style=\"display:none;\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" height=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" viewBox=\"-6 -6 32 32\">\n          <path class=\"st1\" d=\"M5.4,8.1H3.5C3.2,8.1,3,7.9,3,7.6s0.2-0.5,0.5-0.5h1.9c0.8,0,1.4-0.6,1.4-1.4V3.8c0-0.3,0.2-0.5,0.5-0.5\n            s0.5,0.2,0.5,0.5v1.9C7.7,7,6.7,8.1,5.4,8.1z\"/>\n          <path class=\"st1\" d=\"M13.1,17.7c-0.3,0-0.5-0.2-0.5-0.5v-1.9c0-1.3,1.1-2.4,2.4-2.4h1.9c0.3,0,0.5,0.2,0.5,0.5s-0.2,0.5-0.5,0.5H15\n            c-0.8,0-1.4,0.6-1.4,1.4v1.9C13.6,17.4,13.4,17.7,13.1,17.7z\"/>\n            <circle class=\"st2\" cx=\"10.2\" cy=\"10.4\" r=\"1.1\"/>\n          ") + '</svg></span>';
 
@@ -30856,17 +30856,17 @@ var Theme = /*#__PURE__*/function () {
             }
 
             if (expend) {
-              console.log("正在全局全屏");
+              console.log("is global fullscreen");
               return false;
             }
 
             if (!webExpend) {
-              console.log("执行网页全屏");
+              console.log("Execute web page fullscreen");
               var footerDOMHeight = 0;
               var headerDOMHeight = 0; // ['fullscreenchange', 'webkitfullscreenchange', 'mozfullscreenchange'].forEach((item) => {
               //   window.addEventListener(item, (data) => fullscreenchange("fullscreenchange", data));
               // });
-              // //  监听全屏事件触发
+              // //  监听fullscreen事件触发
               // function fullscreenchange() {
               //   let isFullScreen = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
               //   return isFullScreen;
@@ -30893,7 +30893,7 @@ var Theme = /*#__PURE__*/function () {
                 console.log(err);
               });
             } else {
-              console.log("取消网页全屏");
+              console.log("Cancel web page fullscreen");
               var cancelPromise = cancelFullScreenPromise();
               cancelPromise.then(function (data) {
                 _this9.jSPlugin.jSPlugin.JS_Resize(_this9.jSPlugin.width, _this9.jSPlugin.height);
@@ -30912,7 +30912,7 @@ var Theme = /*#__PURE__*/function () {
           return btnItem;
 
         case 'hd':
-          btnItem.title = "画面清晰度";
+          btnItem.title = "Screen Resolution";
           btnItem.id = btnId;
           btnItem.domString = "<ul id=\"".concat(this.jSPlugin.id, "-hdSelect\" class=\"hd speed-select ").concat(this.isMobile ? "mobile" : "", "\" style=\"display:none;\">") // + `<li class="selectOption" style="width: 60px;height: 32px;text-align: center;line-height: 32px;list-style: none;cursor: pointer;font-size: 13px;color: rgba(0, 0, 0, .85);" name="option" id="${this.jSPlugin.id}-select-hd">高清</li>`
           // + `<li class="selectOption" style="width: 60px;height: 32px;text-align: center;line-height: 32px;list-style: none;cursor: pointer;font-size: 13px;color: rgba(0, 0, 0, .85);" name="option" id="${this.jSPlugin.id}-select-sd">标清</li>`
@@ -30925,7 +30925,7 @@ var Theme = /*#__PURE__*/function () {
 
             if (hd && e.target.id === "".concat(_this9.jSPlugin.id, "-select-sd")) {
               //decoder.changePlayUrl({ hd: false });
-              console.log("切换到标清");
+              console.log(" switch到标清");
 
               _this9.jSPlugin.changeVideoLevel(0);
 
@@ -30960,9 +30960,9 @@ var Theme = /*#__PURE__*/function () {
           return btnItem;
 
         case 'speed':
-          btnItem.title = "回放倍速";
+          btnItem.title = "Double playback speed";
           btnItem.id = btnId;
-          btnItem.domString = "<ul id=\"".concat(this.jSPlugin.id, "-speedSelect\" class=\"speed speed-select ").concat(this.isMobile ? "mobile" : "", "\" style=\"display:none;\">") + "<li class=\"selectOption default\" style=\"height: 45px;text-align: center;line-height: 45px;list-style: none;cursor: pointer;font-size: 13px;\" name=\"option\" id=\"".concat(this.jSPlugin.id, "-select-speed4\">4\u500D</li>") + "<li class=\"selectOption default\" style=\"height: 45px;text-align: center;line-height: 45px;list-style: none;cursor: pointer;font-size: 13px;\" name=\"option\" id=\"".concat(this.jSPlugin.id, "-select-speed2\">2\u500D</li>") + "<li class=\"selectOption active\" style=\"height: 45px;text-align: center;line-height: 45px;list-style: none;cursor: pointer;font-size: 13px;\" name=\"option\" id=\"".concat(this.jSPlugin.id, "-select-speed1\">1\u500D\uFF08\u6B63\u5E38\u64AD\u653E\uFF09</li>") + "<li class=\"selectOption default\" style=\"height: 45px;text-align: center;line-height: 45px;list-style: none;cursor: pointer;font-size: 13px;\" name=\"option\" id=\"".concat(this.jSPlugin.id, "-select-speed05\">0.5\u500D</li>") + "<li class=\"selectOption cancel\" style=\"".concat(this.isMobile ? "" : "display:none;", "\" name=\"option\" id=\"").concat(this.jSPlugin.id, "-select-speed\">\u53D6\u6D88</li>") + '</ul>' + "<span>\n          <div style=\"font-size: 12px;\n          vertical-align: bottom;\n          display: inline-flex;\n          padding: 0px 7px;\n          width: 48px;\n          line-height: 24px;\n          justify-content: center;\n          border: 1px solid ".concat(btnItem.color, ";\n          text-align: center;border-radius: 12.5px;\"\n          id=\"").concat(this.jSPlugin.id, "-speed-text\"\n          >").concat(this.nextRate === 1 ? "倍速" : "".concat(this.nextRate, "\u500D").replace("3", "0.5"), "</div>\n                ") + "<span class='speed-select-mask' style=\"display:none\" id=\"".concat(this.jSPlugin.id, "-select-mask\"></span>") + '</span>';
+          btnItem.domString = "<ul id=\"".concat(this.jSPlugin.id, "-speedSelect\" class=\"speed speed-select ").concat(this.isMobile ? "mobile" : "", "\" style=\"display:none;\">") + "<li class=\"selectOption default\" style=\"height: 45px;text-align: center;line-height: 45px;list-style: none;cursor: pointer;font-size: 13px;\" name=\"option\" id=\"".concat(this.jSPlugin.id, "-select-speed4\">4\u500D</li>") + "<li class=\"selectOption default\" style=\"height: 45px;text-align: center;line-height: 45px;list-style: none;cursor: pointer;font-size: 13px;\" name=\"option\" id=\"".concat(this.jSPlugin.id, "-select-speed2\">2\u500D</li>") + "<li class=\"selectOption active\" style=\"height: 45px;text-align: center;line-height: 45px;list-style: none;cursor: pointer;font-size: 13px;\" name=\"option\" id=\"".concat(this.jSPlugin.id, "-select-speed1\">1\u500D\uFF08\u6B63\u5E38\u64AD\u653E\uFF09</li>") + "<li class=\"selectOption default\" style=\"height: 45px;text-align: center;line-height: 45px;list-style: none;cursor: pointer;font-size: 13px;\" name=\"option\" id=\"".concat(this.jSPlugin.id, "-select-speed05\">0.5\u500D</li>") + "<li class=\"selectOption cancel\" style=\"".concat(this.isMobile ? "" : "display:none;", "\" name=\"option\" id=\"").concat(this.jSPlugin.id, "-select-speed\">\u53D6\u6D88</li>") + '</ul>' + "<span>\n          <div style=\"font-size: 12px;\n          vertical-align: bottom;\n          display: inline-flex;\n          padding: 0px 7px;\n          width: 48px;\n          line-height: 24px;\n          justify-content: center;\n          border: 1px solid ".concat(btnItem.color, ";\n          text-align: center;border-radius: 12.5px;\"\n          id=\"").concat(this.jSPlugin.id, "-speed-text\"\n          >").concat(this.nextRate === 1 ? "Double speed " : "".concat(this.nextRate, "\u500D").replace("3", "0.5"), "</div>\n                ") + "<span class='speed-select-mask' style=\"display:none\" id=\"".concat(this.jSPlugin.id, "-select-mask\"></span>") + '</span>';
 
           var setLiActive = function setLiActive(index) {
             console.log("setLiActive", index);
@@ -30975,7 +30975,7 @@ var Theme = /*#__PURE__*/function () {
 
           if (!this.isMobile) {
             btnItem.onmouseenter = function (e) {
-              console.log("鼠标移入", e);
+              console.log("Mouseover", e);
 
               _this9.setDecoderState({
                 speed: true
@@ -30987,7 +30987,7 @@ var Theme = /*#__PURE__*/function () {
             };
 
             btnItem.onmouseleave = function (e) {
-              console.log("鼠标移出", e);
+              console.log("Mouse out", e);
 
               _this9.setDecoderState({
                 speed: false
@@ -31010,7 +31010,7 @@ var Theme = /*#__PURE__*/function () {
 
             _this9.nextRate = 1; // 选择清晰度选项时才触发事件
             // if(this.isMobile) {
-            //   console.log("请执行移动端倍速");
+            //   console.log("请implement 移动端Double speed ");
             //   return false;
             // }
 
@@ -31018,13 +31018,13 @@ var Theme = /*#__PURE__*/function () {
               switch (e.target.id) {
                 case "".concat(_this9.jSPlugin.id, "-select-speed1"):
                   // case `${this.jSPlugin.id}-select-speed`:
-                  console.log("倍速1");
+                  console.log("Double speed 1");
                   _this9.nextRate = 1;
 
                   _this9.jSPlugin.jSPlugin.JS_Speed(_this9.nextRate);
 
                   if (document.getElementById("".concat(_this9.jSPlugin.id, "-speed-text"))) {
-                    document.getElementById("".concat(_this9.jSPlugin.id, "-speed-text")).innerHTML = "倍速";
+                    document.getElementById("".concat(_this9.jSPlugin.id, "-speed-text")).innerHTML = "Double speed ";
                     setLiActive(2);
                   }
 
@@ -31035,13 +31035,13 @@ var Theme = /*#__PURE__*/function () {
                   break;
 
                 case "".concat(_this9.jSPlugin.id, "-select-speed2"):
-                  console.log("倍速2");
+                  console.log("Double speed 2");
                   _this9.nextRate = 2;
 
                   _this9.jSPlugin.jSPlugin.JS_Speed(_this9.nextRate);
 
                   if (document.getElementById("".concat(_this9.jSPlugin.id, "-speed-text"))) {
-                    document.getElementById("".concat(_this9.jSPlugin.id, "-speed-text")).innerHTML = "2倍"; // 设置2倍速选中效果
+                    document.getElementById("".concat(_this9.jSPlugin.id, "-speed-text")).innerHTML = "2倍"; // 设置2Double speed 选中效果
 
                     setLiActive(1);
                   }
@@ -31053,7 +31053,7 @@ var Theme = /*#__PURE__*/function () {
                   break;
 
                 case "".concat(_this9.jSPlugin.id, "-select-speed4"):
-                  console.log("倍速4");
+                  console.log("Double speed 4");
                   _this9.nextRate = 4;
 
                   _this9.jSPlugin.jSPlugin.JS_Speed(_this9.nextRate);
@@ -31070,7 +31070,7 @@ var Theme = /*#__PURE__*/function () {
                   break;
 
                 case "".concat(_this9.jSPlugin.id, "-select-speed05"):
-                  console.log("倍速05");
+                  console.log("Double speed 05");
                   _this9.nextRate = 3;
 
                   _this9.jSPlugin.jSPlugin.JS_Speed(_this9.nextRate);
@@ -31118,30 +31118,30 @@ var Theme = /*#__PURE__*/function () {
           return btnItem;
 
         case 'deviceName':
-          btnItem.title = "设备名称";
+          btnItem.title = "Device Name";
           btnItem.id = btnId;
-          btnItem.domString = '<span>设备名称</span>';
+          btnItem.domString = '<span>Device Name</span>';
 
           btnItem.onclick = function () {};
 
           return btnItem;
 
         case 'deviceID':
-          btnItem.title = "设备序列号";
+          btnItem.title = "Device ID";
           btnItem.id = btnId;
-          btnItem.domString = '<span>设备序列号</span>';
+          btnItem.domString = '<span>Device ID</span>';
 
           btnItem.onclick = function () {};
 
           return btnItem;
 
         case 'cloudRec':
-          btnItem.title = "云存储回放";
+          btnItem.title = "Cloud storage playback";
           btnItem.id = btnId;
           btnItem.domString = "\n        <span>\n          <svg class=\"theme-icon-item-icon\" fill=\"".concat(btnItem.color, "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"  width=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" height=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" viewBox=\"-10 0 40 15\">\n\t<path d=\"M9.5,13.1c-0.3,0-0.5-0.2-0.5-0.5V8.8c0-0.3,0.2-0.5,0.5-0.5S10,8.5,10,8.8v3.8C10,12.8,9.8,13.1,9.5,13.1z\"/>\n\t<path d=\"M7.6,10.6c-0.1,0-0.3-0.1-0.4-0.2C7,10.2,7,9.9,7.3,9.7l1.9-1.7c0.2-0.2,0.5-0.2,0.7,0l1.8,1.7\n\t\tc0.2,0.2,0.2,0.5,0,0.7c-0.2,0.2-0.5,0.2-0.7,0L9.5,9.1l-1.6,1.4C7.8,10.6,7.7,10.6,7.6,10.6z\"/>\n\t<path d=\"M13.2,15.7H5.6c-2.1-0.1-3.8-1.8-3.8-3.9c0-1.8,1.3-3.4,3-3.8c0.4-2.2,2.3-3.9,4.6-3.9c2.3,0,4.2,1.7,4.6,3.8\n\t\tc1.8,0.4,3.1,1.9,3.1,3.8C17.1,13.9,15.4,15.7,13.2,15.7z M5.6,14.7h7.6c1.6,0,2.9-1.3,2.9-2.9c0-1.5-1.1-2.7-2.6-2.9l-0.4,0l0-0.4\n\t\tc-0.2-1.9-1.7-3.3-3.6-3.3C7.5,5.1,6,6.6,5.8,8.5l0,0.4l-0.4,0c-1.4,0.2-2.5,1.4-2.5,2.9C2.8,13.3,4.1,14.6,5.6,14.7z\"/>\n          </svg>\n        </span>\n        ");
 
           btnItem.onclick = function () {
-            console.log("点击云回放");
+            console.log("Click on cloud playback");
 
             _this9.setDecoderState({
               type: 'cloud.rec',
@@ -31162,12 +31162,12 @@ var Theme = /*#__PURE__*/function () {
           return btnItem;
 
         case 'rec':
-          btnItem.title = "本地存储";
+          btnItem.title = "Local Storage";
           btnItem.id = btnId;
           btnItem.domString = "\n        <span>\n        <svg class=\"theme-icon-item-icon\" fill=".concat(btnItem.color, " version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"  width=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" height=\"").concat(this.jSPlugin.width > MEDIAWIDTH ? 48 : 32, "\" viewBox=\"0 0 40 15\">\n          <path d=\"M13,16.3H5.5c-1.1,0-2-0.9-2-2V3.8c0-1.1,0.9-2,2-2h5.4c0.5,0,1,0.2,1.4,0.6l2.1,2.1C14.8,4.8,15,5.3,15,5.9\n  v8.4C15,15.4,14.1,16.3,13,16.3z M5.5,2.8c-0.6,0-1,0.4-1,1v10.5c0,0.6,0.4,1,1,1H13c0.6,0,1-0.4,1-1V5.9c0-0.3-0.1-0.5-0.3-0.7\n  L11.6,3c-0.2-0.2-0.4-0.3-0.7-0.3H5.5z\"/>\n<path d=\"M6.3,7.3C6,7.3,5.8,7,5.8,6.8V4.5C5.8,4.2,6,4,6.3,4s0.5,0.2,0.5,0.5v2.2C6.8,7,6.6,7.3,6.3,7.3z\"/>\n<path d=\"M8.5,7.3C8.3,7.3,8,7,8,6.8V4.5C8,4.2,8.3,4,8.5,4S9,4.2,9,4.5v2.2C9,7,8.8,7.3,8.5,7.3z\"/>\n<path d=\"M10.8,7.3c-0.3,0-0.5-0.2-0.5-0.5V4.5c0-0.3,0.2-0.5,0.5-0.5s0.5,0.2,0.5,0.5v2.2C11.3,7,11.1,7.3,10.8,7.3z\"\n  />\n        </svg>\n      </span>\n        ");
 
           btnItem.onclick = function () {
-            console.log("点击本地回放");
+            console.log("Click for local playback");
 
             _this9.setDecoderState({
               type: 'rec',
@@ -31207,7 +31207,7 @@ var Theme = /*#__PURE__*/function () {
       }) >= 0;
 
       if (this.isMobile) {
-        // 移动端回放，需要判断设备序列号，设备名称
+        // 移动端回放，需要判断Device ID，Device Name
         this.isNeedRenderHeader = lodash.findIndex(header.btnList, function (v) {
           return v.isrender > 0 && v.iconId === "deviceID" || v.isrender > 0 && v.iconId === "deviceName";
         }) >= 0;
@@ -31243,11 +31243,11 @@ var Theme = /*#__PURE__*/function () {
             width: "100%"
           };
           headerContainer.style = styleToString(headerStyle);
-          document.getElementById("".concat(videoId, "-wrap")).insertBefore(headerContainer, document.getElementById(videoId)); // 头部预留x像素空间
+          document.getElementById("".concat(videoId, "-wrap")).insertBefore(headerContainer, document.getElementById(videoId)); // Reserve x pixel space for the header
 
           var _checkTimer2 = setInterval(function () {
             if (window.EZUIKit[_this10.jSPlugin.id].state.EZUIKitPlayer.init) {
-              clearInterval(_checkTimer2); // 检测到渲染头部，执行一次reSize
+              clearInterval(_checkTimer2); // The rendering head is detected, and a reSize is executed
               // this.jSPlugin.reSize(this.jSPlugin.params.width,this.jSPlugin.params.height);
             }
           }, 50);
@@ -31323,7 +31323,7 @@ var Theme = /*#__PURE__*/function () {
           this.Rec = new MobileRec(this.jSPlugin);
         } else {
           if (this.Rec) {
-            // 如果回放已经定义，只需要初始化渲染
+            // 如果回放已经定义，只需要initialization渲染
             this.Rec.unSyncTimeLine();
             this.Rec.recInit();
           } else {
@@ -31333,7 +31333,7 @@ var Theme = /*#__PURE__*/function () {
 
           var _checkTimer3 = setInterval(function () {
             if (window.EZUIKit[_this10.jSPlugin.id].state.EZUIKitPlayer.init) {
-              clearInterval(_checkTimer3); // 检测到渲染回放时间轴，执行一次reSize
+              clearInterval(_checkTimer3); // 检测到渲染回放时间轴，implement 一次reSize
               // this.jSPlugin.reSize(this.jSPlugin.params.width, this.jSPlugin.params.height);
             }
           }, 50);
@@ -31350,7 +31350,7 @@ var Theme = /*#__PURE__*/function () {
         }
 
         this.Ptz = new Ptz(this.jSPlugin);
-      } //  监听全屏事件触发
+      } //  监听fullscreen事件触发
 
 
       var fullscreenchange = function fullscreenchange() {
@@ -31384,7 +31384,7 @@ var Theme = /*#__PURE__*/function () {
         window.addEventListener(item, function (data) {
           return fullscreenchange();
         });
-      }); // // 判断是否配置封面
+      }); // // Determine whether to configure the cover
 
       if (this.themeData.poster) {
         this.jSPlugin.poster = this.themeData.poster;
@@ -31397,7 +31397,7 @@ var Theme = /*#__PURE__*/function () {
         }, 50);
       }
 
-      this.inited = true; //设备信息
+      this.inited = true; //Device Information
 
       this.getDeviceInfo();
     }
@@ -31408,14 +31408,14 @@ var Theme = /*#__PURE__*/function () {
 
       var deviceAPISuccess = function deviceAPISuccess(data) {
         if (data.code == 200 && data.data) {
-          // 设备序列号
+          // Device ID
           if (document.getElementById("".concat(_this11.jSPlugin.id, "-deviceName-content"))) {
             document.getElementById("".concat(_this11.jSPlugin.id, "-deviceName-content")).style.maxWidth = "100%";
             document.getElementById("".concat(_this11.jSPlugin.id, "-deviceName-content")).style.overflow = "hidden";
             document.getElementById("".concat(_this11.jSPlugin.id, "-deviceName-content")).style.textOverflow = "ellipsis";
             document.getElementById("".concat(_this11.jSPlugin.id, "-deviceName-content")).style.whiteSpace = "nowrap";
             document.getElementById("".concat(_this11.jSPlugin.id, "-deviceName-content")).innerHTML = data.data.deviceName;
-          } // 设备序列号
+          } // Device ID
 
 
           if (document.getElementById("".concat(_this11.jSPlugin.id, "-deviceID-content"))) {
@@ -31484,16 +31484,16 @@ var Theme = /*#__PURE__*/function () {
       }
 
       if (expend) {
-        console.log("正在全局全屏");
+        console.log("is global fullscreen");
         return false;
       }
 
-      console.log("执行网页全屏");
+      console.log("Execute web page fullscreen");
       var footerDOMHeight = 0;
       var headerDOMHeight = 0; // ['fullscreenchange', 'webkitfullscreenchange', 'mozfullscreenchange'].forEach((item) => {
       //   window.addEventListener(item, (data) => fullscreenchange("fullscreenchange", data));
       // });
-      // //  监听全屏事件触发
+      // //  监听fullscreen事件触发
       // function fullscreenchange() {
       //   let isFullScreen = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
       //   return isFullScreen;
@@ -31501,7 +31501,7 @@ var Theme = /*#__PURE__*/function () {
 
       var promise = requestFullScreenPromise(document.getElementById("".concat(this.jSPlugin.id, "-wrap")));
       promise.then(function (data) {
-        console.log("全屏promise", window.screen.width);
+        console.log("fullscreenpromise", window.screen.width);
 
         if (document.getElementById("".concat(_this12.jSPlugin.id, "-canvas-container"))) {
           footerDOMHeight = parseInt(window.getComputedStyle(document.getElementById("".concat(_this12.jSPlugin.id, "-canvas-container"))).height, 10);
@@ -31534,11 +31534,11 @@ var Theme = /*#__PURE__*/function () {
       }
 
       if (webExpend) {
-        console.log("正在网站全屏");
+        console.log("is website fullscreen");
         return false;
       }
 
-      console.log("执行全局全屏");
+      console.log("implement global fullscreen");
 
       if (this.isMobile) {
         var heightIntercept = parseInt(getComputedStyle(document.getElementById("".concat(this.jSPlugin.id, "-wrap"))).height, 10) - parseInt(getComputedStyle(document.getElementById(this.jSPlugin.id)).height, 10);
@@ -31655,7 +31655,7 @@ var Monitor = /*#__PURE__*/function () {
         var value = obj[item];
 
         if (typeof obj[item] === 'string') {
-          value = obj[item].replace('%', '%25'); // decodeURIComponent 无法解析%
+          value = obj[item].replace('%', '%25'); // decodeURIComponent 无法 analyze %
         }
 
         if (typeof obj[item] === 'undefined') {
@@ -31683,7 +31683,7 @@ var Monitor = /*#__PURE__*/function () {
         AppId: "",
         playurl: encodeURIComponent(this.jsPlugin.url),
         StartTime: new Date().Format('yyyy-MM-dd hh:mm:ss.S'),
-        // 每个日志包含当前的时间
+        // 每个日志包含当forward的时间
         OS: navigator.platform
       };
       obj = Object.assign(obj, dclogObj);
@@ -31691,7 +31691,7 @@ var Monitor = /*#__PURE__*/function () {
         var value = obj[item];
 
         if (typeof obj[item] === 'string') {
-          value = obj[item].replace('%', '%25'); // decodeURIComponent 无法解析%
+          value = obj[item].replace('%', '%25'); // decodeURIComponent 无法 analyze %
         }
 
         if (typeof obj[item] === 'undefined') {
@@ -31715,7 +31715,7 @@ var Monitor = /*#__PURE__*/function () {
         //Enc: 0,  // 0 不加密 1 加密
         //PlTp: PlTp,  // 1 直播 2 回放
         Via: 2,
-        // 2 服务端取流
+        // 2 服务端Take stream
         //ErrCd: 0,
         OpId: this.uuid() //Cost: (new Date()).getTime() - _this.initTime,  // 毫秒数
         //Serial: getQueryString('dev', item),
@@ -31727,7 +31727,7 @@ var Monitor = /*#__PURE__*/function () {
         var value = obj[item];
 
         if (typeof obj[item] === 'string') {
-          value = obj[item].replace('%', '%25'); // decodeURIComponent 无法解析%
+          value = obj[item].replace('%', '%25'); // decodeURIComponent 无法 analyze %
         }
 
         if (typeof obj[item] === 'undefined') {
@@ -31761,7 +31761,7 @@ var Monitor = /*#__PURE__*/function () {
 })(typeof window !== "undefined" ? window : void 0, function (window, noGlobal) {
   var _state;
 
-  // 加载js
+  // Load js
   function addJs(filepath, callback) {
     var headerScript = document.getElementsByTagName('head')[0].getElementsByTagName("script");
     var isReady = false;
@@ -31779,7 +31779,7 @@ var Monitor = /*#__PURE__*/function () {
       oJs.onload = callback;
       document.getElementsByTagName("head")[0].appendChild(oJs);
     }
-  } // 加载css
+  } // Load css
 
 
   function addCss(filepath, callback) {
@@ -31801,7 +31801,7 @@ var Monitor = /*#__PURE__*/function () {
       oJs.onload = callback;
       document.getElementsByTagName("head")[0].appendChild(oJs);
     }
-  } // 通用请求方法
+  } // universalrequest method 
 
 
   function request(url, method, params, header, success, error) {
@@ -31849,9 +31849,9 @@ var Monitor = /*#__PURE__*/function () {
       isReliesReady: false,
       template: 'simple',
       plugin: [],
-      // 加载插件，talk-对讲
+      // Load 插件，talk-Intercom
       audio: 1,
-      // 声音id  0-不开启 1-开启
+      // Soundid  0-不Turn on  1-Turn on 
       autoplay: 1,
       videoLoading: false
     },
@@ -31859,14 +31859,14 @@ var Monitor = /*#__PURE__*/function () {
       countTimer: undefined,
       // countTime 计时器
       recodeTime: 0,
-      // 录音时间
+      // Recording时间
       recodeTimer: undefined
     }, _defineProperty(_state, "recodeTime", 0), _defineProperty(_state, "fetchDefaultList", false), _defineProperty(_state, "page", 0), _defineProperty(_state, "pageSize", 5), _state),
     handleTalkSuccess: function handleTalkSuccess() {},
     handleTalkError: function handleTalkError() {}
   };
   /**
-   * 视频播放器-开始
+   * 视频play 器-start 
    */
 
   var domain = "https://open.ys7.com";
@@ -31892,9 +31892,9 @@ var Monitor = /*#__PURE__*/function () {
       isReliesReady: false,
       template: 'simple',
       plugin: [],
-      // 加载插件，talk-对讲
+      // Load 插件，talk-Intercom
       audio: 1,
-      // 声音id  0-不开启 1-开启
+      // Soundid  0-不Turn on  1-Turn on 
       autoplay: 1,
       fullScreenStatus: 0,
       bSupporDoubleClickFull: true,
@@ -32087,9 +32087,9 @@ var Monitor = /*#__PURE__*/function () {
           domElement.insertBefore(headerContainer, iframe);
 
           if (matchHeaderOpt().capturePictureModule) {
-            // 截图
+            // Screenshot
             var capturePictureDOM = document.createElement('span');
-            capturePictureDOM.innerHTML = '<span title="截图">' + '<svg id="capturePicture" title="截图" t="1578882764585" class="icon" viewBox="0 0 1024 1024" version="1.1"' + '  xmlns="http://www.w3.org/2000/svg" p-id="5958" width="24" height="24">' + '  <path' + '    d="M887.296 315.904h-153.6c-51.2 0-68.096-102.4-119.296-102.4H392.704c-34.304 0-51.2 102.4-102.4 102.4h-153.6c-29.696 0-51.2 21.504-51.2 51.2v439.296c0 25.6 21.504 47.104 51.2 47.104h751.104c29.696 0 51.2-21.504 51.2-51.2v-435.2c-0.512-30.208-21.504-51.2-51.712-51.2zM512 768c-115.2 0-204.8-89.6-204.8-200.704s89.6-200.704 204.8-200.704 204.8 89.6 204.8 200.704-93.696 200.704-204.8 200.704z m247.296-354.304c-12.8 0-25.6-12.8-25.6-25.6s12.8-25.6 25.6-25.6 25.6 12.8 25.6 25.6c0 17.408-12.8 25.6-25.6 25.6zM256 264.704c0-8.704-8.704-16.896-16.896-16.896h-51.2c-8.704 0-16.896 8.704-16.896 16.896V281.6H256v-16.896z m256 148.992c-85.504 0-153.6 68.096-153.6 153.6s68.096 153.6 153.6 153.6 153.6-68.096 153.6-153.6-68.096-153.6-153.6-153.6z"' + '    fill="#ffffff" p-id="5959"></path>' + '</svg>' + '</span>';
+            capturePictureDOM.innerHTML = '<span title="Screenshot">' + '<svg id="capturePicture" title="Screenshot" t="1578882764585" class="icon" viewBox="0 0 1024 1024" version="1.1"' + '  xmlns="http://www.w3.org/2000/svg" p-id="5958" width="24" height="24">' + '  <path' + '    d="M887.296 315.904h-153.6c-51.2 0-68.096-102.4-119.296-102.4H392.704c-34.304 0-51.2 102.4-102.4 102.4h-153.6c-29.696 0-51.2 21.504-51.2 51.2v439.296c0 25.6 21.504 47.104 51.2 47.104h751.104c29.696 0 51.2-21.504 51.2-51.2v-435.2c-0.512-30.208-21.504-51.2-51.712-51.2zM512 768c-115.2 0-204.8-89.6-204.8-200.704s89.6-200.704 204.8-200.704 204.8 89.6 204.8 200.704-93.696 200.704-204.8 200.704z m247.296-354.304c-12.8 0-25.6-12.8-25.6-25.6s12.8-25.6 25.6-25.6 25.6 12.8 25.6 25.6c0 17.408-12.8 25.6-25.6 25.6zM256 264.704c0-8.704-8.704-16.896-16.896-16.896h-51.2c-8.704 0-16.896 8.704-16.896 16.896V281.6H256v-16.896z m256 148.992c-85.504 0-153.6 68.096-153.6 153.6s68.096 153.6 153.6 153.6 153.6-68.096 153.6-153.6-68.096-153.6-153.6-153.6z"' + '    fill="#ffffff" p-id="5959"></path>' + '</svg>' + '</span>';
 
             capturePictureDOM.onclick = function () {
               _this.capturePicture();
@@ -32102,7 +32102,7 @@ var Monitor = /*#__PURE__*/function () {
 
           if (matchHeaderOpt().saveModule) {
             var startSaveDOM = document.createElement('span');
-            startSaveDOM.innerHTML = '<span title="开始录像">' + '  <svg id="startSave" t="1578882716693" class="icon" viewBox="0 0 1024 1024" version="1.1"' + '    xmlns="http://www.w3.org/2000/svg" p-id="3782" width="24" height="24">' + '    <path' + '      d="M915.2 729.6l-128-76.8c-25.6-12.8-44.8-32-44.8-51.2V435.2c0-25.6 19.2-38.4 44.8-51.2l128-76.8c25.6-12.8 44.8 0 44.8 19.2V704c0 32-19.2 38.4-44.8 25.6z m-332.8 89.6H96c-51.2 0-89.6-38.4-89.6-89.6V332.8c0-51.2 38.4-89.6 89.6-89.6h486.4c51.2 0 89.6 38.4 89.6 89.6v396.8c0 51.2-38.4 89.6-89.6 89.6zM192 364.8c-32 6.4-57.6 32-64 64-12.8 57.6 38.4 115.2 96 102.4 32-6.4 57.6-32 64-70.4 12.8-57.6-38.4-108.8-96-96z m0 0"' + '      p-id="3783" fill="#ffffff"></path>' + '  </svg>' + '</span>';
+            startSaveDOM.innerHTML = '<span title="Start Recording">' + '  <svg id="startSave" t="1578882716693" class="icon" viewBox="0 0 1024 1024" version="1.1"' + '    xmlns="http://www.w3.org/2000/svg" p-id="3782" width="24" height="24">' + '    <path' + '      d="M915.2 729.6l-128-76.8c-25.6-12.8-44.8-32-44.8-51.2V435.2c0-25.6 19.2-38.4 44.8-51.2l128-76.8c25.6-12.8 44.8 0 44.8 19.2V704c0 32-19.2 38.4-44.8 25.6z m-332.8 89.6H96c-51.2 0-89.6-38.4-89.6-89.6V332.8c0-51.2 38.4-89.6 89.6-89.6h486.4c51.2 0 89.6 38.4 89.6 89.6v396.8c0 51.2-38.4 89.6-89.6 89.6zM192 364.8c-32 6.4-57.6 32-64 64-12.8 57.6 38.4 115.2 96 102.4 32-6.4 57.6-32 64-70.4 12.8-57.6-38.4-108.8-96-96z m0 0"' + '      p-id="3783" fill="#ffffff"></path>' + '  </svg>' + '</span>';
 
             startSaveDOM.onclick = function () {
               _this.startSave();
@@ -32113,7 +32113,7 @@ var Monitor = /*#__PURE__*/function () {
 
             controsDOM.appendChild(startSaveDOM);
             var stopSaveDOM = document.createElement('span');
-            stopSaveDOM.innerHTML = '<span title="结束录像">' + ' <svg id="stopSave" t="1578882716693" class="icon hide" viewBox="0 0 1024 1024" version="1.1"' + '   xmlns="http://www.w3.org/2000/svg" p-id="3782" width="24" height="24">' + '   <path' + '     d="M915.2 729.6l-128-76.8c-25.6-12.8-44.8-32-44.8-51.2V435.2c0-25.6 19.2-38.4 44.8-51.2l128-76.8c25.6-12.8 44.8 0 44.8 19.2V704c0 32-19.2 38.4-44.8 25.6z m-332.8 89.6H96c-51.2 0-89.6-38.4-89.6-89.6V332.8c0-51.2 38.4-89.6 89.6-89.6h486.4c51.2 0 89.6 38.4 89.6 89.6v396.8c0 51.2-38.4 89.6-89.6 89.6zM192 364.8c-32 6.4-57.6 32-64 64-12.8 57.6 38.4 115.2 96 102.4 32-6.4 57.6-32 64-70.4 12.8-57.6-38.4-108.8-96-96z m0 0"' + '     p-id="3783" fill="red"></path>' + ' </svg>' + ' </span>';
+            stopSaveDOM.innerHTML = '<span title="End Recording">' + ' <svg id="stopSave" t="1578882716693" class="icon hide" viewBox="0 0 1024 1024" version="1.1"' + '   xmlns="http://www.w3.org/2000/svg" p-id="3782" width="24" height="24">' + '   <path' + '     d="M915.2 729.6l-128-76.8c-25.6-12.8-44.8-32-44.8-51.2V435.2c0-25.6 19.2-38.4 44.8-51.2l128-76.8c25.6-12.8 44.8 0 44.8 19.2V704c0 32-19.2 38.4-44.8 25.6z m-332.8 89.6H96c-51.2 0-89.6-38.4-89.6-89.6V332.8c0-51.2 38.4-89.6 89.6-89.6h486.4c51.2 0 89.6 38.4 89.6 89.6v396.8c0 51.2-38.4 89.6-89.6 89.6zM192 364.8c-32 6.4-57.6 32-64 64-12.8 57.6 38.4 115.2 96 102.4 32-6.4 57.6-32 64-70.4 12.8-57.6-38.4-108.8-96-96z m0 0"' + '     p-id="3783" fill="red"></path>' + ' </svg>' + ' </span>';
 
             stopSaveDOM.onclick = function () {
               _this.stopSave();
@@ -32127,7 +32127,7 @@ var Monitor = /*#__PURE__*/function () {
 
           if (matchHeaderOpt().zoomModule) {
             var enableZoomDOM = document.createElement('span');
-            enableZoomDOM.innerHTML = '<span title="开启电子放大">' + '  <svg id="enableZoom" t="1578882639834" class="icon" viewBox="0 0 1000 1000" version="1.1"' + '    xmlns="http://www.w3.org/2000/svg" p-id="2227" width="24" height="24">' + '    <path' + '      d="M830.6119 441.1089c0-193.7756-157.0939-350.8641-350.8775-350.8641S128.8559 247.3333 128.8559 441.1089 285.9508 791.972 479.7344 791.972 830.6119 634.8845 830.6119 441.1089zM483.2821 710.4863c-146.7975 0-265.8187-118.9953-265.8187-265.8088S336.4847 178.8697 483.2821 178.8697s265.8197 118.9953 265.8197 265.8078S630.0796 710.4863 483.2821 710.4863zM770.6031 653.5739l-72.6417 75.9485 141.6917 160.1814 82.0737-90.0739L770.6031 653.5739zM527.5849 267.4727h-88.60655762279428v132.90489048425167H306.0690340253259v88.60292721534799h132.90933675248866v132.9038911617923h88.60655762279428V488.9794719180395h132.90933675248866v-88.60292721534799H527.5849284006089V267.4726535408993z"' + '      p-id="2228" fill="#ffffff"></path>' + '  </svg>' + '</span>';
+            enableZoomDOM.innerHTML = '<span title="Turn on electronic zoom">' + '  <svg id="enableZoom" t="1578882639834" class="icon" viewBox="0 0 1000 1000" version="1.1"' + '    xmlns="http://www.w3.org/2000/svg" p-id="2227" width="24" height="24">' + '    <path' + '      d="M830.6119 441.1089c0-193.7756-157.0939-350.8641-350.8775-350.8641S128.8559 247.3333 128.8559 441.1089 285.9508 791.972 479.7344 791.972 830.6119 634.8845 830.6119 441.1089zM483.2821 710.4863c-146.7975 0-265.8187-118.9953-265.8187-265.8088S336.4847 178.8697 483.2821 178.8697s265.8197 118.9953 265.8197 265.8078S630.0796 710.4863 483.2821 710.4863zM770.6031 653.5739l-72.6417 75.9485 141.6917 160.1814 82.0737-90.0739L770.6031 653.5739zM527.5849 267.4727h-88.60655762279428v132.90489048425167H306.0690340253259v88.60292721534799h132.90933675248866v132.9038911617923h88.60655762279428V488.9794719180395h132.90933675248866v-88.60292721534799H527.5849284006089V267.4726535408993z"' + '      p-id="2228" fill="#ffffff"></path>' + '  </svg>' + '</span>';
 
             enableZoomDOM.onclick = function () {
               _this.enableZoom();
@@ -32138,7 +32138,7 @@ var Monitor = /*#__PURE__*/function () {
 
             controsDOM.appendChild(enableZoomDOM);
             var closeZoomDOM = document.createElement('span');
-            closeZoomDOM.innerHTML = '<span title="关闭电子放大">' + '  <svg id="closeZoom" t="1578882639834" class="icon hide" viewBox="0 0 1000 1000" version="1.1"' + '    xmlns="http://www.w3.org/2000/svg" p-id="2227" width="24" height="24">' + '    <path' + '      d="M830.6119 441.1089c0-193.7756-157.0939-350.8641-350.8775-350.8641S128.8559 247.3333 128.8559 441.1089 285.9508 791.972 479.7344 791.972 830.6119 634.8845 830.6119 441.1089zM483.2821 710.4863c-146.7975 0-265.8187-118.9953-265.8187-265.8088S336.4847 178.8697 483.2821 178.8697s265.8197 118.9953 265.8197 265.8078S630.0796 710.4863 483.2821 710.4863zM770.6031 653.5739l-72.6417 75.9485 141.6917 160.1814 82.0737-90.0739L770.6031 653.5739zM527.5849 267.4727h-88.60655762279428v132.90489048425167H306.0690340253259v88.60292721534799h132.90933675248866v132.9038911617923h88.60655762279428V488.9794719180395h132.90933675248866v-88.60292721534799H527.5849284006089V267.4726535408993z"' + '      p-id="2228" fill="red"></path>' + '  </svg>' + '</span>';
+            closeZoomDOM.innerHTML = '<span title="Turn off zoom">' + '  <svg id="closeZoom" t="1578882639834" class="icon hide" viewBox="0 0 1000 1000" version="1.1"' + '    xmlns="http://www.w3.org/2000/svg" p-id="2227" width="24" height="24">' + '    <path' + '      d="M830.6119 441.1089c0-193.7756-157.0939-350.8641-350.8775-350.8641S128.8559 247.3333 128.8559 441.1089 285.9508 791.972 479.7344 791.972 830.6119 634.8845 830.6119 441.1089zM483.2821 710.4863c-146.7975 0-265.8187-118.9953-265.8187-265.8088S336.4847 178.8697 483.2821 178.8697s265.8197 118.9953 265.8197 265.8078S630.0796 710.4863 483.2821 710.4863zM770.6031 653.5739l-72.6417 75.9485 141.6917 160.1814 82.0737-90.0739L770.6031 653.5739zM527.5849 267.4727h-88.60655762279428v132.90489048425167H306.0690340253259v88.60292721534799h132.90933675248866v132.9038911617923h88.60655762279428V488.9794719180395h132.90933675248866v-88.60292721534799H527.5849284006089V267.4726535408993z"' + '      p-id="2228" fill="red"></path>' + '  </svg>' + '</span>';
 
             closeZoomDOM.onclick = function () {
               _this.closeZoom();
@@ -32287,19 +32287,19 @@ var Monitor = /*#__PURE__*/function () {
                   var talk = "talk://" + _this.opt.deviceSerial + ":0:" + _this.opt.channelNo + ":cas.ys7.com:6500";
                   _this.opt.talkLink = _this.opt.ttsUrl + "/" + talk;
                   _this.opt.stream = apiResult.stream;
-                  console.log("_this.opt", _this.opt); // 加载依赖
+                  console.log("_this.opt", _this.opt); // Load 依赖
 
                   if (!_this.opt.isReliesReady) {
                     var adapeterJS = _this.opt.filePath + '/npm/js/adapeter.js';
                     var janusJS = _this.opt.filePath + '/npm/js/janus.js';
                     var ttsJS = _this.opt.filePath + '/npm/js/tts.js';
-                    console.log("加载jquery.js");
+                    console.log("Load jquery.js");
                     addJs(adapeterJS, function () {
-                      console.log("加载adapeter.js");
+                      console.log("Load adapeter.js");
                       addJs(janusJS, function () {
-                        console.log("加载janus.js");
+                        console.log("Load janus.js");
                         addJs(ttsJS, function () {
-                          console.log("加载tts.js"); // 文件加载完毕;
+                          console.log("Load tts.js"); //  fileLoad 完毕;
 
                           _this.opt.isReliesReady = true;
                         });
@@ -32307,7 +32307,7 @@ var Monitor = /*#__PURE__*/function () {
                     }, function () {
                       return !!window.adapter;
                     });
-                  } // 创建DOM
+                  } // create DOM
 
 
                   if (!document.getElementById("audioleft")) {
@@ -32360,7 +32360,7 @@ var Monitor = /*#__PURE__*/function () {
                   } else {
                     clearInterval(EZUIKit.state.countTimer);
                     EZUIKit.state.countTimer = undefined;
-                    console.log("倒计时结束，开启声音"); // decoder.openSound(0);
+                    console.log("The countdown is over, Turn on Sound"); // decoder.openSound(0);
                   }
                 }, 1000);
               } else if (type === 'destory') {
@@ -32417,15 +32417,15 @@ var Monitor = /*#__PURE__*/function () {
               footerContainer.appendChild(rightContros);
 
               if (matchFooterOpt().hdModule) {
-                // 高清-标清切换
+                // 高清-标清 switch
                 var hdDom = document.createElement('span');
                 hdDom.setAttribute('id', 'video-hd');
-                hdDom.innerHTML = _this.opt.url.indexOf('.hd') === -1 ? '标清' : '高清';
+                hdDom.innerHTML = _this.opt.url.indexOf('.hd') === -1 ? 'SD' : 'HD';
 
                 hdDom.onclick = function () {
-                  // 停止
+                  // stop
                   if (_this.opt.videoLoading) {
-                    layer.msg("视频加载中，请稍后");
+                    layer.msg("Video Loading, please wait");
                     return false;
                   } else {
                     var stopPromise = _this.stop();
@@ -32436,10 +32436,10 @@ var Monitor = /*#__PURE__*/function () {
 
                       if (_this.opt.url.indexOf('.hd') === -1) {
                         _this.opt.url = _this.opt.url.replace('.live', '.hd.live');
-                        hdDom.innerHTML = _this.opt.url.indexOf('.hd') === -1 ? '标清' : '高清';
+                        hdDom.innerHTML = _this.opt.url.indexOf('.hd') === -1 ? 'SD' : 'HD';
                       } else {
                         _this.opt.url = _this.opt.url.replace('.hd.live', '.live');
-                        hdDom.innerHTML = _this.opt.url.indexOf('.hd') === -1 ? '标清' : '高清';
+                        hdDom.innerHTML = _this.opt.url.indexOf('.hd') === -1 ? 'SD' : 'HD';
                       }
 
                       _this.play(_this.opt.url);
@@ -32454,11 +32454,11 @@ var Monitor = /*#__PURE__*/function () {
               }
 
               if (matchFooterOpt().fullScreenModule) {
-                // 声音控制
+                // Sound控制
                 var openSoundDOM = document.createElement('span');
                 openSoundDOM.setAttribute('class', 'hide');
                 openSoundDOM.setAttribute('id', 'ezuikit-open-sound');
-                openSoundDOM.setAttribute('title', '打开声音');
+                openSoundDOM.setAttribute('title', '打开Sound');
                 openSoundDOM.setAttribute('style', 'vertical-align: top;');
                 openSoundDOM.innerHTML = '<svg t="1590476263239" class="icon" viewBox="0 0 1178 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2273" width="16" height="16"><path d="M665.6 51.2 665.6 51.2c-10.24-30.72-40.96-51.2-71.68-51.2-5.12 0-15.36 0-20.48 5.12l0 0L358.4 153.6 51.2 209.92l0 0C20.48 220.16 0 250.88 0 281.6 0 286.72 0 291.84 0 307.2l0 0 0 409.6 0 0c0 15.36 0 20.48 0 25.6 0 30.72 20.48 61.44 51.2 71.68l0 0L358.4 870.4l97.28 71.68 107.52 76.8 0 0c5.12 5.12 15.36 5.12 25.6 5.12 40.96 0 76.8-35.84 76.8-76.8 0-10.24 0-10.24 0-25.6l0 0L665.6 51.2zM563.2 870.4l-153.6-102.4-307.2-51.2L102.4 307.2l307.2-51.2 153.6-102.4L563.2 870.4z" p-id="2274" fill="#FF0000"></path><path d="M1049.6 537.6l112.64-112.64c20.48-20.48 20.48-56.32 0-76.8-20.48-20.48-56.32-20.48-76.8 0L972.8 460.8l-112.64-112.64c0 0 0 0 0 0-20.48-20.48-56.32-20.48-76.8 0 0 0 0 0 0 0-20.48 20.48-20.48 56.32 0 76.8l112.64 112.64-112.64 112.64c-20.48 20.48-20.48 56.32 0 76.8 20.48 20.48 56.32 20.48 76.8 0L972.8 614.4l112.64 112.64c20.48 20.48 56.32 20.48 76.8 0s20.48-56.32 0-76.8L1049.6 537.6z" p-id="2275" fill="#FF0000"></path></svg>';
 
@@ -32467,13 +32467,13 @@ var Monitor = /*#__PURE__*/function () {
 
                   openSoundDOM.setAttribute('class', 'hide');
                   closeSoundDOM.setAttribute('class', '');
-                }; // 声音控制
+                }; // Sound控制
 
 
                 var closeSoundDOM = document.createElement('span');
                 openSoundDOM.setAttribute('id', 'ezuikit-close-sound');
                 closeSoundDOM.setAttribute('class', 'hide');
-                closeSoundDOM.setAttribute('title', '关闭声音');
+                closeSoundDOM.setAttribute('title', ' Close Sound');
                 closeSoundDOM.setAttribute('style', 'vertical-align: top;');
                 closeSoundDOM.innerHTML = '<svg t="1590414410633" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="20545" width="16" height="16"><path d="M840.533333 98.133333c-17.066667-17.066667-42.666667-17.066667-59.733333 0-17.066667 17.066667-17.066667 42.666667 0 59.733334C883.2 256 938.666667 392.533333 938.666667 533.333333c0 140.8-55.466667 277.333333-157.866667 375.466667-17.066667 17.066667-17.066667 42.666667 0 59.733333 8.533333 8.533333 21.333333 12.8 29.866667 12.8 8.533333 0 21.333333-4.266667 29.866666-12.8 115.2-110.933333 183.466667-268.8 183.466667-435.2 0-166.4-68.266667-324.266667-183.466667-435.2zM571.733333 12.8c-17.066667-8.533333-34.133333-4.266667-46.933333 8.533333L281.6 256H42.666667c-25.6 0-42.666667 17.066667-42.666667 42.666667v426.666666c0 25.6 17.066667 42.666667 42.666667 42.666667h238.933333l243.2 234.666667c8.533333 8.533333 17.066667 12.8 29.866667 12.8 4.266667 0 12.8 0 17.066666-4.266667 17.066667-8.533333 25.6-21.333333 25.6-38.4V51.2c0-17.066667-8.533333-34.133333-25.6-38.4zM512 870.4l-183.466667-179.2c-8.533333-4.266667-17.066667-8.533333-29.866666-8.533333H85.333333V341.333333h213.333334c12.8 0 21.333333-4.266667 29.866666-12.8L512 153.6v716.8z" p-id="20546" fill="#ffffff"></path><path d="M759.466667 349.866667c-12.8-21.333333-38.4-25.6-59.733334-8.533334-21.333333 12.8-25.6 38.4-8.533333 59.733334 21.333333 29.866667 34.133333 76.8 34.133333 123.733333 0 46.933333-12.8 93.866667-34.133333 123.733333-12.8 21.333333-8.533333 46.933333 8.533333 59.733334 8.533333 4.266667 17.066667 8.533333 25.6 8.533333 12.8 0 25.6-4.266667 34.133334-17.066667 34.133333-46.933333 51.2-106.666667 51.2-174.933333 0-68.266667-17.066667-128-51.2-174.933333z" p-id="20547" fill="#ffffff"></path></svg>';
 
@@ -32486,7 +32486,7 @@ var Monitor = /*#__PURE__*/function () {
 
                 rightContros.appendChild(openSoundDOM);
                 rightContros.appendChild(closeSoundDOM);
-              } // 根据当前音频配置展示
+              } // 根据当forward音频配置展示
 
 
               if (_this.opt.audio == 1) {
@@ -32498,9 +32498,9 @@ var Monitor = /*#__PURE__*/function () {
               }
 
               if (matchFooterOpt().fullScreenModule) {
-                // 全屏控制
+                // fullscreen控制
                 var fullScreenDOM = document.createElement('span');
-                fullScreenDOM.setAttribute('title', '全屏');
+                fullScreenDOM.setAttribute('title', 'fullscreen');
                 fullScreenDOM.setAttribute('style', 'vertical-align: top;');
                 fullScreenDOM.innerHTML = '<svg id="fullScreen" t="1578020167938" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5035" width="16" height="16"> <path d="M348.373333 625.706667l-128 128-64 64v-128a33.28 33.28 0 0 0-35.413333-35.413334A33.493333 33.493333 0 0 0 85.333333 689.706667v213.333333A33.706667 33.706667 0 0 0 120.96 938.666667h213.333333a35.626667 35.626667 0 0 0 0-71.04h-128l64-64 128-128a35.2 35.2 0 0 0-49.92-49.92zM206.293333 156.373333h128a33.28 33.28 0 0 0 35.413334-35.413333A33.493333 33.493333 0 0 0 334.293333 85.333333H113.706667c-7.04 0-14.08 7.04-21.333334 14.293334a26.026667 26.026667 0 0 0-7.04 21.333333v213.333333a33.493333 33.493333 0 0 0 35.626667 35.413334 33.28 33.28 0 0 0 35.413333-35.413334v-128l192 192a35.2 35.2 0 0 0 49.92-49.92zM903.04 85.333333h-213.333333a33.493333 33.493333 0 0 0-35.413334 35.626667 33.28 33.28 0 0 0 35.413334 35.413333h128l-64 64-128 128a35.2 35.2 0 0 0 49.92 49.92l128-128 64-64v128a35.626667 35.626667 0 0 0 71.04 0v-213.333333A33.706667 33.706667 0 0 0 903.04 85.333333zM903.04 654.293333a33.28 33.28 0 0 0-35.413333 35.413334v128l-64-64-128-128a35.2 35.2 0 0 0-49.92 49.92l128 128 64 64h-128a35.626667 35.626667 0 0 0 0 71.04h213.333333A33.706667 33.706667 0 0 0 938.666667 903.04v-213.333333a33.493333 33.493333 0 0 0-35.626667-35.413334z" p-id="5036" fill="#ffffff"></path></svg>';
 
@@ -32513,22 +32513,22 @@ var Monitor = /*#__PURE__*/function () {
             }
 
             if (matchFooterOpt().talkModule) {
-              // 对讲
+              // Intercom
               var startTalkDOM = document.createElement('div');
               var stopTalkDOM = document.createElement('div');
               startTalkDOM.setAttribute("class", "ptp-talk off");
-              startTalkDOM.innerHTML = '<span title="对讲">' + '<svg t="1581930496966" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"' + '  p-id="1641" width="16" height="16">' + '  <path' + '    d="M715.648 647.872c-30.208-22.336-61.568 39.36-100.992 77.44-39.36 38.08-34.112 31.488-123.392-17.088S311.488 540.224 280 491.648C248.448 443.072 265.472 424.704 265.472 424.704s78.72-62.976 97.152-81.344c18.368-18.368 13.12-30.208 13.12-30.208l-128.64-190.144c-23.616-5.184-64.32 5.12-128.576 57.6C54.208 233.088 30.592 353.856 151.296 575.68c120.768 221.824 347.84 330.752 485.568 374.08 137.856 43.328 228.416-61.696 249.408-103.68 21.056-41.984 13.12-85.312 13.12-85.312S745.856 670.208 715.648 647.872z"' + '    p-id="1642" fill="#ffffff"></path>' + '  <path' + '    d="M715.328 64C580.992 64 472.192 172.864 472.192 307.2s108.8 243.2 243.136 243.2 243.2-108.864 243.2-243.2S849.6 64 715.328 64zM715.328 461.056c-84.992 0-153.856-68.864-153.856-153.856s68.864-153.856 153.856-153.856 153.856 68.928 153.856 153.856S800.32 461.056 715.328 461.056z"' + '    p-id="1643" fill="#ffffff"></path>' + '  <path' + '    d="M777.472 277.376c-18.176 0-32.96-14.784-32.96-33.024 0-8.448 3.136-16.064 8.32-21.888-11.52-5.12-24.128-8-37.568-8-51.2 0-92.672 41.472-92.672 92.736s41.472 92.736 92.672 92.736S808.064 358.4 808.064 307.2c0-13.696-3.072-26.688-8.384-38.4C793.728 274.112 786.048 277.376 777.472 277.376zM715.328 340.928c-18.624 0-33.664-15.104-33.664-33.728 0-18.624 15.04-33.728 33.664-33.728 18.688 0 33.728 15.104 33.728 33.728C749.056 325.824 734.016 340.928 715.328 340.928z"' + '    p-id="1644" fill="#ffffff"></path>' + ' </svg>' + ' </span>' + ' <span>开启对讲</span>';
+              startTalkDOM.innerHTML = '<span title="Intercom">' + '<svg t="1581930496966" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"' + '  p-id="1641" width="16" height="16">' + '  <path' + '    d="M715.648 647.872c-30.208-22.336-61.568 39.36-100.992 77.44-39.36 38.08-34.112 31.488-123.392-17.088S311.488 540.224 280 491.648C248.448 443.072 265.472 424.704 265.472 424.704s78.72-62.976 97.152-81.344c18.368-18.368 13.12-30.208 13.12-30.208l-128.64-190.144c-23.616-5.184-64.32 5.12-128.576 57.6C54.208 233.088 30.592 353.856 151.296 575.68c120.768 221.824 347.84 330.752 485.568 374.08 137.856 43.328 228.416-61.696 249.408-103.68 21.056-41.984 13.12-85.312 13.12-85.312S745.856 670.208 715.648 647.872z"' + '    p-id="1642" fill="#ffffff"></path>' + '  <path' + '    d="M715.328 64C580.992 64 472.192 172.864 472.192 307.2s108.8 243.2 243.136 243.2 243.2-108.864 243.2-243.2S849.6 64 715.328 64zM715.328 461.056c-84.992 0-153.856-68.864-153.856-153.856s68.864-153.856 153.856-153.856 153.856 68.928 153.856 153.856S800.32 461.056 715.328 461.056z"' + '    p-id="1643" fill="#ffffff"></path>' + '  <path' + '    d="M777.472 277.376c-18.176 0-32.96-14.784-32.96-33.024 0-8.448 3.136-16.064 8.32-21.888-11.52-5.12-24.128-8-37.568-8-51.2 0-92.672 41.472-92.672 92.736s41.472 92.736 92.672 92.736S808.064 358.4 808.064 307.2c0-13.696-3.072-26.688-8.384-38.4C793.728 274.112 786.048 277.376 777.472 277.376zM715.328 340.928c-18.624 0-33.664-15.104-33.664-33.728 0-18.624 15.04-33.728 33.664-33.728 18.688 0 33.728 15.104 33.728 33.728C749.056 325.824 734.016 340.928 715.328 340.928z"' + '    p-id="1644" fill="#ffffff"></path>' + ' </svg>' + ' </span>' + ' <span>Turn on 对讲</span>';
 
               startTalkDOM.onclick = function () {
                 console.log("EZUIKit.state.countTimer", EZUIKit.state.countTimer);
 
                 if (EZUIKit.state.countTimer) {
-                  window.layer.msg("语音设备正忙，请稍后重试");
+                  window.layer.msg("Voice Device is busy, please wait to try again");
                   return false;
                 }
 
                 countTime('add', 0);
-                console.log("开始对讲，关闭声音");
+                console.log("Start intercom， Close Sound");
 
                 _this.closeSound(0);
 
@@ -32541,7 +32541,7 @@ var Monitor = /*#__PURE__*/function () {
               };
 
               stopTalkDOM.setAttribute("class", "ptp-talk on hide");
-              stopTalkDOM.innerHTML = '<span title="对讲">' + ' <svg t="1581930496966" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"' + '    p-id="1641" width="16" height="16">' + '    <path' + '      d="M715.648 647.872c-30.208-22.336-61.568 39.36-100.992 77.44-39.36 38.08-34.112 31.488-123.392-17.088S311.488 540.224 280 491.648C248.448 443.072 265.472 424.704 265.472 424.704s78.72-62.976 97.152-81.344c18.368-18.368 13.12-30.208 13.12-30.208l-128.64-190.144c-23.616-5.184-64.32 5.12-128.576 57.6C54.208 233.088 30.592 353.856 151.296 575.68c120.768 221.824 347.84 330.752 485.568 374.08 137.856 43.328 228.416-61.696 249.408-103.68 21.056-41.984 13.12-85.312 13.12-85.312S745.856 670.208 715.648 647.872z"' + '      p-id="1642" fill="#ff0000"></path>' + '    <path' + '      d="M715.328 64C580.992 64 472.192 172.864 472.192 307.2s108.8 243.2 243.136 243.2 243.2-108.864 243.2-243.2S849.6 64 715.328 64zM715.328 461.056c-84.992 0-153.856-68.864-153.856-153.856s68.864-153.856 153.856-153.856 153.856 68.928 153.856 153.856S800.32 461.056 715.328 461.056z"' + '      p-id="1643" fill="#ff0000"></path>' + '    <path' + '      d="M777.472 277.376c-18.176 0-32.96-14.784-32.96-33.024 0-8.448 3.136-16.064 8.32-21.888-11.52-5.12-24.128-8-37.568-8-51.2 0-92.672 41.472-92.672 92.736s41.472 92.736 92.672 92.736S808.064 358.4 808.064 307.2c0-13.696-3.072-26.688-8.384-38.4C793.728 274.112 786.048 277.376 777.472 277.376zM715.328 340.928c-18.624 0-33.664-15.104-33.664-33.728 0-18.624 15.04-33.728 33.664-33.728 18.688 0 33.728 15.104 33.728 33.728C749.056 325.824 734.016 340.928 715.328 340.928z"' + '      p-id="1644" fill="#ff0000"></path>' + '  </svg>' + ' </span>' + '<span>关闭对讲</span>';
+              stopTalkDOM.innerHTML = '<span title="Intercom">' + ' <svg t="1581930496966" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"' + '    p-id="1641" width="16" height="16">' + '    <path' + '      d="M715.648 647.872c-30.208-22.336-61.568 39.36-100.992 77.44-39.36 38.08-34.112 31.488-123.392-17.088S311.488 540.224 280 491.648C248.448 443.072 265.472 424.704 265.472 424.704s78.72-62.976 97.152-81.344c18.368-18.368 13.12-30.208 13.12-30.208l-128.64-190.144c-23.616-5.184-64.32 5.12-128.576 57.6C54.208 233.088 30.592 353.856 151.296 575.68c120.768 221.824 347.84 330.752 485.568 374.08 137.856 43.328 228.416-61.696 249.408-103.68 21.056-41.984 13.12-85.312 13.12-85.312S745.856 670.208 715.648 647.872z"' + '      p-id="1642" fill="#ff0000"></path>' + '    <path' + '      d="M715.328 64C580.992 64 472.192 172.864 472.192 307.2s108.8 243.2 243.136 243.2 243.2-108.864 243.2-243.2S849.6 64 715.328 64zM715.328 461.056c-84.992 0-153.856-68.864-153.856-153.856s68.864-153.856 153.856-153.856 153.856 68.928 153.856 153.856S800.32 461.056 715.328 461.056z"' + '      p-id="1643" fill="#ff0000"></path>' + '    <path' + '      d="M777.472 277.376c-18.176 0-32.96-14.784-32.96-33.024 0-8.448 3.136-16.064 8.32-21.888-11.52-5.12-24.128-8-37.568-8-51.2 0-92.672 41.472-92.672 92.736s41.472 92.736 92.672 92.736S808.064 358.4 808.064 307.2c0-13.696-3.072-26.688-8.384-38.4C793.728 274.112 786.048 277.376 777.472 277.376zM715.328 340.928c-18.624 0-33.664-15.104-33.664-33.728 0-18.624 15.04-33.728 33.664-33.728 18.688 0 33.728 15.104 33.728 33.728C749.056 325.824 734.016 340.928 715.328 340.928z"' + '      p-id="1644" fill="#ff0000"></path>' + '  </svg>' + ' </span>' + '<span> Close 对讲</span>';
 
               stopTalkDOM.onclick = function () {
                 console.log(_this.opt);
@@ -32567,10 +32567,10 @@ var Monitor = /*#__PURE__*/function () {
 
                   if (data.code == 200) {
                     randerVoliceList(data.data, 5);
-                    EZUIKit.state.page = data.page.page; // 如果用户语音列表为空
+                    EZUIKit.state.page = data.page.page; // 如果用户voice列表empty
 
                     if (page == 0 && data.data.length == 0 && !EZUIKit.state.fetchDefaultList) {
-                      // 获取用户语音为空
+                      // get 用户voiceempty
                       EZUIKit.state.fetchDefaultList = true;
                       fetchVoiceList(0);
                     }
@@ -32596,7 +32596,7 @@ var Monitor = /*#__PURE__*/function () {
                     // $("#voice-list ul").append("<li class='voice-item' id='voice-item-" + i + "' data-time=" + (data[i]["duration"] || 20) + " data-url=" + data[i]["fileUrl"] + ">" + (data[i]["voiceName"].length > 10 ? (data[i]["voiceName"].substr(0, 10) + "...") : data[i]["voiceName"]) + "</li>");
 
                     voiceItem.onclick = function (e) {
-                      console.log("点击元素", e.target, e.target.dataset.url);
+                      console.log("Click element", e.target, e.target.dataset.url);
                       var voiceUrl = e.target.dataset.url;
                       var time = e.target.dataset.time;
                       playListOfVoice(voiceUrl, time);
@@ -32604,15 +32604,15 @@ var Monitor = /*#__PURE__*/function () {
                   }
 
                   if (data.length === EZUIKit.state.pageSize) {
-                    document.getElementById('voice-list-end').innerHTML = "向下滚动加载更多";
+                    document.getElementById('voice-list-end').innerHTML = "To scroll down to load more";
                   } else {
-                    document.getElementById('voice-list-end').innerHTML = "没有更多数据了";
+                    document.getElementById('voice-list-end').innerHTML = "No more data";
                   }
                 }
               };
 
               var playListOfVoice = function playListOfVoice(voiceUrl, time) {
-                console.log("播放语音", voiceUrl, time); // decoder && decoder.closeSound(0);
+                console.log("play voice", voiceUrl, time); // decoder && decoder.closeSound(0);
 
                 function apiSuccess(data) {
                   console.log("data.data", data.data);
@@ -32622,9 +32622,9 @@ var Monitor = /*#__PURE__*/function () {
                     // $("#stopBroadcast").hide();
                     countTime('sub', parseInt(time));
                   } else if (data.code == "10001") {
-                    window.layer.msg("未找到当前语音");
+                    window.layer.msg("No current voice found");
                   } else {
-                    window.layer.msg(data.msg || '发送失败，请稍后再试');
+                    window.layer.msg(data.msg || 'Send fail, please wait and try again');
                   } // padding = false;
 
                 }
@@ -32635,24 +32635,24 @@ var Monitor = /*#__PURE__*/function () {
                   channelNo: _this.opt.channelNo,
                   fileUrl: voiceUrl
                 }, '', apiSuccess);
-              }; // 自定义语音
-              // 对讲
+              }; // Custom Voice
+              // Intercom
 
 
               var startBroadcastDOM = document.createElement('div');
               var stopBroadcastDOM = document.createElement('div');
               startBroadcastDOM.setAttribute("class", 'broadcast off');
               stopBroadcastDOM.setAttribute("class", "broadcast on hide");
-              startBroadcastDOM.innerHTML = ' <span title="语音播报">' + '  <svg t="1583561695846" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"' + '    p-id="1126" width="16" height="16">' + '    <path' + '      d="M513.82044445 964.38044445c-8.192 0-15.47377778-2.73066667-21.84533334-8.192 0 0-46.42133333-41.87022222-99.21422222-86.47111112-89.20177778-73.728-117.41866667-88.29155555-123.79022222-90.112H35.04355555c-14.56355555 0-26.39644445-11.83288889-26.39644444-27.30666666V271.70133333c0-14.56355555 11.83288889-27.30666667 26.39644444-27.30666666H246.21511111c7.28177778-2.73066667 37.31911111-15.47377778 137.44355556-91.02222222 58.25422222-43.69066667 111.04711111-86.47111111 111.04711111-86.47111112 5.46133333-4.55111111 12.74311111-7.28177778 20.02488889-7.28177778 4.55111111 0 10.01244445 0.91022222 14.56355555 3.6408889 10.92266667 5.46133333 18.20444445 17.29422222 18.20444445 30.03733333v837.40444444c0 12.74311111-7.28177778 25.48622222-19.11466667 30.94755556-5.46133333 1.82044445-10.01244445 2.73066667-14.56355555 2.73066667zM270.79111111 724.992c19.11466667 0 48.24177778 8.192 167.48088889 106.496 16.384 13.65333333 33.67822222 28.21688889 51.88266667 43.69066667l5.46133333 4.55111111V139.71911111l-5.46133333 3.64088889c-22.75555555 17.29422222-44.60088889 34.58844445-65.536 50.06222222C293.54666667 291.72622222 264.41955555 299.008 245.30488889 299.008H82.37511111c-20.02488889 0-21.84533333 12.74311111-21.84533333 26.39644445V694.04444445c0 23.66577778 6.37155555 30.03733333 28.21688889 30.03733333h180.224l1.82044444 0.91022222z m520.64711111 162.01955555c-14.56355555 0-26.39644445-11.83288889-26.39644444-27.30666666 0-11.83288889 8.192-20.02488889 16.384-24.576 112.86755555-67.35644445 182.04444445-191.14666667 182.04444444-324.03911111 0-132.89244445-70.08711111-256.68266667-182.04444444-324.03911111-10.01244445-5.46133333-15.47377778-14.56355555-15.47377778-24.576 0-14.56355555 11.83288889-27.30666667 26.39644445-27.30666667 5.46133333 0 10.01244445 1.82044445 16.384 5.46133333 128.34133333 76.45866667 207.53066667 218.45333333 207.53066666 369.55022222 0 152.00711111-80.09955555 293.09155555-208.44088889 369.55022223-6.37155555 5.46133333-10.92266667 7.28177778-16.384 7.28177777z m-90.112-152.91733333c-14.56355555 0-26.39644445-11.83288889-26.39644444-27.30666667 0-10.01244445 4.55111111-18.20444445 12.74311111-23.66577777 61.89511111-34.58844445 100.12444445-100.12444445 100.12444444-171.12177778 0-70.08711111-37.31911111-134.71288889-96.48355555-170.21155555-8.192-4.55111111-12.74311111-13.65333333-12.74311111-23.66577778 0-14.56355555 11.83288889-27.30666667 26.39644444-27.30666667 4.55111111 0 11.83288889 2.73066667 15.47377778 4.55111111 74.63822222 44.60088889 121.96977778 127.43111111 121.96977778 215.72266667 0 90.112-48.24177778 173.85244445-125.61066667 218.45333333-1.82044445 0-9.10222222 4.55111111-15.47377778 4.55111111z"' + '      fill="#ffffff" p-id="1127"></path>' + '  </svg>' + '</span>' + '<span>语音播报</span>';
+              startBroadcastDOM.innerHTML = ' <span title="Voice Broadcast">' + '  <svg t="1583561695846" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"' + '    p-id="1126" width="16" height="16">' + '    <path' + '      d="M513.82044445 964.38044445c-8.192 0-15.47377778-2.73066667-21.84533334-8.192 0 0-46.42133333-41.87022222-99.21422222-86.47111112-89.20177778-73.728-117.41866667-88.29155555-123.79022222-90.112H35.04355555c-14.56355555 0-26.39644445-11.83288889-26.39644444-27.30666666V271.70133333c0-14.56355555 11.83288889-27.30666667 26.39644444-27.30666666H246.21511111c7.28177778-2.73066667 37.31911111-15.47377778 137.44355556-91.02222222 58.25422222-43.69066667 111.04711111-86.47111111 111.04711111-86.47111112 5.46133333-4.55111111 12.74311111-7.28177778 20.02488889-7.28177778 4.55111111 0 10.01244445 0.91022222 14.56355555 3.6408889 10.92266667 5.46133333 18.20444445 17.29422222 18.20444445 30.03733333v837.40444444c0 12.74311111-7.28177778 25.48622222-19.11466667 30.94755556-5.46133333 1.82044445-10.01244445 2.73066667-14.56355555 2.73066667zM270.79111111 724.992c19.11466667 0 48.24177778 8.192 167.48088889 106.496 16.384 13.65333333 33.67822222 28.21688889 51.88266667 43.69066667l5.46133333 4.55111111V139.71911111l-5.46133333 3.64088889c-22.75555555 17.29422222-44.60088889 34.58844445-65.536 50.06222222C293.54666667 291.72622222 264.41955555 299.008 245.30488889 299.008H82.37511111c-20.02488889 0-21.84533333 12.74311111-21.84533333 26.39644445V694.04444445c0 23.66577778 6.37155555 30.03733333 28.21688889 30.03733333h180.224l1.82044444 0.91022222z m520.64711111 162.01955555c-14.56355555 0-26.39644445-11.83288889-26.39644444-27.30666666 0-11.83288889 8.192-20.02488889 16.384-24.576 112.86755555-67.35644445 182.04444445-191.14666667 182.04444444-324.03911111 0-132.89244445-70.08711111-256.68266667-182.04444444-324.03911111-10.01244445-5.46133333-15.47377778-14.56355555-15.47377778-24.576 0-14.56355555 11.83288889-27.30666667 26.39644445-27.30666667 5.46133333 0 10.01244445 1.82044445 16.384 5.46133333 128.34133333 76.45866667 207.53066667 218.45333333 207.53066666 369.55022222 0 152.00711111-80.09955555 293.09155555-208.44088889 369.55022223-6.37155555 5.46133333-10.92266667 7.28177778-16.384 7.28177777z m-90.112-152.91733333c-14.56355555 0-26.39644445-11.83288889-26.39644444-27.30666667 0-10.01244445 4.55111111-18.20444445 12.74311111-23.66577777 61.89511111-34.58844445 100.12444445-100.12444445 100.12444444-171.12177778 0-70.08711111-37.31911111-134.71288889-96.48355555-170.21155555-8.192-4.55111111-12.74311111-13.65333333-12.74311111-23.66577778 0-14.56355555 11.83288889-27.30666667 26.39644444-27.30666667 4.55111111 0 11.83288889 2.73066667 15.47377778 4.55111111 74.63822222 44.60088889 121.96977778 127.43111111 121.96977778 215.72266667 0 90.112-48.24177778 173.85244445-125.61066667 218.45333333-1.82044445 0-9.10222222 4.55111111-15.47377778 4.55111111z"' + '      fill="#ffffff" p-id="1127"></path>' + '  </svg>' + '</span>' + '<span>Voice Broadcast</span>';
 
               startBroadcastDOM.onclick = function () {
                 this.setAttribute("class", "broadcast off hide");
                 stopBroadcastDOM.setAttribute("class", "broadcast on");
               };
 
-              stopBroadcastDOM.innerHTML = '<div class="pop-hover">' + '  <div class="pop-hover-content">' + '    <div class="vioce-list" id="voice-list">' + '      <ul class="voice-list-ul">' + '      </ul>' + '      <div id="voice-list-end"></div>' + '    </div>' + '    <div id="voice-custom" style="text-align: center;">自定义语音</div>' + '  </div>' + '</div>' + '<span title="语音播报">' + '  <svg t="1583561695846" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"' + '    p-id="1126" width="16" height="16">' + '    <path' + '      d="M513.82044445 964.38044445c-8.192 0-15.47377778-2.73066667-21.84533334-8.192 0 0-46.42133333-41.87022222-99.21422222-86.47111112-89.20177778-73.728-117.41866667-88.29155555-123.79022222-90.112H35.04355555c-14.56355555 0-26.39644445-11.83288889-26.39644444-27.30666666V271.70133333c0-14.56355555 11.83288889-27.30666667 26.39644444-27.30666666H246.21511111c7.28177778-2.73066667 37.31911111-15.47377778 137.44355556-91.02222222 58.25422222-43.69066667 111.04711111-86.47111111 111.04711111-86.47111112 5.46133333-4.55111111 12.74311111-7.28177778 20.02488889-7.28177778 4.55111111 0 10.01244445 0.91022222 14.56355555 3.6408889 10.92266667 5.46133333 18.20444445 17.29422222 18.20444445 30.03733333v837.40444444c0 12.74311111-7.28177778 25.48622222-19.11466667 30.94755556-5.46133333 1.82044445-10.01244445 2.73066667-14.56355555 2.73066667zM270.79111111 724.992c19.11466667 0 48.24177778 8.192 167.48088889 106.496 16.384 13.65333333 33.67822222 28.21688889 51.88266667 43.69066667l5.46133333 4.55111111V139.71911111l-5.46133333 3.64088889c-22.75555555 17.29422222-44.60088889 34.58844445-65.536 50.06222222C293.54666667 291.72622222 264.41955555 299.008 245.30488889 299.008H82.37511111c-20.02488889 0-21.84533333 12.74311111-21.84533333 26.39644445V694.04444445c0 23.66577778 6.37155555 30.03733333 28.21688889 30.03733333h180.224l1.82044444 0.91022222z m520.64711111 162.01955555c-14.56355555 0-26.39644445-11.83288889-26.39644444-27.30666666 0-11.83288889 8.192-20.02488889 16.384-24.576 112.86755555-67.35644445 182.04444445-191.14666667 182.04444444-324.03911111 0-132.89244445-70.08711111-256.68266667-182.04444444-324.03911111-10.01244445-5.46133333-15.47377778-14.56355555-15.47377778-24.576 0-14.56355555 11.83288889-27.30666667 26.39644445-27.30666667 5.46133333 0 10.01244445 1.82044445 16.384 5.46133333 128.34133333 76.45866667 207.53066667 218.45333333 207.53066666 369.55022222 0 152.00711111-80.09955555 293.09155555-208.44088889 369.55022223-6.37155555 5.46133333-10.92266667 7.28177778-16.384 7.28177777z m-90.112-152.91733333c-14.56355555 0-26.39644445-11.83288889-26.39644444-27.30666667 0-10.01244445 4.55111111-18.20444445 12.74311111-23.66577777 61.89511111-34.58844445 100.12444445-100.12444445 100.12444444-171.12177778 0-70.08711111-37.31911111-134.71288889-96.48355555-170.21155555-8.192-4.55111111-12.74311111-13.65333333-12.74311111-23.66577778 0-14.56355555 11.83288889-27.30666667 26.39644444-27.30666667 4.55111111 0 11.83288889 2.73066667 15.47377778 4.55111111 74.63822222 44.60088889 121.96977778 127.43111111 121.96977778 215.72266667 0 90.112-48.24177778 173.85244445-125.61066667 218.45333333-1.82044445 0-9.10222222 4.55111111-15.47377778 4.55111111z"' + '      fill="#ff0000" p-id="1127"></path>' + '  </svg>' + '</span>' + '<span>语音播报</span>'; // //自定义语音唤起
+              stopBroadcastDOM.innerHTML = '<div class="pop-hover">' + '  <div class="pop-hover-content">' + '    <div class="vioce-list" id="voice-list">' + '      <ul class="voice-list-ul">' + '      </ul>' + '      <div id="voice-list-end"></div>' + '    </div>' + '    <div id="voice-custom" style="text-align: center;">Custom Voice</div>' + '  </div>' + '</div>' + '<span title="Voice Broadcast">' + '  <svg t="1583561695846" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"' + '    p-id="1126" width="16" height="16">' + '    <path' + '      d="M513.82044445 964.38044445c-8.192 0-15.47377778-2.73066667-21.84533334-8.192 0 0-46.42133333-41.87022222-99.21422222-86.47111112-89.20177778-73.728-117.41866667-88.29155555-123.79022222-90.112H35.04355555c-14.56355555 0-26.39644445-11.83288889-26.39644444-27.30666666V271.70133333c0-14.56355555 11.83288889-27.30666667 26.39644444-27.30666666H246.21511111c7.28177778-2.73066667 37.31911111-15.47377778 137.44355556-91.02222222 58.25422222-43.69066667 111.04711111-86.47111111 111.04711111-86.47111112 5.46133333-4.55111111 12.74311111-7.28177778 20.02488889-7.28177778 4.55111111 0 10.01244445 0.91022222 14.56355555 3.6408889 10.92266667 5.46133333 18.20444445 17.29422222 18.20444445 30.03733333v837.40444444c0 12.74311111-7.28177778 25.48622222-19.11466667 30.94755556-5.46133333 1.82044445-10.01244445 2.73066667-14.56355555 2.73066667zM270.79111111 724.992c19.11466667 0 48.24177778 8.192 167.48088889 106.496 16.384 13.65333333 33.67822222 28.21688889 51.88266667 43.69066667l5.46133333 4.55111111V139.71911111l-5.46133333 3.64088889c-22.75555555 17.29422222-44.60088889 34.58844445-65.536 50.06222222C293.54666667 291.72622222 264.41955555 299.008 245.30488889 299.008H82.37511111c-20.02488889 0-21.84533333 12.74311111-21.84533333 26.39644445V694.04444445c0 23.66577778 6.37155555 30.03733333 28.21688889 30.03733333h180.224l1.82044444 0.91022222z m520.64711111 162.01955555c-14.56355555 0-26.39644445-11.83288889-26.39644444-27.30666666 0-11.83288889 8.192-20.02488889 16.384-24.576 112.86755555-67.35644445 182.04444445-191.14666667 182.04444444-324.03911111 0-132.89244445-70.08711111-256.68266667-182.04444444-324.03911111-10.01244445-5.46133333-15.47377778-14.56355555-15.47377778-24.576 0-14.56355555 11.83288889-27.30666667 26.39644445-27.30666667 5.46133333 0 10.01244445 1.82044445 16.384 5.46133333 128.34133333 76.45866667 207.53066667 218.45333333 207.53066666 369.55022222 0 152.00711111-80.09955555 293.09155555-208.44088889 369.55022223-6.37155555 5.46133333-10.92266667 7.28177778-16.384 7.28177777z m-90.112-152.91733333c-14.56355555 0-26.39644445-11.83288889-26.39644444-27.30666667 0-10.01244445 4.55111111-18.20444445 12.74311111-23.66577777 61.89511111-34.58844445 100.12444445-100.12444445 100.12444444-171.12177778 0-70.08711111-37.31911111-134.71288889-96.48355555-170.21155555-8.192-4.55111111-12.74311111-13.65333333-12.74311111-23.66577778 0-14.56355555 11.83288889-27.30666667 26.39644444-27.30666667 4.55111111 0 11.83288889 2.73066667 15.47377778 4.55111111 74.63822222 44.60088889 121.96977778 127.43111111 121.96977778 215.72266667 0 90.112-48.24177778 173.85244445-125.61066667 218.45333333-1.82044445 0-9.10222222 4.55111111-15.47377778 4.55111111z"' + '      fill="#ff0000" p-id="1127"></path>' + '  </svg>' + '</span>' + '<span>Voice Broadcast</span>'; // //Custom Voice唤起
               // document.getElementById("voice-custom").onclick = function(){
-              //   console.log("显示自定义语音");
+              //   console.log("Show Custom Voice");
               // }
 
               stopBroadcastDOM.onclick = function () {
@@ -32664,9 +32664,9 @@ var Monitor = /*#__PURE__*/function () {
               footerContainer.appendChild(stopBroadcastDOM); // 召唤自定义语言
 
               document.getElementById("voice-custom").onclick = function () {
-                console.log("显示自定义语音");
+                console.log("Show Custom Voice");
                 startSpeakDOM.setAttribute('class', 'speak off');
-              }; // 获取语音列表
+              }; // get voice列表
 
 
               fetchVoiceList(0);
@@ -32676,8 +32676,8 @@ var Monitor = /*#__PURE__*/function () {
               stopSpeakDOM.setAttribute('class', 'speak on hide');
               startSpeakDOM.setAttribute('id', 'startSpeak');
               stopSpeakDOM.setAttribute('id', 'stopSpeak');
-              startSpeakDOM.innerHTML = '<span title="按住说话">' + '  <svg t="1581994757678" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"' + '    p-id="1639" width="16" height="16">' + '    <path' + '      d="M757.059829 393.846154v-52.512821h262.564103v52.512821H757.059829z m-420.102564 481.367521v96.273504h175.042735a8.752137 8.752137 0 0 1 8.752137 8.752137v35.008547a8.752137 8.752137 0 0 1-8.752137 8.752137H109.401709a8.752137 8.752137 0 0 1-8.752136-8.752137v-35.008547a8.752137 8.752137 0 0 1 8.752136-8.752137h175.042735v-96.273504C129.767932 875.213675 4.376068 749.821812 4.376068 595.145299V463.863248a26.25641 26.25641 0 1 1 52.512821 0v113.777778c0 140.174222 113.637744 253.811966 253.811966 253.811965s253.811966-113.637744 253.811966-253.811965V463.863248a26.25641 26.25641 0 1 1 52.51282 0v131.282051c0 154.676513-125.391863 280.068376-280.068376 280.068376z m-26.25641-96.273504c-111.178393 0-201.299145-90.120752-201.299146-201.299145V201.299145C109.401709 90.120752 199.522462 0 310.700855 0s201.299145 90.120752 201.299145 201.299145v376.341881c0 111.178393-90.120752 201.299145-201.299145 201.299145z m691.418803-280.068376H757.059829v-52.512821h245.059829v52.512821z m-17.504273 105.025641H757.059829v-52.512821h227.555556v52.512821z m-17.504274 105.025641H757.059829v-52.512821h210.051282v52.512821z m-8.752137 105.025641H757.059829v-52.512821h201.299145v52.512821z m-17.504273 105.025641H757.059829v-52.512821h183.794872v52.512821z m-26.25641 105.025641H757.059829v-52.512821h157.538462v52.512821z"' + '      p-id="1640" fill="#ffffff"></path>' + '  </svg>' + '</span>' + '<span>按住说话</span>';
-              stopSpeakDOM.innerHTML = '<span title="按住说话">' + '<svg t="1581994757678" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"' + '  p-id="1639" width="16" height="16">' + '  <path' + '    d="M757.059829 393.846154v-52.512821h262.564103v52.512821H757.059829z m-420.102564 481.367521v96.273504h175.042735a8.752137 8.752137 0 0 1 8.752137 8.752137v35.008547a8.752137 8.752137 0 0 1-8.752137 8.752137H109.401709a8.752137 8.752137 0 0 1-8.752136-8.752137v-35.008547a8.752137 8.752137 0 0 1 8.752136-8.752137h175.042735v-96.273504C129.767932 875.213675 4.376068 749.821812 4.376068 595.145299V463.863248a26.25641 26.25641 0 1 1 52.512821 0v113.777778c0 140.174222 113.637744 253.811966 253.811966 253.811965s253.811966-113.637744 253.811966-253.811965V463.863248a26.25641 26.25641 0 1 1 52.51282 0v131.282051c0 154.676513-125.391863 280.068376-280.068376 280.068376z m-26.25641-96.273504c-111.178393 0-201.299145-90.120752-201.299146-201.299145V201.299145C109.401709 90.120752 199.522462 0 310.700855 0s201.299145 90.120752 201.299145 201.299145v376.341881c0 111.178393-90.120752 201.299145-201.299145 201.299145z m691.418803-280.068376H757.059829v-52.512821h245.059829v52.512821z m-17.504273 105.025641H757.059829v-52.512821h227.555556v52.512821z m-17.504274 105.025641H757.059829v-52.512821h210.051282v52.512821z m-8.752137 105.025641H757.059829v-52.512821h201.299145v52.512821z m-17.504273 105.025641H757.059829v-52.512821h183.794872v52.512821z m-26.25641 105.025641H757.059829v-52.512821h157.538462v52.512821z"' + '    p-id="1640" fill="#ff0000"></path>' + '</svg>' + '</span>' + '<span>松开发送</span>';
+              startSpeakDOM.innerHTML = '<span title="Hold to talk">' + '  <svg t="1581994757678" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"' + '    p-id="1639" width="16" height="16">' + '    <path' + '      d="M757.059829 393.846154v-52.512821h262.564103v52.512821H757.059829z m-420.102564 481.367521v96.273504h175.042735a8.752137 8.752137 0 0 1 8.752137 8.752137v35.008547a8.752137 8.752137 0 0 1-8.752137 8.752137H109.401709a8.752137 8.752137 0 0 1-8.752136-8.752137v-35.008547a8.752137 8.752137 0 0 1 8.752136-8.752137h175.042735v-96.273504C129.767932 875.213675 4.376068 749.821812 4.376068 595.145299V463.863248a26.25641 26.25641 0 1 1 52.512821 0v113.777778c0 140.174222 113.637744 253.811966 253.811966 253.811965s253.811966-113.637744 253.811966-253.811965V463.863248a26.25641 26.25641 0 1 1 52.51282 0v131.282051c0 154.676513-125.391863 280.068376-280.068376 280.068376z m-26.25641-96.273504c-111.178393 0-201.299145-90.120752-201.299146-201.299145V201.299145C109.401709 90.120752 199.522462 0 310.700855 0s201.299145 90.120752 201.299145 201.299145v376.341881c0 111.178393-90.120752 201.299145-201.299145 201.299145z m691.418803-280.068376H757.059829v-52.512821h245.059829v52.512821z m-17.504273 105.025641H757.059829v-52.512821h227.555556v52.512821z m-17.504274 105.025641H757.059829v-52.512821h210.051282v52.512821z m-8.752137 105.025641H757.059829v-52.512821h201.299145v52.512821z m-17.504273 105.025641H757.059829v-52.512821h183.794872v52.512821z m-26.25641 105.025641H757.059829v-52.512821h157.538462v52.512821z"' + '      p-id="1640" fill="#ffffff"></path>' + '  </svg>' + '</span>' + '<span>Hold to talk</span>';
+              stopSpeakDOM.innerHTML = '<span title="Hold to talk">' + '<svg t="1581994757678" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"' + '  p-id="1639" width="16" height="16">' + '  <path' + '    d="M757.059829 393.846154v-52.512821h262.564103v52.512821H757.059829z m-420.102564 481.367521v96.273504h175.042735a8.752137 8.752137 0 0 1 8.752137 8.752137v35.008547a8.752137 8.752137 0 0 1-8.752137 8.752137H109.401709a8.752137 8.752137 0 0 1-8.752136-8.752137v-35.008547a8.752137 8.752137 0 0 1 8.752136-8.752137h175.042735v-96.273504C129.767932 875.213675 4.376068 749.821812 4.376068 595.145299V463.863248a26.25641 26.25641 0 1 1 52.512821 0v113.777778c0 140.174222 113.637744 253.811966 253.811966 253.811965s253.811966-113.637744 253.811966-253.811965V463.863248a26.25641 26.25641 0 1 1 52.51282 0v131.282051c0 154.676513-125.391863 280.068376-280.068376 280.068376z m-26.25641-96.273504c-111.178393 0-201.299145-90.120752-201.299146-201.299145V201.299145C109.401709 90.120752 199.522462 0 310.700855 0s201.299145 90.120752 201.299145 201.299145v376.341881c0 111.178393-90.120752 201.299145-201.299145 201.299145z m691.418803-280.068376H757.059829v-52.512821h245.059829v52.512821z m-17.504273 105.025641H757.059829v-52.512821h227.555556v52.512821z m-17.504274 105.025641H757.059829v-52.512821h210.051282v52.512821z m-8.752137 105.025641H757.059829v-52.512821h201.299145v52.512821z m-17.504273 105.025641H757.059829v-52.512821h183.794872v52.512821z m-26.25641 105.025641H757.059829v-52.512821h157.538462v52.512821z"' + '    p-id="1640" fill="#ff0000"></path>' + '</svg>' + '</span>' + '<span>Release to send</span>';
               footerContainer.appendChild(startSpeakDOM);
               footerContainer.appendChild(stopSpeakDOM);
 
@@ -32686,14 +32686,14 @@ var Monitor = /*#__PURE__*/function () {
                 console.log("sum", sum, this.scrollTop, document.getElementById("voice-list").clientHeight);
 
                 if (sum <= this.scrollTop + this.clientHeight) {
-                  console.log("拖动到底，执行加载", EZUIKit.state.page);
+                  console.log("Drag to the end,implement Load ", EZUIKit.state.page);
                   fetchVoiceList(++EZUIKit.state.page);
                 }
               }; // $("#voice-list").unbind("scroll").bind("scroll", function (e) {
               //   // console.log("e",e,this.scrollHeight, $(this).scrollTop() + $(this).height())
               //   var sum = this.scrollHeight;
               //   if (sum <= $(this).scrollTop() + $(this).height()) {
-              //     console.log("拖动到底，执行加载", page);
+              //     console.log("Drag to the end,implement Load ", page);
               //     fetchVoiceList(++page);
               //   }
               //   loading = false;
@@ -32705,17 +32705,17 @@ var Monitor = /*#__PURE__*/function () {
               timeAreaDOM.setAttribute('class', 'time-area');
               timeAreaDOM.setAttribute('id', 'time-area');
               timeAreaDOM.innerHTML = '00:00';
-              footerContainer.appendChild(timeAreaDOM); // 按住说话
+              footerContainer.appendChild(timeAreaDOM); // Hold to talk
 
               var recorder;
 
               document.getElementById('startSpeak').onmousedown = function () {
                 if (EZUIKit.state.countTimer) {
-                  window.layer.msg("语音设备正忙，请稍后重试");
+                  window.layer.msg("Voice Device is busy, please wait to try again");
                   return false;
                 }
 
-                console.log("按住说话");
+                console.log("Hold to talk");
                 startSpeakDOM.setAttribute('class', 'speak off hide');
                 stopSpeakDOM.setAttribute('class', 'speak on'); // console.log("startRecording",startRecording);
                 // startRecording();
@@ -32739,12 +32739,12 @@ var Monitor = /*#__PURE__*/function () {
                     countTime('destory', 0);
                     this.setAttribute("class", "ptp-talk on hide");
                     startTalkDOM.setAttribute("class", "ptp-talk off");
-                    window.layer.msg("不超过1分钟");
+                    window.layer.msg("Less than 1 minute");
                   } else {
                     EZUIKit.state.recodeTime = EZUIKit.state.recodeTime + 1;
                   }
                 }, 1000);
-                /** 录音控制 */
+                /** Recording控制 */
 
                 var audio_context;
 
@@ -32779,11 +32779,11 @@ var Monitor = /*#__PURE__*/function () {
                     console.log('No live audio input: ' + e);
                   });
                 }
-              }; // 松开发送
+              }; // Release to send
 
 
               document.getElementById('stopSpeak').onmouseup = function () {
-                console.log("松开发送");
+                console.log("Release to send");
                 stopSpeakDOM.setAttribute('class', 'speak on hide');
                 stopSpeakFun();
 
@@ -32791,7 +32791,7 @@ var Monitor = /*#__PURE__*/function () {
                   countTime('destory', 0);
 
                   if (EZUIKit.state.recodeTime < 1) {
-                    window.layer.msg("说话时间过短");
+                    window.layer.msg("Speaking too short");
                     clearInterval(EZUIKit.state.recodeTimer);
                     return false;
                   }
@@ -32808,7 +32808,7 @@ var Monitor = /*#__PURE__*/function () {
                       console.log("wav_file", wav_file);
 
                       if (wav_file.size < 1000) {
-                        window.layer.msg("录音失败，请重试"); // recodeTime = 0;
+                        window.layer.msg("Recording fail, please try again"); // recodeTime = 0;
 
                         EZUIKit.state.recodeTime = 0;
                         return false;
@@ -32833,9 +32833,9 @@ var Monitor = /*#__PURE__*/function () {
                           // $("#stopBroadcast").hide();
                           countTime('sub', EZUIKit.state.recodeTime + 2);
                         } else if (data.code == "10001") {
-                          window.layer.msg("未找到当前语音");
+                          window.layer.msg("No current voice found");
                         } else {
-                          window.layer.msg(data.msg || '发送失败，请稍后再试');
+                          window.layer.msg(data.msg || 'Send fail, please wait and try again');
                         } // padding = false;
 
                       }
@@ -33006,7 +33006,7 @@ var Monitor = /*#__PURE__*/function () {
             break;
         }
       }
-    }); // 全屏变化回调
+    }); // fullscreen变化 Callback
 
     function fullscreenchange(data) {
       _this.opt.fullScreenStatus = data ? 1 : 0;
@@ -33035,7 +33035,7 @@ var Monitor = /*#__PURE__*/function () {
         fullscreenchange(e);
       });
     }
-  }; // 播放相关API
+  }; // play 相关API
 
 
   EZUIKitPlayer.prototype.play = function (data) {
@@ -33185,18 +33185,18 @@ var Monitor = /*#__PURE__*/function () {
     var player = document.getElementById(id).contentWindow;
 
     if (navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)) {
-      // console.log('移动端全屏');
+      // console.log('移动端fullscreen');
       var width = document.documentElement.clientWidth;
       var height = document.documentElement.clientHeight; // wrapper = document.getElementById("test"),
 
-      var wrapper = document.body; //document.body 属性返回 <body> 元素， document.documentElement 属性返回 <html> 元素。
+      var wrapper = document.body; //document.body 属性return <body> 元素， document.documentElement 属性return <html> 元素。
 
       wrapper = document.getElementById(id);
       var style = "";
-      style += "width:" + height + "px;"; // 注意旋转后的宽高切换
+      style += "width:" + height + "px;"; // 注意旋转后的宽高 switch
 
       style += "height:" + width + "px;";
-      style += "-webkit-transform: rotate(90deg); transform: rotate(90deg);"; // 注意旋转中点的处理
+      style += "-webkit-transform: rotate(90deg); transform: rotate(90deg);"; // 注意旋转中点的 handle 
 
       style += "-webkit-transform-origin: " + width / 2 + "px " + width / 2 + "px;";
       style += "transform-origin: " + width / 2 + "px " + width / 2 + "px;";
@@ -33216,7 +33216,7 @@ var Monitor = /*#__PURE__*/function () {
         player.postMessage('autoResize', domain + "/ezopen/h5/iframe");
       }, 500);
     } else {
-      // console.log('pc端全屏');
+      // console.log('pc端fullscreen');
       var requestFullScreen = function requestFullScreen(element) {
         var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
 
@@ -33253,7 +33253,7 @@ var Monitor = /*#__PURE__*/function () {
       var width = document.getElementById(id).width;
       var height = document.getElementById(id).height; // wrapper = document.getElementById("test"),
 
-      var wrapper = document.body; //document.body 属性返回 <body> 元素， document.documentElement 属性返回 <html> 元素。
+      var wrapper = document.body; //document.body 属性return <body> 元素， document.documentElement 属性return <html> 元素。
 
       wrapper = document.getElementById(id);
       var style = "";
@@ -33370,7 +33370,7 @@ var Monitor = /*#__PURE__*/function () {
   };
 
   EZUIKitPlayer.prototype.startTalk = function () {
-    console.log("执行开始对讲");
+    console.log("implement Start intercom");
     console.log(this.opt);
 
     var _this = this;
@@ -33411,7 +33411,7 @@ var Monitor = /*#__PURE__*/function () {
   };
 
   EZUIKitPlayer.prototype.stopTalk = function () {
-    console.log("执行结束对讲");
+    console.log("implement End the intercom");
     window.stopTalk();
   };
 
@@ -33472,7 +33472,7 @@ var Monitor = /*#__PURE__*/function () {
     }, domain + "/ezopen/h5/iframe");
   };
   /**
-   * 视频播放器-结束
+   * 视频play 器-结束
    */
 
 
@@ -33559,13 +33559,13 @@ var __instance = function () {
     __instance(this);
   }
   /**
-   * @synopsis 音频播放
+   * @synopsis 音频play 
    *
    *  @param dataBuf [IN] 音频缓存
-   *  @param dataLen [IN] 缓存长度
-   *  @param audioInfo [IN] 音频参数
+   *  @param dataLen [IN] 缓存 length
+   *  @param audioInfo [IN] 音频parameter 
    *
-   * @returns 状态码
+   * @returns  state码
    */
 
 
@@ -33648,9 +33648,9 @@ var __instance = function () {
       return 0;
     }
     /**
-     * @synopsis 停止播放
+     * @synopsis stopplay 
      *
-     * @returns 返回音量
+     * @returns return音量
      */
 
   }, {
@@ -33671,14 +33671,14 @@ var __instance = function () {
      *
      *  @param iVolume [IN] 音量
      *
-     * @returns 状态码
+     * @returns  state码
      */
 
   }, {
     key: 'SetVolume',
     value: function SetVolume(iVolume) {
       this.bSetVolume = true;
-      this.currentVolume = iVolume; // 储存当前窗口设置音量值
+      this.currentVolume = iVolume; // 储存当forward窗口设置音量值
 
       this.mVolumes.set(this.iWndNum, this.currentVolume);
       return true;
@@ -33688,13 +33688,13 @@ var __instance = function () {
      *
      *  @param iWndNum [IN] 窗口号
      *
-     * @returns 状态码
+     * @returns  state码
      */
 
   }, {
     key: 'SetWndNum',
     value: function SetWndNum(iWndNum) {
-      this.iWndNum = iWndNum; // 获取当前窗口设置音量值
+      this.iWndNum = iWndNum; // get 当forward窗口设置音量值
 
       var iVolume = this.mVolumes.get(iWndNum);
 
@@ -33706,15 +33706,15 @@ var __instance = function () {
       return true;
     }
     /**
-     * @synopsis 获取音量
+     * @synopsis get 音量
      *
-     * @returns 返回音量
+     * @returns return音量
      */
 
   }, {
     key: 'GetVolume',
     value: function GetVolume() {
-      // 获取当前窗口设置音量值
+      // get 当forward窗口设置音量值
       var iVolume = this.mVolumes.get(this.iWndNum);
 
       if (iVolume == undefined) {
@@ -33752,7 +33752,7 @@ var fragmentYUVShader = ['precision highp float;', 'varying highp vec2 textureCo
     }
   }
   /**
-   * 初始化WebGL上下文
+   * initializationWebGL上下文
    */
 
   RenderManager.prototype.initContextGL = function () {
@@ -33773,7 +33773,7 @@ var fragmentYUVShader = ['precision highp float;', 'varying highp vec2 textureCo
     console.log("WebGL1.0");
   };
   /**
-   * 初始化着色器程序
+   * initialization着色器程序
    * @param vertexShaderScript    顶点着色器脚本
    * @param fragmentShaderScript  片段着色器脚本
    */
@@ -33781,7 +33781,7 @@ var fragmentYUVShader = ['precision highp float;', 'varying highp vec2 textureCo
 
   RenderManager.prototype.initProgram = function (vertexShaderScript, fragmentShaderScript) {
     var gl = this.contextGL;
-    var vertexShader = gl.createShader(gl.VERTEX_SHADER); //创建定点着色器
+    var vertexShader = gl.createShader(gl.VERTEX_SHADER); //create 定点着色器
 
     gl.shaderSource(vertexShader, vertexShaderScript);
     gl.compileShader(vertexShader);
@@ -33812,7 +33812,7 @@ var fragmentYUVShader = ['precision highp float;', 'varying highp vec2 textureCo
     return program;
   };
   /**
-   * 初始化数据缓存
+   * initialization数据缓存
    */
 
 
@@ -33830,7 +33830,7 @@ var fragmentYUVShader = ['precision highp float;', 'varying highp vec2 textureCo
     this.texturePosBuffer = texturePosBuffer;
   };
   /**
-   * 创建纹理
+   * create 纹理
    */
 
 
@@ -33846,7 +33846,7 @@ var fragmentYUVShader = ['precision highp float;', 'varying highp vec2 textureCo
     return textureRef;
   };
   /**
-   * 初始化YUV纹理
+   * initializationYUV纹理
    */
 
 
@@ -34077,7 +34077,7 @@ var matchTemplate = function matchTemplate(templateName, params) {
         templateId: templateName
       };
     } else if (IFRAMETEMPLATE.indexOf(templateName) !== -1) {
-      // 精简版且不使用头部，底部，仅播放视频，建议使用按需加载避免iframe内存额外消耗
+      // 精简版且不使用头部，底部，仅play 视频，建议使用按需Load 避免iframe内存额外消耗
       if (templateName === 'simple' && typeof params.header === 'undefined' && typeof params.footer === 'undefined') {
         return {
           templateType: 'local',
@@ -34099,7 +34099,7 @@ var matchTemplate = function matchTemplate(templateName, params) {
 };
 
 var isVersion2Available = function isVersion2Available() {
-  var ua = window.navigator.userAgent.toLowerCase(); //获取用户端信息
+  var ua = window.navigator.userAgent.toLowerCase(); //get 用户端信息
 
   var info = {
     sa: /version.*safari/.test(ua),
@@ -34142,7 +34142,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
     _classCallCheck$1(this, EZUIKitPlayer);
 
     var _params$autoplay = params.autoplay,
-        autoplay = _params$autoplay === void 0 ? true : _params$autoplay; // 如果设置了模板（除精简版），此处不自动播放，根据模板判断是否执行自动播放:
+        autoplay = _params$autoplay === void 0 ? true : _params$autoplay; // 如果设置了模板（除精简版），此处不Automatic play ，根据模板判断是否implement Automatic play :
 
     if (params.template || params.themeData) {
       autoplay = false;
@@ -34178,13 +34178,13 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
       this.disabledPTZ = false;
       this.enableSharedArrayBufferGuide = false;
       this.capacity = {};
-      this.playTimer = null; // 播放定时器，限制至少1秒触发播放
+      this.playTimer = null; // play 定时器，限制至少1秒触发play 
 
       this.env = {
         domain: "https://open.ys7.com"
       };
       var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      this.isMobile = isMobile; // 兼容多次初始化
+      this.isMobile = isMobile; // 兼容多次initialization
 
       if (document.getElementById("".concat(this.id, "-wrap"))) {
         document.getElementById("".concat(this.id, "-wrap")).innerHTML = "";
@@ -34231,16 +34231,16 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
         this.enableSharedArrayBufferGuide = params.enableSharedArrayBufferGuide;
       }
 
-      var pluginUrl = "".concat(this.staticPath, "/js/jsPluginV1-1.0.0.min.js"); // 执行初始化；
+      var pluginUrl = "".concat(this.staticPath, "/js/jsPluginV1-1.0.0.min.js"); // implement initialization；
 
       var doInit = function doInit() {
         window.addPluginUrlIng = true;
 
         if (isVersion2Available()) {
-          console.log("启用多线程解析视频");
+          console.log("Enable multithreaded analyze video");
           pluginUrl = "".concat(_this.staticPath, "/js/jsPluginV2-2.0.1.min.js");
         } else {
-          // 是否引导用户开启谷歌实验室 Google Labs 特性
+          // 是否引导用户Turn on 谷歌实验室 Google Labs 特性
           //enableSharedArrayBufferGuide
           var getChromeVersion = function getChromeVersion() {
             var arr = navigator.userAgent.split(' ');
@@ -34261,17 +34261,17 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
 
 
           if (!isMobile && 91 < getChromeVersion && _this.enableSharedArrayBufferGuide) {
-            console.log("提示用户开启谷歌实验室特性");
+            console.log("Prompt user to enable Google Labs feature");
             var wapDomId = "".concat(_this.id, "-wrap");
             var guideDom = document.createElement("div");
             var guideSpan = document.createElement("span");
-            guideSpan.innerHTML = "您当前浏览器可以开启谷歌实验室多线程特性，获取更好播放体验，避免浏览器卡顿及崩溃,详见";
+            guideSpan.innerHTML = "Your current browser can enable the multi-threading feature of Google Labs to get a better play experience and avoid browser freezes and crashes. For details, see";
             guideDom.appendChild(guideSpan);
             var guideLink = document.createElement("a");
             guideLink.href = "https://open.ys7.com/help/384";
             guideLink.setAttribute("target", "_blank");
             guideDom.appendChild(guideLink);
-            guideLink.innerHTML = "开启说明"; //guideDom.innerHTML = "您的浏览器当前使用单进程播放视频，可能因内存占用过高导致浏览器卡顿,您可参考·谷歌浏览器开启多线程（链接）·开启谷歌实验室多线程特性，获取更好播放体验";
+            guideLink.innerHTML = "Open instructions"; //guideDom.innerHTML = "您的浏览器当forward使用单进程play 视频，可能因内存占用过高导致浏览器卡顿,您可参考·谷歌浏览器Turn on 多线程（链接）·Turn on 谷歌实验室多线程特性，get 更好play 体验";
 
             guideDom.id = "".concat(_this.id, "-guide");
             guideDom.style = "font-size:12px;color:red;";
@@ -34301,7 +34301,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
               ExterVer: isVersion2Available() ? "v7.0.0" : "v6.0.0"
             });
 
-            console.log("初始化-");
+            console.log("initialization-");
 
             var initEZUIKitPlayerPromise = _this.initEZUIKitPlayer(params);
 
@@ -34312,7 +34312,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
                 _this.playStartTime = new Date().getTime();
 
                 _this._pluginPlay(values[1], function () {
-                  console.log("自动播放成功");
+                  console.log("Automatic play  success");
 
                   _this.Monitor.dclog({
                     url: _this.url,
@@ -34321,7 +34321,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
                     text: 'autoPlaySuccess'
                   });
                 }, function () {
-                  console.log("自动播放失败");
+                  console.log("Automatic Play failed");
 
                   _this.Monitor.dclog({
                     url: _this.url,
@@ -34343,7 +34343,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
               console.log("err", err);
 
               _this.pluginStatus.loadingSetText({
-                text: err && err.msg || "获取播放地址失败",
+                text: err && err.msg || "get play address fail",
                 color: 'red'
               });
             });
@@ -34365,7 +34365,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
             var initEZUIKitPlayerPromise = _this.initEZUIKitPlayer(params);
 
             initEZUIKitPlayerPromise.then(function (data) {
-              console.log("初始化成功", data);
+              console.log("initialization success", data);
               window.EZUIKit[params.id].state.EZUIKitPlayer.init = true;
 
               if (document.getElementById("".concat(params.id, "canvas_draw0"))) {
@@ -34394,13 +34394,13 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
         }
 
         _this.getDeviceCapacity();
-      }; // 如果浏览器正在加载插件
+      }; // 如果浏览器is Load 插件
 
 
       if (window.addPluginUrlIng) {
         var doInitTimer = setInterval(function () {
           if (window.JSPluginV1 || window.JSPluginV2) {
-            // 判断加载成功
+            // 判断Load  success
             clearInterval(doInitTimer);
             doInit();
           }
@@ -34421,10 +34421,10 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
       return _this._resume(time);
     }, 1000, true); //this.changePlayUrl = debouncePromise((time)=>this._changePlayUrl(time),1000,true);
     // 监听到页面退出
-    // 研究院反馈，播放过程中退出页面需要执行停止视频，否则可能导致浏览器崩溃
+    // 研究院反馈，play 过程中退出页面需要implement stop视频，否则可能导致浏览器崩溃
 
     window.addEventListener("beforeunload", function () {
-      console.log("退出页面，停止视频流");
+      console.log("Exit page, stop video stream");
 
       _this.stop();
     });
@@ -34477,7 +34477,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
         if (typeof this.params.handleThemeChange === 'function') {
           this.handleThemeChange = this.params.handleThemeChange;
         }
-      } // 初始化Message模块
+      } // initializationMessage模块
 
 
       var pluginMessage = new Message(this, id);
@@ -34506,27 +34506,27 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
           _this2.pluginStatus.loadingStart(id);
 
           _this2.pluginStatus.loadingSetText({
-            text: '初始化播放器完成'
+            text: 'initializationplay device complete'
           });
 
           jSPlugin.EventCallback = {
             pluginErrorHandler: function pluginErrorHandler(iWndIndex, iErrorCode, oError) {
-              //插件错误回调
+              //插件 Error Callback
               console.log(iWndIndex, iErrorCode, oError);
 
               if (iErrorCode === 1003) {
-                console.log("断流");
+                console.log("Cut off");
 
                 if (!jSPlugin.bPlay) {
                   _this2.pluginStatus.loadingSetText({
-                    text: "连接断开，请重试",
+                    text: "Disconnected, please try again",
                     color: 'red'
                   });
                 }
 
                 if (typeof _this2.params.handleError === 'function') {
                   _this2.params.handleError({
-                    msg: "连接断开，请重试",
+                    msg: "Disconnected, please try again",
                     retcode: 1003,
                     id: _this2.params.id,
                     type: "handleError"
@@ -34558,7 +34558,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
           // }
 
           var checkTimer = setInterval(function () {
-            //轮询是否加载解码库成功
+            //轮询是否Load 解码库 success
             if (window.JSPlayerModuleLoaded) {
               clearInterval(checkTimer);
 
@@ -34573,7 +34573,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
               resolve({
                 meta: {
                   retcode: 200,
-                  msg: "初始化成功"
+                  msg: "initialization success"
                 }
               });
             }
@@ -34598,34 +34598,34 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
           _this2.pluginStatus.loadingStart(id);
 
           _this2.pluginStatus.loadingSetText({
-            text: '初始化播放器完成'
+            text: 'initializationplay device complete'
           });
 
           jSPlugin.EventCallback = {
             loadEventHandler: function loadEventHandler() {},
             zoomEventResponse: function
               /*iMode, aPoint*/
-            zoomEventResponse() {//电子放大回调
+            zoomEventResponse() {//电子放大 Callback
             },
-            windowEventSelect: function windowEventSelect(iWndIndex) {//插件选中窗口回调
+            windowEventSelect: function windowEventSelect(iWndIndex) {//插件选中窗口 Callback
             },
             pluginErrorHandler: function pluginErrorHandler(iWndIndex, iErrorCode, oError) {
-              //插件错误回调
+              //插件 Error Callback
               console.log(iWndIndex, iErrorCode, oError);
 
               if (iErrorCode === 1003) {
-                console.log("断流");
+                console.log("Cut off");
 
                 if (!jSPlugin.bPlay) {
                   _this2.pluginStatus.loadingSetText({
-                    text: "连接断开，请重试",
+                    text: "Disconnected, please try again",
                     color: 'red'
                   });
                 }
 
                 if (typeof _this2.params.handleError === 'function') {
                   _this2.params.handleError({
-                    msg: "连接断开，请重试",
+                    msg: "Disconnected, please try again",
                     retcode: 1003,
                     id: _this2.params.id,
                     type: "handleError"
@@ -34680,7 +34680,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
           resolve({
             meta: {
               retcode: 200,
-              msg: "初始化成功"
+              msg: "initialization success"
             }
           });
         }
@@ -34740,7 +34740,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
               realUrl = realUrl + '&ssn=' + stream + '&auth=1&cln=100';
             }
 
-            console.log(realUrl); // 设置秘钥 - 如果地址中包含秘钥参数，播放前配置到JSPlugin对应实例中
+            console.log(realUrl); // 设置秘钥 - 如果address中包含秘钥parameter ，play forward配置到JSPlugin对应实例中
 
             var validateCode = getQueryString('checkCode', realUrl);
 
@@ -34748,11 +34748,11 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
               if (typeof _this3.jSPlugin.decoderVersion !== 'undefined' && _this3.jSPlugin.decoderVersion === '2.0') {
                 _this3.validateCode = validateCode;
               } else {
-                console.log("设置密钥", validateCode);
+                console.log("set key", validateCode);
 
                 _this3.jSPlugin.JS_SetSecretKey(0, validateCode);
               }
-            } // 回放处理
+            } // 回放 handle 
 
 
             if (realUrl.indexOf('playback') !== -1) {
@@ -34778,7 +34778,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
                 if (!getQueryString('end', realUrl)) {
                   realUrl += '&end=' + formatRecTime(wsEnd, '235959');
                 }
-              } // api错误处理
+              } // api Error handle 
 
 
               if (!getQueryString('stream', playUrl)) {
@@ -34803,7 +34803,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
                         realUrl += '&recSlice=' + recSliceArrJSON.replace('\\', '') + '&r=' + Math.random();
                         resolve(realUrl);
                       } else {
-                        // 云存储回调事务
+                        // 云存储 Callback事务
                         var recTransaction = function recTransaction() {
                           function recAPIV2Success(data) {
                             if (data.data && data.data.files && data.data.files.length > 0) {
@@ -34840,13 +34840,13 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
                     } else {
                       reject({
                         retcode: -1,
-                        msg: "未找到录像片段"
+                        msg: "No footage found"
                       });
                     }
                   } else {
                     reject({
                       retcode: -1,
-                      msg: "未找到录像片段"
+                      msg: "No footage found"
                     });
                   }
 
@@ -34871,8 +34871,8 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
                   }
                 };
 
-                //云存储回放
-                // 调用回放API接口获取回放片段 - start
+                //Cloud storage playback
+                // Transfer回放API接口get 回放片段 - start
                 var recBegin = reRormatRecTime(getQueryString('begin', realUrl));
                 var recEnd = reRormatRecTime(getQueryString('end', realUrl));
                 var deviceSerial = getQueryString('serial', realUrl);
@@ -34889,7 +34889,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
                 };
                 request(recSliceUrl, 'POST', recSliceParams, '', recAPISuccess);
               } else {
-                // 本地回放
+                // Local playback
                 //alarm rec - start
                 if (url.indexOf('alarmId') !== -1) {
                   var _recAPISuccess = function _recAPISuccess(data) {
@@ -34935,7 +34935,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
                     }
                   };
 
-                  console.log("进入alarmId回放"); // 调用回放API接口获取回放片段 - start
+                  console.log("Enter alarmId playback"); // Transfer回放API接口get 回放片段 - start
 
                   var alarmId = getQueryString('alarmId', realUrl);
                   var recBegin = reRormatRecTime(getQueryString('begin', realUrl));
@@ -34991,10 +34991,10 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
         // 用户格式 无需更改 => 20182626T000000Z
         // return time
         // 用户格式需要更改
-        //用户时间长度为 14 20181226000000  =》 20181226000000
-        // 用户长度为12     201812260000    =》 201812260000 + defaultTime后面2位
-        // 用户长度为10     2018122600      =》 201812260000 + defaultTime后面4位
-        // 用户长度为8     20181226         =》 201812260000 + defaultTime后面6位
+        //用户时间 length为 14 20181226000000  =》 20181226000000
+        // 用户 length为12     201812260000    =》 201812260000 + defaultTime后面2位
+        // 用户 length为10     2018122600      =》 201812260000 + defaultTime后面4位
+        // 用户 length为8     20181226         =》 201812260000 + defaultTime后面6位
         // 结果 20181226000000 14位
         // 插入 TZ
         var reg = /^[0-9]{8}T[0-9]{6}Z$/;
@@ -35009,7 +35009,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
           return standardTime.slice(0, 8) + 'T' + standardTime.slice(8) + 'Z';
         }
 
-        throw new Error('回放时间格式有误，请确认');
+        throw new Error('The playback time format is wrong, please confirm');
       }
 
       function reRormatRecTime(time) {
@@ -35043,7 +35043,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
 
         if (websocketStreamingParam.indexOf('/playback') !== -1) {
           websocketStreamingParam = websocketStreamingParam.replace("stream=2", 'stream=1');
-        } // 本地回放仅支持主码流
+        } // Local playback仅支持主码流
 
 
         return {
@@ -35062,7 +35062,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
         playURL: getPlayParams(data).websocketStreamingParam
       };
       this.jSPlugin.JS_Play(wsUrl, wsParams, 0).then(function () {
-        console.log("播放成功");
+        console.log("play  success");
 
         if (_this4.validateCode && typeof _this4.jSPlugin.decoderVersion !== 'undefined' && _this4.jSPlugin.decoderVersion === '2.0') {
           _this4.jSPlugin.JS_SetSecretKey(0, _this4.validateCode);
@@ -35115,7 +35115,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
           PlTp: _this4.url.indexOf("back") === -1 ? 1 : 2,
           // 1 直播 2 回放
           Via: 2,
-          // 2 服务端取流
+          // 2 服务端Take stream
           ErrCd: 0,
           Cost: new Date().getTime() - _this4.playStartTime,
           // 毫秒数
@@ -35125,7 +35125,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
         });
       }, function (err) {
         console.log("err", err);
-        var msg = '播放失败，请检查设备及客户端网络';
+        var msg = 'Play failed, please check Device and client network';
         var retcode = -1;
 
         if (_this4.jSPlugin.bPlay) {
@@ -35135,7 +35135,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
         if (err && err.oError && err.oError.errorCode) {
           var errorInfo = _this4.errorHander.matchErrorInfo(err.oError.errorCode);
 
-          msg = errorInfo && errorInfo.description ? errorInfo.description : '播放失败，请检查设备及客户端网络';
+          msg = errorInfo && errorInfo.description ? errorInfo.description : 'Play failed, please check Device and client network';
           retcode = err.oError.errorCode;
         }
 
@@ -35168,7 +35168,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
           PlTp: _this4.url.indexOf("back") === -1 ? 1 : 2,
           // 1 直播 2 回放
           Via: 2,
-          // 2 服务端取流
+          // 2 服务端Take stream
           ErrCd: retcode,
           Cost: -1,
           // 毫秒数
@@ -35224,7 +35224,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
               return reject(false);
             });
           })["catch"](function (err) {
-            var msg = err.msg ? err.msg : '播放失败，请检查设备及客户端网络';
+            var msg = err.msg ? err.msg : 'Play failed, please check Device and client network';
 
             _this5.pluginStatus.loadingSetText({
               text: msg,
@@ -35256,7 +35256,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
       });
       this.reSetTheme();
       return this.jSPlugin.JS_Stop(0).then(function () {
-        console.log("停止成功");
+        console.log("stop success");
 
         _this6.pluginStatus.setPlayStatus({
           play: false,
@@ -35281,16 +35281,16 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
       this.url = url;
       var promise = new Promise(function (resolve, reject) {
         _this7.pause().then(function () {
-          console.log("暂停成功");
+          console.log("Paused successfully");
 
           _this7.resume().then(function (data) {
-            console.log("恢复成功");
+            console.log("Resume succeeded");
           });
         })["catch"](function () {
-          console.log("暂停失败");
+          console.log("Pause failed");
 
           _this7.resume().then(function (data) {
-            console.log("恢复成功");
+            console.log("Resume succeeded");
           });
         });
       });
@@ -35299,20 +35299,20 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
   }, {
     key: "reSetTheme",
     value: function reSetTheme() {
-      // 云台初始化
+      // 云台initialization
       if (this.Theme && this.Theme.Ptz) {
         this.Theme.setDecoderState({
           pantile: false
         });
         this.Theme.Ptz.hide();
-      } // 录制初始化
+      } // 录制initialization
 
 
       if (this.Theme) {
         this.Theme.setDecoderState({
           recordvideo: false
         });
-      } // 电子放大初始化
+      } // 电子放大initialization
 
 
       if (this.Theme && this.Theme.decoderState.state.zoom) {
@@ -35320,7 +35320,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
         this.Theme.setDecoderState({
           zoom: false
         });
-      } // 对讲初始化
+      } // 对讲initialization
 
 
       if (this.Theme && this.Theme.decoderState.state.talk) {
@@ -35339,7 +35339,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
       var url = matchUrl(initUrl, options);
       console.log("changePlayUrl", url);
       var promise = new Promise(function (resolve, reject) {
-        // play中已经处理stop;
+        // play中已经 handle stop;
         // this.stop()
         //   .then(() => {
         console.log("changePlayUrl stop success");
@@ -35351,11 +35351,11 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
             url: url
           }).then(function () {
             console.log("changePlayUrl replay success");
-            _this8.url = url; // 当前处于网页全屏状态
+            _this8.url = url; // 当forward处于web page fullscreen state
 
             if (_this8.Theme && _this8.Theme.decoderState.state.webExpend) {
               _this8.Theme.webExpend();
-            } // 当前处于全屏状态
+            } // 当forward处于fullscreen state
 
 
             if (_this8.Theme && _this8.Theme.decoderState.state.expend) {
@@ -35370,11 +35370,11 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
 
         _this8.play(url).then(function () {
           console.log("changePlayUrl replay success");
-          _this8.url = url; // 当前处于网页全屏状态
+          _this8.url = url; // 当forward处于web page fullscreen state
 
           if (_this8.Theme && _this8.Theme.decoderState.state.webExpend) {
             _this8.Theme.webExpend();
-          } // 当前处于全屏状态
+          } // 当forward处于fullscreen state
 
 
           if (_this8.Theme && _this8.Theme.decoderState.state.expend) {
@@ -35386,7 +35386,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
           reject(url);
         }); // })
         // .catch((err) => {
-        //   console.log("切换过程停止失败", err);
+        //   console.log(" switch过程stop fail", err);
         //   if (options.accessToken) {
         //     this.accessToken = options.accessToken;
         //     return this.play({
@@ -35408,7 +35408,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
 
       });
       /**
-      * 匹配播放地址 用户播放地址切换
+      * 匹配play address 用户play address switch
       * options
       * type | string | live,rec
       * hd | boolean | true,false
@@ -35443,7 +35443,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
 
         if (matchOptions.channelNo) {
           channelNo = matchOptions.channelNo;
-        } // 如果切换设备，之前设备有验证码，新设备无验证码，建议传空验证码,清理验证码（降低解码消耗）
+        } // 如果 switchDevice ，之forwardDevice 有verification 码，新Device 无verification 码，建议传空verification 码,清理verification 码（降低解码消耗）
 
 
         var validCode = matchInitUrl.split("/")[2].split("@").length === 2 ? matchInitUrl.split("/")[2].split("@")[0] : "";
@@ -35485,7 +35485,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
             code: 0,
             retcode: 0,
             data: data
-          }); // 兼容旧版本callback
+          }); // Compatible with older versions callback
 
           if (typeof _this9.params.getOSDTimeCallBack === 'function') {
             _this9.params.getOSDTimeCallBack({
@@ -35500,7 +35500,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
             code: -1,
             retcode: -1,
             data: err
-          }); // 兼容旧版本callback
+          }); // Compatible with older versions callback
 
           if (typeof _this9.params.getOSDTimeCallBack === 'function') {
             _this9.params.getOSDTimeCallBack({
@@ -35523,7 +35523,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
       var capturePictureRT = this.jSPlugin.JS_CapturePicture(0, name, "JPEG", callback, !!callback);
 
       if (isPromise(capturePictureRT)) {
-        // 兼容旧版本callback
+        // Compatible with older versions callback
         if (typeof this.params.capturePictureCallBack === 'function') {
           capturePictureRT.then(function () {
             _this10.params.capturePictureCallBack({
@@ -35555,7 +35555,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
       var startSaveRT = this.jSPlugin.JS_StartSave(0, name);
 
       if (isPromise(startSaveRT)) {
-        // 兼容旧版本callback
+        // Compatible with older versions callback
         if (typeof this.params.startSaveCallBack === 'function') {
           startSaveRT.then(function () {
             _this11.params.startSaveCallBack({
@@ -35593,7 +35593,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
       var stopSaveRT = this.jSPlugin.JS_StopSave(0);
 
       if (isPromise(stopSaveRT)) {
-        // 兼容旧版本callback
+        // Compatible with older versions callback
         if (typeof this.params.startSaveCallBack === 'function') {
           stopSaveRT.then(function () {
             _this12.params.stopSaveCallBack({
@@ -35627,7 +35627,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
     key: "openSound",
     value: function openSound() {
       var openSoundRT = this.jSPlugin.JS_OpenSound(0);
-      console.log("打开声音", openSoundRT);
+      console.log("打开Sound", openSoundRT);
 
       if (isPromise(openSoundRT)) {
         return openSoundRT;
@@ -35637,7 +35637,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
         this.Theme.setDecoderState({
           sound: true
         });
-      } // 兼容旧版本callback
+      } // Compatible with older versions callback
 
 
       if (typeof this.params.openSoundCallBack === 'function') {
@@ -35665,7 +35665,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
         this.Theme.setDecoderState({
           sound: false
         });
-      } // 兼容旧版本callback
+      } // Compatible with older versions callback
 
 
       if (typeof this.params.closeSoundCallBack === 'function') {
@@ -35801,7 +35801,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
         } else {
           if (typeof this.params.handleError === 'function') {
             this.params.handleError({
-              msg: "播放速度最大为4倍速度",
+              msg: "Play speed up to 4Double speed degrees",
               retcode: 1003,
               id: this.id,
               type: "handleError"
@@ -35814,7 +35814,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
               code: -1,
               data: {
                 speed: speed,
-                result: "播放速度最大为4倍速度"
+                result: "Play speed up to 4Double speed degrees"
               }
             });
           });
@@ -35848,7 +35848,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
       } else {
         if (typeof this.params.handleError === 'function') {
           this.params.handleError({
-            msg: "播放速度最小为1倍速度",
+            msg: "The minimum play speed is 1Double speed",
             retcode: 1003,
             id: this.id,
             type: "handleError"
@@ -35861,7 +35861,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
             code: -1,
             data: {
               speed: speed,
-              result: "播放速度最小为1倍速度"
+              result: "The minimum play speed is 1Double speed"
             }
           });
         });
@@ -35892,7 +35892,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
         if (startTime.substr(0, 8) !== currentDay) {
           if (typeof this.params.handleError === 'function') {
             this.params.handleError({
-              msg: "seek时间不能跨日期",
+              msg: "The seek time cannot cross dates",
               retcode: -1,
               id: this.id,
               type: "handleError"
@@ -35904,7 +35904,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
       } else {
         if (typeof this.params.handleError === 'function') {
           this.params.handleError({
-            msg: "seek时间格式错误",
+            msg: "seek time format Error",
             retcode: -1,
             id: this.id,
             type: "handleError"
@@ -35919,10 +35919,10 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
         // 用户格式 无需更改 => 20182626T000000Z
         // return time
         // 用户格式需要更改
-        //用户时间长度为 14 20181226000000  =》 20181226000000
-        // 用户长度为12     201812260000    =》 201812260000 + defaultTime后面2位
-        // 用户长度为10     2018122600      =》 201812260000 + defaultTime后面4位
-        // 用户长度为8     20181226         =》 201812260000 + defaultTime后面6位
+        //用户时间 length为 14 20181226000000  =》 20181226000000
+        // 用户 length为12     201812260000    =》 201812260000 + defaultTime后面2位
+        // 用户 length为10     2018122600      =》 201812260000 + defaultTime后面4位
+        // 用户 length为8     20181226         =》 201812260000 + defaultTime后面6位
         // 结果 20181226000000 14位
         // 插入 TZ
         var reg = /^[0-9]{8}T[0-9]{6}Z$/;
@@ -35937,7 +35937,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
           return standardTime.slice(0, 8) + 'T' + standardTime.slice(8) + 'Z';
         }
 
-        throw new Error('回放时间格式有误，请确认');
+        throw new Error('The playback time format is wrong, please confirm');
       }
 
       var seekRT = this.jSPlugin.JS_Seek(0, startTime, endTime);
@@ -35958,9 +35958,9 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
 
       var promise = requestFullScreenPromise(document.getElementById("".concat(this.id)));
       promise.then(function (data) {
-        console.log("全屏promise", window.screen.availWidth);
+        console.log("fullscreenpromise", window.screen.availWidth);
 
-        _this15.jSPlugin.JS_Resize(window.screen.availWidth, window.screen.availHeight); // 兼容旧版本callback
+        _this15.jSPlugin.JS_Resize(window.screen.availWidth, window.screen.availHeight); // Compatible with older versions callback
 
 
         if (typeof _this15.params.fullScreenCallBack === 'function') {
@@ -35970,14 +35970,14 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
             code: 0
           });
         }
-      }); //  监听全屏事件触发
+      }); //  监听fullscreen事件触发
 
       var fullscreenchange = function fullscreenchange() {
         var isFullScreen = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
 
         if (!isFullScreen) {
           _this15.jSPlugin.JS_Resize(_this15.width, _this15.height);
-        } // 兼容旧版本callback
+        } // Compatible with older versions callback
 
 
         if (typeof _this15.params.fullScreenChangeCallBack === 'function') {
@@ -36002,7 +36002,7 @@ var EZUIKitPlayer = /*#__PURE__*/function () {
 
       var cancelPromise = cancelFullScreenPromise();
       cancelPromise.then(function (data) {
-        console.log("取消全屏", data, _this16.jSPlugin);
+        console.log("Cancel fullscreen", data, _this16.jSPlugin);
 
         _this16.jSPlugin.JS_Resize(_this16.width, _this16.height);
       });

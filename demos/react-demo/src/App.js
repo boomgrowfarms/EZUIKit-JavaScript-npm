@@ -7,7 +7,7 @@ import './App.css';
 class App extends React.Component{
   constructor(props){
     super(props);
-    this.player = null; //定义播放器
+    this.player = null; //定义play 器
   }
   componentDidMount(){
     fetch('https://open.ys7.com/jssdk/ezopen/demo/token')
@@ -18,9 +18,9 @@ class App extends React.Component{
         id: 'video-container', // 视频容器ID
         accessToken: accessToken,
         url: 'ezopen://open.ys7.com/G39444019/1.live',
-        // simple - 极简版; pcLive-pc直播；pcRec-pc回放；mobileLive-移动端直播；mobileRec-移动端回放;security - 安防版;voice-语音版;
+        // simple - 极简版; pcLive-pc直播；pcRec-pc回放；mobileLive-移动端直播；mobileRec-移动端回放;security - 安防版;voice-voice版;
         //template: 'simple', 
-        plugin: ['talk'],                       // 加载插件，talk-对讲
+        plugin: ['talk'],                       // Load 插件，talk-Intercom
         width: 600,
         height: 400,
       });
@@ -30,49 +30,49 @@ class App extends React.Component{
   play = () => {
     var playPromise = this.player.play();
     playPromise.then((data) => {
-      console.log("promise 获取 数据", data)
+      console.log("promise get  数据", data)
     })
   }
   stop = () => {
     var stopPromise = this.player.stop();
     stopPromise.then((data) => {
-      console.log("promise 获取 数据", data)
+      console.log("promise get  数据", data)
     })
   }
   getOSDTime = () => {
     var getOSDTimePromise = this.player.getOSDTime();
     getOSDTimePromise.then((data) => {
-      console.log("promise 获取 数据", data)
+      console.log("promise get  数据", data)
     })
   }
   capturePicture = () => {
     var capturePicturePromise = this.player.capturePicture(`${new Date().getTime()}`);
     capturePicturePromise.then((data) => {
-      console.log("promise 获取 数据", data)
+      console.log("promise get  数据", data)
     })
   }
   openSound = () => {
           var openSoundPromise = this.player.openSound();
     openSoundPromise.then((data) => {
-      console.log("promise 获取 数据", data)
+      console.log("promise get  数据", data)
     })
   }
   closeSound = () => {
     var openSoundPromise = this.player.closeSound();
     openSoundPromise.then((data) => {
-      console.log("promise 获取 数据", data)
+      console.log("promise get  数据", data)
     })
   }
   startSave = () => {
           var startSavePromise = this.player.startSave(`${new Date().getTime()}`);
     startSavePromise.then((data) => {
-      console.log("promise 获取 数据", data)
+      console.log("promise get  数据", data)
     })
   }
   stopSave = () => {
     var stopSavePromise = this.player.stopSave();
     stopSavePromise.then((data) => {
-      console.log("promise 获取 数据", data)
+      console.log("promise get  数据", data)
     })
   }
   ezopenStartTalk = () => {
@@ -87,7 +87,7 @@ class App extends React.Component{
   render(){
     return(
       <div className="demo">
-        <h2>视频模式使用示例：</h2>
+        <h2>视频模式使用示例:</h2>
         <div id="video-container" 
           style={{width:600,height:600}}
         >
@@ -102,8 +102,8 @@ class App extends React.Component{
           <button onClick={()=> this.capturePicture()}>capturePicture</button>
           <button onClick={()=> this.fullScreen()}>fullScreen</button>
           <button onClick={()=> this.getOSDTime()}>getOSDTime</button>
-          <button onClick={()=> this.ezopenStartTalk()}>开始对讲</button>
-          <button onClick={()=> this.ezopenStopTalk()}>结束对讲</button>
+          <button onClick={()=> this.ezopenStartTalk()}>start Intercom</button>
+          <button onClick={()=> this.ezopenStopTalk()}>结束Intercom</button>
         </div>
       </div>
     )

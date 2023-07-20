@@ -55,7 +55,7 @@ var fragmentYUVShader = [
     };
 
     /**
-     * 初始化WebGL上下文
+     * initializationWebGL上下文
      */
     RenderManager.prototype.initContextGL = function() {
         
@@ -79,7 +79,7 @@ var fragmentYUVShader = [
     };
 
     /**
-     * 初始化着色器程序
+     * initialization着色器程序
      * @param vertexShaderScript    顶点着色器脚本
      * @param fragmentShaderScript  片段着色器脚本
      */
@@ -87,7 +87,7 @@ var fragmentYUVShader = [
         
         var gl = this.contextGL;
         
-        var vertexShader = gl.createShader(gl.VERTEX_SHADER); //创建定点着色器
+        var vertexShader = gl.createShader(gl.VERTEX_SHADER); //create 定点着色器
         gl.shaderSource(vertexShader, vertexShaderScript);
         gl.compileShader(vertexShader);
         if(!gl.getShaderParameter(vertexShader, gl.COMPILE_STATUS)) {
@@ -116,7 +116,7 @@ var fragmentYUVShader = [
     };
 
     /**
-     * 初始化数据缓存
+     * initialization数据缓存
      */
     RenderManager.prototype.initBuffers = function() {
         
@@ -137,7 +137,7 @@ var fragmentYUVShader = [
     };
 
     /**
-     * 创建纹理
+     * create 纹理
      */
     RenderManager.prototype.initTexture = function() {
 
@@ -155,7 +155,7 @@ var fragmentYUVShader = [
     };
 
     /**
-     * 初始化YUV纹理
+     * initializationYUV纹理
      */
     RenderManager.prototype.initTextures = function() {
         

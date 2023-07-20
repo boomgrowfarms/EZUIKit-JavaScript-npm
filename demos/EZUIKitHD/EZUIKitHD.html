@@ -39,45 +39,45 @@
         <input type="text" id="appKey" value="">
         <div>请输入accessToken</div>
         <input type="text" id="accessToken" value="">
-        <button onclick="init()">初始化</button>
+        <button onclick="init()">initialization</button>
       </div>
       <div class="fun-area">
-        <div>请输入设备序列号</div>
+        <div>请输入Device ID</div>
         <input type="text" id="deviceSerial" value="">
         <div>请输入通道号</div>
         <input type="text" id="channelNo" value="1">
-        <div>请输入验证码</div>
-        <input type="text" id="validateCode" value="" placeholder="加密设备需输入设备验证码进行播放">
-        <button onclick="play()">播放</button>
-        <button onclick="toPreView()">切换到预览</button>
-        <button onclick="toRec()">切换到回放</button>
+        <div>请输入verification 码</div>
+        <input type="text" id="validateCode" value="" placeholder="加密Device 需输入Device verification 码 to take play ">
+        <button onclick="play()">play </button>
+        <button onclick="toPreView()"> switch到预览</button>
+        <button onclick="toRec()"> switch到回放</button>
       </div>
       <div class="fun-area">
         <div>请输入窗口号</div>
         <input type="text" id="wndId" value="0">
-        <div>请输入开始时间（回放）</div>
+        <div>请输入start 时间（回放）</div>
         <input type="text" id="startTime" value="" placeholder="2022-10-20">
 
         <div>请输入结束时间（回放）</div>
         <input type="text" id="endTime" value="" placeholder="2022-10-20">
-        <div>设置清晰度（清晰度值，可选0：流畅 1：均衡 2：高品质 3：超清）</div>
+        <div>设置清晰度（清晰度值，可选0:流畅 1:均衡 2:高品质 3:超清）</div>
         <input type="text" id="videoLevel" value="1">
         <div>设置音量（0-100）</div>
         <input type="text" id="soundVolumn" value="100">
 
 
-        <button onclick="startSave()">开始录制</button>
-        <button onclick="stopSave()">结束录制</button>
-        <button onclick="startTalk()" id="talk">开始对讲</button>
-        <button onclick="stopTalk()" id="stoptalk">结束对讲</button>
+        <button onclick="startSave()">start 录制</button>
+        <button onclick="stopSave()">end recording</button>
+        <button onclick="startTalk()" id="talk">start Intercom</button>
+        <button onclick="stopTalk()" id="stoptalk">结束Intercom</button>
         <button onclick="setVideoLevel()" id="videohd">设置清晰度</button>
         <button onclick="setSoundVolumn()">设置音量</button>
-        <button onclick="capturePicture()">抓图</button>
-        <button onclick="stop()">停止</button>
+        <button onclick="capturePicture()">screenshot</button>
+        <button onclick="stop()">stop</button>
 
       </div>
       <div class="fun-area">
-        <div>请输入布局编号(只支持1-12)：</div>
+        <div>请输入布局编号(只支持1-12):</div>
         <input type="text" id="layoutValue" value="1">
         <button onclick="setLayout()" id="layout">设置布局</button>
       </div>
@@ -125,7 +125,7 @@
         startTime: document.getElementById("startTime").value,
         endTime: document.getElementById("endTime").value,
       });
-      // 回放模式下，无对讲功能
+      // 回放模式下，无Intercom功能
       document.getElementById('talk').setAttribute('disabled', true);
       document.getElementById('stoptalk').setAttribute('disabled', true);
       // 回放情况下，无法设置布局

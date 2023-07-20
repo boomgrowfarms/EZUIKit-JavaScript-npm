@@ -2,28 +2,28 @@
  * Created by wangweijie5 on 2016/12/2.
  */
 import DecodeWorkerString from "./DecodeWorkerString";
-// 错误码
-const PLAYM4_PARA_OVER = 0; // 参数错误
+//  Error码
+const PLAYM4_PARA_OVER = 0; // Parameter error
 const PLAYM4_OK = 1; //正确
-const PLAYM4_ORDER_ERROR = 2; // 调用接口顺序错误
-const PLAYM4_TIMER_ERROR = 3; // 创建多媒体时钟错误
-const PLAYM4_DEC_VIDEO_ERROR = 4; // 视频设备错误
-const PLAYM4_DEC_AUDIO_ERROR = 5; // 音频设备错误
-const PLAYM4_ALLOC_MEMORY_ERROR = 6; // 申请内存失败
-const PLAYM4_OPEN_FILE_ERROR = 7; // 打开文件失败
+const PLAYM4_ORDER_ERROR = 2; // Transfer接口顺序 Error
+const PLAYM4_TIMER_ERROR = 3; // create 多媒体时钟 Error
+const PLAYM4_DEC_VIDEO_ERROR = 4; // 视频Device  Error
+const PLAYM4_DEC_AUDIO_ERROR = 5; // 音频Device  Error
+const PLAYM4_ALLOC_MEMORY_ERROR = 6; // 申请内存 fail
+const PLAYM4_OPEN_FILE_ERROR = 7; // 打开 file fail
 const PLAYM4_BUF_OVER = 11; // 缓存溢出
 const PLAYM4_SYS_NOT_SUPPORT = 16; // 不支持
-const PLAYM4_NEED_MORE_DATA = 31; // 需要更多数据才能解析
+const PLAYM4_NEED_MORE_DATA = 31; // 需要更多数据才能 analyze 
 const PLAYM4_NEED_NEET_LOOP = 35; //丢帧需要下个循环
 const PLAYM4_BUF_WILL_OVER = 36; //C层缓存即将满，需触发解I帧
 
 const PLAYM4_NOT_KEYFRAME = 48; // 非关键帧
-const PLAYM4_WORKER_ERROR = 60; // WORKER错误
-const PLAYM4_CREATE_RENDERER_ERROR = 61; // 创建渲染句柄失败
-const PLAYM4_LOAD_UNFINISHED = 62; // js文件未加载完成
-const PLAYM4_GET_VOLUME_ERROR = 63; // 获取音频音量失败
+const PLAYM4_WORKER_ERROR = 60; // WORKER Error
+const PLAYM4_CREATE_RENDERER_ERROR = 61; // create 渲染句柄 fail
+const PLAYM4_LOAD_UNFINISHED = 62; // js file未Load 完成
+const PLAYM4_GET_VOLUME_ERROR = 63; // get 音频音量 fail
 
-const PLAYM4_ITYPE_DECODE_ERROR = 100; //定位后送进来的第一帧I帧解码失败
+const PLAYM4_ITYPE_DECODE_ERROR = 100; //定位后送进来的第一帧I帧解码 fail
 const PLAYM4_FIRST_FRAME_NOT_ICURRENT = 101; //定位后送进来的第一帧不是定位帧所在的I帧（Ni>Mp）
 
 // 加密类型
@@ -32,7 +32,7 @@ const SECRET_AES = 1; // AES 加密
 
 // 流模式
 const STREAM_REALTIME = 0; // 实时流
-const STREAM_FILE = 1; // 文件流
+const STREAM_FILE = 1; //  file流
 
 // 解码类型
 const DECODE_ALL = 0; // 全解
@@ -42,7 +42,7 @@ const DECODE_VIDEO_KEYFRAME = 1; // 只解关键帧
 const BUFFER_MAXNUM_ONEBYONE = 15; // 帧进上限缓存数
 const BUFFER_MINNUM_ONEBYONE = 8; // 帧进下限缓存数
 const BUFFER_NUM_NORMAL = 1; // 正常缓存数
-const BUFFER_NUM_AUDIO = 50; // 音频存储25帧播放一次
+const BUFFER_NUM_AUDIO = 50; // 音频存储25帧play 一次
 const BUFFER_MAXNUM_YUV = 5; // YUV最大缓存帧数
 const YUV_SKIP_NUM = 2; // YUV跳帧间隔
 
@@ -57,17 +57,17 @@ const WRITE_AUD_ENCODE_NUM = 200; //一次写编码音频帧总帧数
 const WRITE_AUD_PCM_NUM = 100; //一次写PCM数据
 const WRITE_VID_YUV_NUM = 20; //一次写YUV数据
 const WRITE_VID_RAW_NUM = 100; //一次写裸数据
-// 电子放大区域
+// Zoom区域
 const WRITE_RTP_NUM = 200; //写RTP数据
 
-//解码回调帧信息
+//解码 Callback帧信息
 var DECODE_INFO_YUV = {
   width: 0,
   height: 0,
   frameNum: 0,
   yuvData: null,
 };
-//显示回调帧信息
+//显示 Callback帧信息
 var DISPLAY_INFO_YUV = {
   width: 0,
   height: 0,
@@ -75,7 +75,7 @@ var DISPLAY_INFO_YUV = {
   yuvData: null,
 };
 
-//音频PCM回调信息
+//音频PCM Callback信息
 var DECODE_INFO_PCM = {
   sampleRate: 0,
   channel: 0,
@@ -84,11 +84,11 @@ var DECODE_INFO_PCM = {
   pcmData: null,
 };
 
-// xx.js加载标识
+// xx.jsLoad 标识
 var bAudioRenderLoad = false;
 var bSuperRenderLoad = false;
 
-// 回调函数参数对象
+//  Callback函数parameter 对象
 var CALLBACK_PARAMETER = {
   id: null,
   cmd: null,
@@ -107,7 +107,7 @@ export class JSPlayCtrl {
       return PLAYM4_PARA_OVER;
     }
 
-    // 加载回调
+    // Load  Callback
     if (callBack && typeof callBack === "function") {
       this.fnCallBack = callBack;
     } else {
@@ -121,7 +121,7 @@ export class JSPlayCtrl {
     // 解码 Worker
     this.decodeWorker = null;
 
-    // 开启流类型
+    // Turn on 流类型
     this.streamOpenMode = null;
     this.bOpenStream = false;
 
@@ -163,7 +163,7 @@ export class JSPlayCtrl {
     this.downloadRTP = false;
     this.rtpNum = 0;
 
-    // 播放音视频标识
+    // play 音视频标识
     this.bPlaySound = false;
     this.bPlay = false;
     this.bPause = false;
@@ -176,21 +176,21 @@ export class JSPlayCtrl {
     //帧进步长
     this.FrameForwardLen = 1;
 
-    //纯音频播放标识
+    //纯音频play 标识
     this.bOnlyPlaySound = false;
 
     //是否使用裁剪宽高标识
     this.bVideoCropInfo = false;
 
-    // 回调函数
-    this.dataCallBackFun = null; // 截图回调函数
-    this.YUVBufSizeCBFun = null; // YUV缓存大小回调函数
-    this.DecCallBackFun = null; //解码回调函数
-    this.DisplayCallBackFun = null; //显示回调函数
-    this.PCMCallBackFun = null; //PCM数据回调
-    this.DecInfoYUV = DECODE_INFO_YUV; //解码回调数据
-    this.DisplayInfoYUV = DISPLAY_INFO_YUV; //显示回调数据
-    this.DecInfoPCM = DECODE_INFO_PCM; //音频PCM回调数据
+    //  Callback函数
+    this.dataCallBackFun = null; // Screenshot Callback函数
+    this.YUVBufSizeCBFun = null; // YUV缓存大小 Callback函数
+    this.DecCallBackFun = null; //解码 Callback函数
+    this.DisplayCallBackFun = null; //显示 Callback函数
+    this.PCMCallBackFun = null; //PCM数据 Callback
+    this.DecInfoYUV = DECODE_INFO_YUV; //解码 Callback数据
+    this.DisplayInfoYUV = DISPLAY_INFO_YUV; //显示 Callback数据
+    this.DecInfoPCM = DECODE_INFO_PCM; //音频PCM Callback数据
 
     // 图像宽高
     this.nWidth = 0;
@@ -214,21 +214,21 @@ export class JSPlayCtrl {
     // 解码类型
     this.nDecFrameType = DECODE_ALL;
 
-    //实时信息回调
+    //实时信息 Callback
     this.runtimeInfoCBFun = null;
 
-    // 电子放大
+    // Zoom
     this.iCanvasWidth = 0; // canvas宽
     this.iCanvasHeight = 0; // canvas高
     this.iZoomNum = 0; // 放大次数
-    this.iRatio_x = 1; // X方向比率
-    this.iRatio_y = 1; // Y方向比率
+    this.iRatio_x = 1; // X方to 比率
+    this.iRatio_y = 1; // Y方to 比率
     this.stDisplayRect = {
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
-    }; // 上一次电子放大区域
+    }; // 上一次Zoom区域
     this.bDisRect = false;
     this.stYUVRect = {
       top: 0,
@@ -237,24 +237,24 @@ export class JSPlayCtrl {
       bottom: 0,
     }; // 映射到YUV上区域
 
-    this.aInputDataLens = []; // 送入缓存数据长度列表
+    this.aInputDataLens = []; // 送入缓存数据 length列表
     /***********性能不足解决方案************/
     this.aInputDataBuffer = []; // 送入数据的缓存
-    this.bIsGetYUV = false; // 获取YUV数据
+    this.bIsGetYUV = false; // get YUV数据
     this.bIsFirstFrame = true; // 第一帧数据
     this.iInputMaxBufSize = BUFFER_MAX_SIZE; // 输入最大缓存大小
     this.bIsInput = false; // 输入数据
     this.bIsInputBufOver = false; // 输入缓存溢出
     this.bIsInputBufWillOver = false; //C层缓存将要溢出
-    this.iInputDataLen = BUFFER_INPUT_SIZE; // 输入数据长度
+    this.iInputDataLen = BUFFER_INPUT_SIZE; // 输入数据 length
 
-    var that = this; // 保存this, 在onmessage回调中使用
+    var that = this; // 保存this, 在onmessage Callback中使用
     this.errorCode = PLAYM4_OK;
     this.loopNum = 0;
 
-    // 回调设置
+    //  Callback设置
     this.setCallBack = function (that, cmd, data, errorCode, status) {
-      // 回调函数参数
+      //  Callback函数parameter 
       var callBackParameter = CALLBACK_PARAMETER;
 
       callBackParameter.id = winId;
@@ -266,7 +266,7 @@ export class JSPlayCtrl {
       that.fnCallBack(callBackParameter);
     };
 
-    // 加载音频渲染js文件
+    // Load 音频渲染js file
     if (!bAudioRenderLoad) {
       bAudioRenderLoad = true;
       //   var script_audio = document.createElement("script");
@@ -287,7 +287,7 @@ export class JSPlayCtrl {
       //   };
     }
 
-    // 加载视频渲染js文件
+    // Load 视频渲染js file
     if (!bSuperRenderLoad) {
       bSuperRenderLoad = true;
       //   var script_vedio = document.createElement("script");
@@ -341,7 +341,7 @@ export class JSPlayCtrl {
       var aSendBuf;
       var iSize = 0;
       that.bIsGetYUV = false;
-      // 如果解析解码缓存溢出，则停止送入数据，直到缓存空闲后继续送入
+      // 如果 analyze 解码缓存溢出，则stop送入数据，直到缓存空闲后继续送入
       if (that.bIsInputBufOver || that.bIsInputBufWillOver) {
         aReadBuf = new Uint8Array(1);
         aSendBuf = new Uint8Array(aReadBuf);
@@ -356,7 +356,7 @@ export class JSPlayCtrl {
           (that.bPlay && (!that.bPause || that.bOnebyOne)) ||
           this.bOnlyPlaySound
         ) {
-          //播放或单帧前进时，往worker送流
+          //play 或单帧forward进时，往worker送流
           while (that.aInputDataLens.length > 0) {
             iSize += that.aInputDataLens.shift();
             if (iSize > that.iInputDataLen) {
@@ -444,11 +444,11 @@ export class JSPlayCtrl {
     };
 
     this.createWorker = function (self) {
-      // 加载Worker
+      // Load Worker
       if (window.Worker) {
         // 判断浏览器是否支持 Worker
         if (this.decodeWorker == null) {
-          // 创建解码 Worker
+          // create 解码 Worker
           //   this.decodeWorker = new Worker(that.szBasePath + "DecodeWorker.js");
           var workBlob = new Blob([DecodeWorkerString(this.staticPath)]);
           const url = URL.createObjectURL(workBlob);
@@ -492,7 +492,7 @@ export class JSPlayCtrl {
             case "InputData":
               typeName = "InputData";
 
-              //　解析解码缓存溢出
+              //　 analyze 解码缓存溢出
               if (eventData.errorCode === PLAYM4_BUF_OVER) {
                 that.bIsInputBufOver = true;
                 console.log("yff inputBuffer over set key frame \n");
@@ -508,7 +508,7 @@ export class JSPlayCtrl {
                 //that.inputDataFun();
               }
 
-              // 解析解码缓存空闲(inputdata接口不会返回need more data)
+              //  analyze 解码缓存空闲(inputdata接口不会returnneed more data)
               if (eventData.errorCode === PLAYM4_NEED_MORE_DATA) {
                 //console.log(">>>JS inputdata need more data \n");
                 that.bIsInputBufOver = false;
@@ -528,7 +528,7 @@ export class JSPlayCtrl {
 
               if (!that.bOnlyPlaySound) {
                 if (eventData.data != null && eventData.frameInfo != null) {
-                  // 获取图像宽高
+                  // get 图像宽高
                   var width = eventData.frameInfo.width;
                   var height = eventData.frameInfo.height;
                 }
@@ -559,7 +559,7 @@ export class JSPlayCtrl {
                   //console.log("loopNum:"+that.loopNum);
                   break;
                 } else if (that.bIsInputBufOver || that.bIsInputBufWillOver) {
-                  // 解析缓存溢出
+                  //  analyze 缓存溢出
                   that.inputDataFun();
                 } else {
                   if (eventData.type === "videoType") {
@@ -586,7 +586,7 @@ export class JSPlayCtrl {
                       ) {
                         return PLAYM4_PARA_OVER;
                       }
-                      //显示回调
+                      //显示 Callback
                       if (that.DecCallBackFun != null) {
                         that.DecInfoYUV.height = eventData.frameInfo.height;
                         that.DecInfoYUV.width = eventData.frameInfo.width;
@@ -598,7 +598,7 @@ export class JSPlayCtrl {
                       }
                       that.bIsFirstFrame = false;
 
-                      //处理视频数据
+                      // handle 视频数据
                       self.nWidth = eventData.frameInfo.width;
                       self.nHeight = eventData.frameInfo.height;
                       self.nSPSCropLeft = eventData.frameInfo.cropLeft;
@@ -647,10 +647,10 @@ export class JSPlayCtrl {
                       self.aVideoFrameBuffer.push(oVideoFrameInfo);
                       oVideoFrameInfo = null;
 
-                      // 如果YUV缓存大于阈值时进行抽帧显示，防止内存快速增长导致浏览器崩溃
+                      // 如果YUV缓存大于阈值时 to take 抽帧显示，防止内存快速增长导致浏览器崩溃
                       var iYUVNum = self.aVideoFrameBuffer.length;
                       if (iYUVNum > BUFFER_MAXNUM_YUV) {
-                        // 非单帧模式下进行该处理
+                        // 非单帧模式下 to take 该 handle 
                         // YUV缓存超过BUFFER_MAXNUM_YUV个节点后隔YUV_SKIP_NUM个帧播一帧
                         if (!self.bOnebyOne) {
                           self.aVideoFrameBuffer.splice(0, YUV_SKIP_NUM);
@@ -658,7 +658,7 @@ export class JSPlayCtrl {
                       }
                       // 单帧
                       if (self.bOnebyOne) {
-                        // 缓存满，通知上层停止送流
+                        // 缓存满，通知上层stop送流
                         if (
                           self.aVideoFrameBuffer.length >=
                           BUFFER_MAXNUM_ONEBYONE
@@ -677,7 +677,7 @@ export class JSPlayCtrl {
                         (self.bPlaySound && !self.bPlayRateChange) ||
                         that.bOnlyPlaySound
                       ) {
-                        //音频PCM回调
+                        //音频PCM Callback
                         if (that.PCMCallBackFun != null) {
                           that.DecInfoPCM.sampleRate =
                             eventData.frameInfo.samplesPerSec;
@@ -693,7 +693,7 @@ export class JSPlayCtrl {
                           that.PCMCallBackFun(that.DecInfoPCM);
                         }
 
-                        //处理音频数据
+                        // handle 音频数据
                         var bufferPackage = new Uint8Array(eventData.data);
                         var iIndexBuffer = self.aAudioBuffer.length;
                         for (
@@ -745,9 +745,9 @@ export class JSPlayCtrl {
                         }
                         /********打印结束*****/
 
-                        // 储存25帧播放一次
+                        // 储存25帧play 一次
                         if (self.iAudioBufferSize >= BUFFER_NUM_AUDIO) {
-                          // 播放
+                          // play 
                           self.audioRenderer.Play(
                             self.aAudioBuffer,
                             self.aAudioBuffer.length,
@@ -808,7 +808,7 @@ export class JSPlayCtrl {
                 console.log("GetJPEG ErrorParam");
                 return;
               }
-              // 获取图像宽高
+              // get 图像宽高
               var pJpegData = eventData.data;
 
               self.dataCallBackFun(pJpegData);
@@ -821,7 +821,7 @@ export class JSPlayCtrl {
                 console.log("GetBMP ErrorParam");
                 return;
               }
-              // 获取图像宽高
+              // get 图像宽高
               var pBmpData = eventData.data;
 
               self.dataCallBackFun(pBmpData);
@@ -845,9 +845,9 @@ export class JSPlayCtrl {
             default:
               break;
           }
-          //如果返回错误码该如何处理
+          //如果return Error码该如何 handle 
 
-          // 回调方式返回错误码
+          //  Callback方式return Error码
           if ("GetFrameData" !== typeName && "loaded" != typeName) {
             self.setCallBack(
               self,
@@ -890,7 +890,7 @@ export class JSPlayCtrl {
             that.YUVBufSizeCBFun(iYUVNum);
           }
           if (that.bOnebyOne) {
-            // 缓存不够，通知上层开始送流
+            // 缓存不够，通知上层start 送流
             if (iYUVNum <= BUFFER_MINNUM_ONEBYONE) {
               that.setCallBack(
                 that,
@@ -950,7 +950,7 @@ export class JSPlayCtrl {
             }
 
             displayBuf = null;
-            // 当前OSD时间
+            // 当forwardOSD时间
             that.szOSDTime = oVideoFrameInfo.osdTime;
             oVideoFrameInfo = null;
           } else {
@@ -959,7 +959,7 @@ export class JSPlayCtrl {
         }
       } else {
         if (!that.bPlay) {
-          // 停止播放清空视频帧和音频帧数据缓存
+          // stopplay 清空视频帧和音频帧数据缓存
           that.aVideoFrameBuffer.splice(0, that.aVideoFrameBuffer.length);
           that.aAudioBuffer.splice(0, that.aAudioBuffer.length);
         }
@@ -968,18 +968,18 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 根据帧号进行精确定位
+   * @synopsis 根据帧号 to take 精确定位
    * @param nFrameNum [IN] 定位帧号
-   * @param playType [IN] 定位后是否继续播放。true为继续播放，false为暂停播放
+   * @param playType [IN] 定位后是否继续play 。true为继续play ，false为暂停play 
    */
   PlayM4_SetCurrentFrameNum(nFrameNum, playType) {
     return PLAYM4_SYS_NOT_SUPPORT;
   }
 
   /**
-   * @synopsis 播放库打印日志开关
-   * @param downloadFlag [IN] true为打开日志，false为关闭日志
-   * @returns 返回错误码
+   * @synopsis play 库打印日志开关
+   * @param downloadFlag [IN] true为打开日志，false为 Close 日志
+   * @returns return Error码
    */
   PlayM4_OpenPlayerSDKPrintLog(downloadFlag) {
     if (downloadFlag === true) {
@@ -1015,9 +1015,9 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 设置解码回调
-   * @param DecCBFun [IN] 解码回调函数
-   * @returns 返回错误码
+   * @synopsis 设置解码 Callback
+   * @param DecCBFun [IN] 解码 Callback函数
+   * @returns return Error码
    */
   PlayM4_SetDecCallBack(DecCBFun) {
     if (DecCBFun && typeof DecCBFun === "function") {
@@ -1029,9 +1029,9 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 设置显示回调
-   * @param DecCBFun [IN] 显示回调函数
-   * @returns 返回错误码
+   * @synopsis 设置显示 Callback
+   * @param DecCBFun [IN] 显示 Callback函数
+   * @returns return Error码
    */
   PlayM4_SetDisplayCallBack(DisplayCBFun) {
     if (DisplayCBFun && typeof DisplayCBFun === "function") {
@@ -1043,9 +1043,9 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 设置音频PCM数据回调
-   * @param DecCBFun [IN] 音频回调函数
-   * @returns 返回错误码
+   * @synopsis 设置音频PCM数据 Callback
+   * @param DecCBFun [IN] 音频 Callback函数
+   * @returns return Error码
    */
   PlayM4_SetPCMCallBack(PCMCBFun) {
     if (PCMCBFun && typeof PCMCBFun === "function") {
@@ -1057,11 +1057,11 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 设置开启流播放模式
+   * @synopsis 设置Turn on 流play 模式
    *
    * @param nMode [IN] 打开方式
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_SetStreamOpenMode(nMode) {
     if (nMode == null || nMode === undefined) {
@@ -1096,11 +1096,11 @@ export class JSPlayCtrl {
   /**
    * @synopsis 实时流、回放流时字节头开流
    *
-   * @param pFileHeadBuf 文件头缓存数据
-   * @param nSize 文件头缓存大小
+   * @param pFileHeadBuf  file头缓存数据
+   * @param nSize  file头缓存大小
    * @param nBufPoolSize 流缓存大小
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_OpenStream(pFileHeadBuf, nSize, nBufPoolSize) {
     if (this.bJSPrintLog) {
@@ -1133,7 +1133,7 @@ export class JSPlayCtrl {
       return PLAYM4_PARA_OVER;
     }
 
-    // 单帧后恢复回放，清除状态值
+    // 单帧后恢复回放，清除 state值
     this.bPlay = false;
     this.bPause = false;
     this.bOnebyOne = false;
@@ -1159,9 +1159,9 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 关闭流
+   * @synopsis  Close 流
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_CloseStream() {
     if (this.decodeWorker === null || this.bOpenStream === false) {
@@ -1204,9 +1204,9 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 销毁，关闭worker
+   * @synopsis 销毁， Close worker
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_Destroy() {
     if (this.decodeWorker === null) {
@@ -1215,7 +1215,7 @@ export class JSPlayCtrl {
 
     this.PlayM4_CloseStream();
 
-    this.decodeWorker.terminate(); // 停止 Worker 工作
+    this.decodeWorker.terminate(); // stop Worker 工作
     this.decodeWorker = null;
     return PLAYM4_OK;
   }
@@ -1226,7 +1226,7 @@ export class JSPlayCtrl {
    * @param dataBuf  [IN] 输入数据缓存
    * @param nSize [IN] 输入数据大小
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_InputData(dataBuf, nSize) {
     //if (this.decodeWorker === null || this.bOpenStream === false) {
@@ -1259,7 +1259,7 @@ export class JSPlayCtrl {
         return PLAYM4_OK;
       }
     }
-    // 超出设置的缓存阈值，返回错误码（缓存溢出）
+    // 超出设置的缓存阈值，return Error码（缓存溢出）
     if (iInputBufLen + nSize > this.iInputMaxBufSize) {
       console.log("input over");
       //this.inputDataFun();
@@ -1271,7 +1271,7 @@ export class JSPlayCtrl {
       return PLAYM4_BUF_OVER;
     }
 
-    // 写入缓存，添加4字节头
+    // 写入缓存，to add4字节头
     var tempBuf = null;
     var iDataLen = nSize;
     switch (this.streamOpenMode) {
@@ -1286,7 +1286,7 @@ export class JSPlayCtrl {
         break;
 
       case STREAM_REALTIME:
-        // 加4字节长度信息
+        // 加4字节 length信息
         iDataLen = nSize + 4;
         var a32 = new Uint32Array([nSize]);
         var a8 = new Uint8Array(a32.buffer);
@@ -1352,7 +1352,7 @@ export class JSPlayCtrl {
       var RTPbuffer = new Uint8Array(this.aRTPDataBuffer);
       this.downloadFile(RTPbuffer, "RTP.data");
       this.aRTPDataBuffer.splice(0, this.aRTPDataBuffer.length); //清空YUV缓存
-      //this.bWriteRTPData = false; 应注释，修复再次调用无法下载数据的问题
+      //this.bWriteRTPData = false; 应注释，修复再次Transfer无法下载数据的问题
       this.iRTPDataSize = 0;
       this.rtpNum = 0;
       this.downloadRTP = false;
@@ -1360,17 +1360,17 @@ export class JSPlayCtrl {
     }
   }
   /**
-   * @synopsis 开启播放
+   * @synopsis Turn on play 
    *
    * @param canvasID  [IN] 窗口id
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_Play(canvasID) {
     if (this.decodeWorker === null) {
       return PLAYM4_ORDER_ERROR;
     }
-    //canvasID传入为null，则表示只送入纯音频js播放库进行播放
+    //canvasID传入为null，则表示只送入纯音频jsplay 库 to take play 
     if (this.bJSPrintLog) {
       console.log(">>>JS PlayM4_Play canvasID: " + canvasID);
     }
@@ -1399,7 +1399,7 @@ export class JSPlayCtrl {
         return PLAYM4_OK;
       }
 
-      // 创建视频渲染句柄
+      // create 视频渲染句柄
       if (this.oSuperRender == null) {
         this.oSuperRender = new SuperRender(canvasID, this.szBasePath);
         if (this.oSuperRender == null) {
@@ -1409,12 +1409,12 @@ export class JSPlayCtrl {
 
       this.sCanvasId = canvasID;
 
-      // 初始化
+      // initialization
       this.bPlay = true;
       this.bPause = false;
       this.bOnebyOne = false;
 
-      // 关闭声音
+      //  Close Sound
       // this.bPlaySound = false;
       this.bPlayRateChange = false;
       this.bOnlyPlaySound = false;
@@ -1422,7 +1422,7 @@ export class JSPlayCtrl {
       //console.log(">>>>>>>>> PlayM4_Play 2-2 nSysTime:" + (new Date().getMonth()+1) + "-" + new Date().getDate() + " " + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds() + "." + new Date().getMilliseconds());
     }
 
-    // 创建音频渲染句柄
+    // create 音频渲染句柄
     if (this.audioRenderer == null) {
       this.audioRenderer = new AudioRenderer();
       if (this.audioRenderer == null) {
@@ -1437,9 +1437,9 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 停止播放
+   * @synopsis stopplay 
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_Stop() {
     if (this.decodeWorker == null || this.oSuperRender == null) {
@@ -1450,7 +1450,7 @@ export class JSPlayCtrl {
       return PLAYM4_ORDER_ERROR;
     }
 
-    // 关闭声音
+    //  Close Sound
     if (this.bPlaySound) {
       this.PlayM4_StopSound();
       this.bPlaySound = true;
@@ -1460,7 +1460,7 @@ export class JSPlayCtrl {
     this.bOnebyOne = false;
     this.bPause = false;
 
-    // 关闭电子放大
+    //  Close Zoom
     this.oSuperRender.SR_SetDisplayRect(null);
     this.iZoomNum = 0;
     this.bDisRect = false;
@@ -1494,11 +1494,11 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 播放速率
+   * @synopsis play 速率
    *
    * @param nPlayRate [IN] 倍率
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_PlayRate(nPlayRate) {
     if (this.decodeWorker == null) {
@@ -1524,11 +1524,11 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 暂停播放
+   * @synopsis 暂停play 
    *
    * @param pause [IN] 暂停/恢复标识
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_Pause(pause) {
     if (this.decodeWorker == null || this.oSuperRender == null) {
@@ -1573,7 +1573,7 @@ export class JSPlayCtrl {
   /**
    * @synopsis 帧进
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_OneByOne(stepLength) {
     if (this.decodeWorker == null || this.oSuperRender == null) {
@@ -1593,7 +1593,7 @@ export class JSPlayCtrl {
     this.FrameForwardLen = stepLength;
     this.bPause = true;
     this.bOnebyOne = true;
-    //this.bPlaySound = false;  // 单帧模式下关闭声音
+    //this.bPlaySound = false;  // 单帧模式下 Close Sound
     //this.bPlayRateChange = true;
     this.bIsFirstFrame = true;
     this.draw();
@@ -1601,18 +1601,18 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 开启声音
+   * @synopsis Turn on Sound
    *
    *  @param iWndNum [IN] 窗口号
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_PlaySound(iWndNum) {
     if (this.decodeWorker === null || this.bOpenStream === false) {
       return PLAYM4_ORDER_ERROR;
     }
 
-    // // 判断音频格式是否支持，如果不支持返回状态码
+    // // 判断音频格式是否支持，如果不支持return state码
     // if (!this.bAudioTypeSupport) {
     //     return PLAYM4_SYS_NOT_SUPPORT;
     // }
@@ -1622,7 +1622,7 @@ export class JSPlayCtrl {
       return PLAYM4_PARA_OVER;
     }
 
-    // 创建音频渲染句柄
+    // create 音频渲染句柄
     if (this.audioRenderer == null) {
       this.audioRenderer = new AudioRenderer();
       if (this.audioRenderer == null) {
@@ -1633,7 +1633,7 @@ export class JSPlayCtrl {
     this.decodeWorker.postMessage({
       command: "PlaySound",
     });
-    // 设置当前窗口号
+    // 设置当forward窗口号
     this.audioRenderer.SetWndNum(iWndNum);
     if (this.Volume !== 0) {
       this.audioRenderer.SetVolume(this.Volume);
@@ -1644,7 +1644,7 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 关闭声音
+   * @synopsis  Close Sound
    *
    * @returns
    */
@@ -1668,7 +1668,7 @@ export class JSPlayCtrl {
    *
    * @param nNum [IN] 显示缓存节点数
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_SetDisplayBuf(nNum) {
     if (this.decodeWorker == null) {
@@ -1690,7 +1690,7 @@ export class JSPlayCtrl {
    * @param pSecretKey [IN] 密钥缓存
    * @param nKeyLen [IN] 密钥缓存大小
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_SetSecretKey(nKeyType, pSecretKey, nKeyLen) {
     if (this.decodeWorker == null || this.bOpenStream === false) {
@@ -1726,11 +1726,11 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 设置要解码的帧类型.默认正常解码，当前只支持全解和只解码I帧
+   * @synopsis 设置要解码的帧类型.默认正常解码，当forward只支持全解和只解码I帧
    *
    * @param nFrameType [IN] 帧类型
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_SetDecodeFrameType(nFrameType) {
     console.log("PlayM4_SetDecodeFrameType nFrameType:" + nFrameType);
@@ -1757,11 +1757,11 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 设置跳I帧间隔(调用前需要设置 setDecodeFrameType(1)只解关键帧，否则返回错误码 2)
+   * @synopsis 设置跳I帧间隔(Transferforward需要设置 setDecodeFrameType(1)只解关键帧，否则return Error码 2)
    *
    * @param nInterval [IN] 跳I帧间隔
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_SetIFrameDecInterval(nInterval) {
     if (this.nDecFrameType !== DECODE_VIDEO_KEYFRAME) {
@@ -1785,7 +1785,7 @@ export class JSPlayCtrl {
    *
    * @param nInterval [IN] 丢帧模式
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_SetLostFrameMode(nLostMode) {
     if (nLostMode < 0 || nLostMode > 1) {
@@ -1801,12 +1801,12 @@ export class JSPlayCtrl {
     return PLAYM4_OK;
   }
   /**
-   * @synopsis 电子放大
+   * @synopsis Zoom
    *
    * @param diplayRect [IN] 显示区域
    * @param bEnable [IN] 是否显示
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_SetDisplayRegion(diplayRect, bEnable) {
     if (
@@ -1826,7 +1826,7 @@ export class JSPlayCtrl {
         return PLAYM4_PARA_OVER;
       }
 
-      // 判断放大区域参数
+      // 判断放大区域parameter 
       if (
         typeof diplayRect.left === "number" &&
         typeof diplayRect.top === "number" &&
@@ -1847,7 +1847,7 @@ export class JSPlayCtrl {
         var iTop = diplayRect.top;
         var iBottom = diplayRect.bottom;
 
-        // 获取画布大小
+        // get 画布大小
         var oRect = document
           .getElementById(this.sCanvasId)
           .getBoundingClientRect();
@@ -1865,7 +1865,7 @@ export class JSPlayCtrl {
           return PLAYM4_PARA_OVER;
         }
 
-        // 获取画布大小
+        // get 画布大小
         /*var oRect = document.getElementById(this.sCanvasId).getBoundingClientRect();
                 this.iCanvasWidth = oRect.width;
                 this.iCanvasHeight = oRect.height;*/
@@ -1878,7 +1878,7 @@ export class JSPlayCtrl {
             Math.round(iBottom / this.iRatio_y) + this.stDisplayRect.top;
         }
 
-        // 电子放大
+        // Zoom
         this.stDisplayRect = {
           top: iTop,
           left: iLeft,
@@ -1886,11 +1886,11 @@ export class JSPlayCtrl {
           bottom: iBottom,
         };
 
-        // 开启电子放大
+        // Turn on Zoom
         this.oSuperRender.SR_SetDisplayRect(this.stDisplayRect);
         this.bDisRect = true;
 
-        // 电子放大选择区域大小
+        // Zoom选择区域大小
         var nCropWidth = iRight - iLeft;
         var nCropHeight = iBottom - iTop;
 
@@ -1903,13 +1903,13 @@ export class JSPlayCtrl {
         return PLAYM4_PARA_OVER;
       }
     } else {
-      // 关闭电子放大
+      //  Close Zoom
       this.oSuperRender.SR_SetDisplayRect(null);
       this.iZoomNum = 0;
       this.bDisRect = false;
     }
 
-    // 如果暂停、单帧、快慢放情况，电子放大后需要刷新一帧
+    // 如果暂停、单帧、快慢放情况，Zoom后需要刷新一帧
     if (this.bPause || this.bOnebyOne || this.bPlayRateChange) {
       if (this.bVideoCropInfo) {
         this.oSuperRender.SR_DisplayFrameData(
@@ -1936,9 +1936,9 @@ export class JSPlayCtrl {
   /**
    * @synopsis 抓取BMP图
    *
-   * @param callBack [IN] 数据回调函数
+   * @param callBack [IN] 数据 Callback函数
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_GetBMP(callBack) {
     return this.getPic(callBack, "GetBMP");
@@ -1947,9 +1947,9 @@ export class JSPlayCtrl {
   /**
    * @synopsis 抓取JPEG图
    *
-   * @param callBack [IN] 数据回调函数
+   * @param callBack [IN] 数据 Callback函数
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_GetJPEG(callBack) {
     return this.getPic(callBack, "GetJPEG");
@@ -1960,7 +1960,7 @@ export class JSPlayCtrl {
    *
    * @param volume [IN] 音量
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_SetVolume(volume) {
     if (this.decodeWorker == null) {
@@ -1984,11 +1984,11 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 获取音量
+   * @synopsis get 音量
    *
-   * @param callBack [IN] 音量回调函数
+   * @param callBack [IN] 音量 Callback函数
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_GetVolume(callBack) {
     if (this.decodeWorker == null) {
@@ -2004,7 +2004,7 @@ export class JSPlayCtrl {
       if (volume === null) {
         return PLAYM4_GET_VOLUME_ERROR;
       } else {
-        //修改逻辑解决设置获取音量不一致的问题
+        //修改逻辑解决设置get 音量不一致的问题
         callBack(volume);
 
         return PLAYM4_OK;
@@ -2015,11 +2015,11 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 获取OSD时间信息
+   * @synopsis get OSD时间信息
    *
-   * @param callBack [IN] 获取OSD时间信息回调函数
+   * @param callBack [IN] get OSD时间信息 Callback函数
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_GetOSDTime(callBack) {
     if (this.decodeWorker == null) {
@@ -2040,11 +2040,11 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 当前页面状态
+   * @synopsis 当forward页面 state
    *
-   * @param visibility [IN] 页面状态
+   * @param visibility [IN] 页面 state
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_IsVisible(visibility) {
     this.bVisibility = visibility;
@@ -2053,27 +2053,27 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 获取SDK版本信息
+   * @synopsis get SDK版本信息
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_GetSdkVersion() {
     return "07040005";
   }
 
   /**
-   * @synopsis 获取build日期
+   * @synopsis get build日期
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_GetBuildDate() {
     return "20230303";
   }
 
   /**
-   * @synopsis 获取输入缓存大小
+   * @synopsis get 输入缓存大小
    *
-   * @returns 返回输入缓存大小
+   * @returns return输入缓存大小
    */
   PlayM4_GetInputBufSize() {
     return this.aInputDataBuffer.length;
@@ -2095,20 +2095,20 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 获取YUV缓存大小
+   * @synopsis get YUV缓存大小
    *
-   * @returns 返回YUV缓存大小
+   * @returns returnYUV缓存大小
    */
   PlayM4_GetYUVBufSize() {
     return this.aVideoFrameBuffer.length;
   }
 
   /**
-   * @synopsis 获取一帧图像分辨率
+   * @synopsis get 一帧图像分辨率
    *
-   * @param callBack [IN] 获取一帧图像分辨率回调函数
+   * @param callBack [IN] get 一帧图像分辨率 Callback函数
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_GetFrameResolution(callBack) {
     if (this.decodeWorker == null) {
@@ -2125,9 +2125,9 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 获取YUV缓存大小
+   * @synopsis get YUV缓存大小
    *
-   * @returns 返回YUV缓存大小
+   * @returns returnYUV缓存大小
    */
   PlayM4_RegisterYUVBufSizeCB(callback) {
     if (callback && typeof callback === "function") {
@@ -2139,7 +2139,7 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 注销YUV缓存大小回调
+   * @synopsis 注销YUV缓存大小 Callback
    *
    * @returns
    */
@@ -2154,7 +2154,7 @@ export class JSPlayCtrl {
   /**
    * @synopsis 画布置透明
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_ClearCanvas() {
     if (this.oSuperRender == null) {
@@ -2186,7 +2186,7 @@ export class JSPlayCtrl {
   /**
    * @synopsis 释放输入码流缓存
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_ReleaseInputBuffer() {
     if (this.aInputDataBuffer === null) {
@@ -2201,18 +2201,18 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 获取解码帧类型
+   * @synopsis get 解码帧类型
    *
-   * @returns 返回解码帧类型
+   * @returns return解码帧类型
    */
   PlayM4_GetDecodeFrameType() {
     return this.nDecFrameType;
   }
 
   /**
-   * @synopsis 设置实时信息回调
+   * @synopsis 设置实时信息 Callback
    *
-   * @returns 状态码
+   * @returns  state码
    */
   PlayM4_SetRunTimeInfoCallBackEx(moduleType, callBack) {
     this.runtimeInfoCBFun = callBack;
@@ -2227,7 +2227,7 @@ export class JSPlayCtrl {
   /**
    * @synopsis 设置编码层断帧
    *
-   * @returns 错误码
+   * @returns  Error码
    */
   PlayM4_SetDemuxModel(nIdemuxType, bTrue) {
     // 往 Worker 送数据
@@ -2240,9 +2240,9 @@ export class JSPlayCtrl {
   }
 
   /**
-   * @synopsis 设置跳过错误数据
+   * @synopsis 设置跳过 Error数据
    *
-   * @returns 错误码
+   * @returns  Error码
    */
   PlayM4_SkipErrorData(bSkip) {
     // 往 Worker 送数据
@@ -2256,7 +2256,7 @@ export class JSPlayCtrl {
   /**
    * @synopsis 设置解码差错隐藏等级
    *
-   * @returns 错误码
+   * @returns  Error码
    */
   PlayM4_SetDecodeERC(nLevel) {
     // 往 Worker 送数据
@@ -2270,7 +2270,7 @@ export class JSPlayCtrl {
   /**
    * @synopsis 设置降噪等级
    *
-   * @returns 错误码
+   * @returns  Error码
    */
   PlayM4_SetANRParam(nEnable, nANRLevel) {
     // 往 Worker 送数据
@@ -2284,7 +2284,7 @@ export class JSPlayCtrl {
   /**
    * @synopsis 设置重采样
    *
-   * @returns 错误码
+   * @returns  Error码
    */
   PlayM4_SetResampleValue(nEnable, resampleValue) {
     // 往 Worker 送数据
@@ -2330,11 +2330,11 @@ export class JSPlayCtrl {
     return PLAYM4_OK;
   }
   /**
-   * @synopsis 下载文件
+   * @synopsis 下载 file
    *
    * @param {object} oData 数据 File对象或者Blob对象或者ArrayBuffer对象
-   * @param {string} szName 下载文件名
-   * @returns {none} 无返回
+   * @param {string} szName 下载 file名
+   * @returns {none} 无return
    */
   downloadFile(oData, szName) {
     let oBlob = oData;

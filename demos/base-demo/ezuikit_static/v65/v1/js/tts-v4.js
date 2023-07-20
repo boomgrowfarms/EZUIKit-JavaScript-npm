@@ -274,7 +274,7 @@ var spinner = null;
 									// 	audio = audio.get(0);
 									// 	audio.setAttribute("id", 'peeraudio');
 									// 	audio.setAttribute("preload","preload");
-									// 	// 自动播放解决苹果不兼容autoplay属性
+									// 	// Automatic play 解决苹果不兼容autoplay属性
 									// 	audio.setAttribute("loop",true);
 									// 	$('#audioright').append(audio);
 									// 	$("#peeraudio").bind("playing", function () {

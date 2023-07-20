@@ -56,13 +56,13 @@ var AudioRenderer = function () {
     }
 
     /**
-     * @synopsis 音频播放
+     * @synopsis 音频play 
      *
      *  @param dataBuf [IN] 音频缓存
-     *  @param dataLen [IN] 缓存长度
-     *  @param audioInfo [IN] 音频参数
+     *  @param dataLen [IN] 缓存 length
+     *  @param audioInfo [IN] 音频parameter 
      *
-     * @returns 状态码
+     * @returns  state码
      */
 
 
@@ -139,9 +139,9 @@ var AudioRenderer = function () {
         }
 
         /**
-         * @synopsis 停止播放
+         * @synopsis stopplay 
          *
-         * @returns 返回音量
+         * @returns return音量
          */
 
     }, {
@@ -164,7 +164,7 @@ var AudioRenderer = function () {
          *
          *  @param iVolume [IN] 音量
          *
-         * @returns 状态码
+         * @returns  state码
          */
 
     }, {
@@ -173,7 +173,7 @@ var AudioRenderer = function () {
             this.bSetVolume = true;
             this.currentVolume = iVolume;
 
-            // 储存当前窗口设置音量值
+            // 储存当forward窗口设置音量值
             this.mVolumes.set(this.iWndNum, this.currentVolume);
             return true;
         }
@@ -183,7 +183,7 @@ var AudioRenderer = function () {
          *
          *  @param iWndNum [IN] 窗口号
          *
-         * @returns 状态码
+         * @returns  state码
          */
 
     }, {
@@ -191,7 +191,7 @@ var AudioRenderer = function () {
         value: function SetWndNum(iWndNum) {
             this.iWndNum = iWndNum;
 
-            // 获取当前窗口设置音量值
+            // get 当forward窗口设置音量值
             var iVolume = this.mVolumes.get(iWndNum);
             if (iVolume == undefined) {
                 iVolume = 80; // 默认音量
@@ -202,15 +202,15 @@ var AudioRenderer = function () {
         }
 
         /**
-         * @synopsis 获取音量
+         * @synopsis get 音量
          *
-         * @returns 返回音量
+         * @returns return音量
          */
 
     }, {
         key: 'GetVolume',
         value: function GetVolume() {
-            // 获取当前窗口设置音量值
+            // get 当forward窗口设置音量值
             var iVolume = this.mVolumes.get(this.iWndNum);
             if (iVolume == undefined) {
                 iVolume = 80; // 默认音量
